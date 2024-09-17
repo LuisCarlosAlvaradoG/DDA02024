@@ -52,7 +52,7 @@ lista_invertida = lista[::-1]
 print(f"Lista invertida: {lista_invertida}")
 
 # Ejercicio: Buscar un elemento en una lista
-buscar = 3
+buscar = 2
 if buscar in lista:
     print(f"El elemento {buscar} está en la lista.")
 else:
