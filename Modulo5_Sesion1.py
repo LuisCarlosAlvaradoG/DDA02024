@@ -133,3 +133,4 @@ if numero2 != 0 and numero1 % numero2 == 0:
     print(f"El número {numero1} es múltiplo de {numero2}.")
 else:
     print(f"El número {numero1} no es múltiplo de {numero2}.")
+

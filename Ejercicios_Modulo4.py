@@ -69,6 +69,12 @@ altura = float(input("Ingresa tu altura en metros: "))
 imc = peso / (altura ** 2)
 print(f"Tu IMC es: {imc}")
 
+lista = ["hola", "mundo"]
+print("".join(lista))  # "hola mundo"
+
+cadena = "Hola buen buen día"
+cadena.find("buen")
+
 # Ejercicio 8: Promedio de Números
 # Problema: Escribe un programa en Python que solicite al usuario tres números y luego imprima el promedio de esos números.
 
@@ -203,3 +209,90 @@ calificaciones_validas = [cal for cal in calificaciones if 0 <= cal <= 100]
 promedio = sum(calificaciones_validas) / len(calificaciones_validas) if calificaciones_validas else 0
 
 print(f"El promedio de las calificaciones válidas es: {promedio}")
+
+'''4.1. Operaciones de entrada y salida
+Hola Mundo: Crea un programa que imprima "¡Hola, mundo!" en la consola.
+
+Saludo Personalizado: Pide al usuario su nombre y luego imprime un saludo personalizado, como "¡Hola, [nombre]!"
+
+Conversión de Unidades: Pide al usuario ingresar una distancia en kilómetros y convierte esa distancia a millas. Imprime el resultado.
+
+Calcular el Área de un Círculo: Pide al usuario el radio de un círculo y calcula el área (A = πr²). Imprime el resultado.
+
+Promedio de Notas: Pide al usuario que ingrese tres notas y calcula el promedio. Imprime el resultado.
+
+4.2. Operaciones con números y cadenas
+Cálculo de la Suma: Pide al usuario que ingrese dos números y calcula su suma. Imprime el resultado.
+
+Contar Caracteres: Pide al usuario que ingrese una cadena y cuenta cuántos caracteres tiene. Imprime el resultado.
+
+Número Par o Impar: Pide al usuario que ingrese un número y determina si es par o impar. Imprime el resultado.
+
+Inverso de una Cadena: Pide al usuario que ingrese una cadena y muestra su inverso. Por ejemplo, "hola" debería convertirse en "aloh".
+
+Raíz Cuadrada: Pide al usuario que ingrese un número y calcula su raíz cuadrada. Imprime el resultado.
+
+4.3. Especificación e implementación de algoritmos con estructuras secuenciales
+Conversión de Temperatura: Pide al usuario que ingrese una temperatura en Celsius y la convierte a Fahrenheit (F = C × 9/5 + 32). Imprime el resultado.
+
+Tabla de Multiplicar: Pide al usuario que ingrese un número y genera su tabla de multiplicar (del 1 al 10). Imprime cada resultado.
+
+Descuento en Compras: Pide al usuario el precio de un producto y aplica un 20% de descuento. Imprime el precio final.
+
+Calculadora Básica: Pide al usuario dos números y un operador (suma, resta, multiplicación o división). Realiza la operación correspondiente y muestra el resultado.
+
+Conversión de Segundos a Horas, Minutos y Segundos: Pide al usuario que ingrese un número de segundos y convierte ese valor a horas, minutos y segundos. Imprime el resultado.
+
+Sumatoria de Números: Pide al usuario que ingrese un número entero positivo y calcula la suma de todos los números desde 1 hasta ese número. Imprime el resultado.
+
+Verificación de un Año Bisiesto: Pide al usuario que ingrese un año y verifica si es bisiesto. Imprime el resultado.
+
+Adivinar un Número: Genera un número aleatorio entre 1 y 100 y pide al usuario que lo adivine. Imprime si la respuesta es correcta o incorrecta.
+
+Contar Vocales: Pide al usuario que ingrese una cadena y cuenta cuántas vocales hay en ella. Imprime el resultado.
+
+Calculadora de Intereses: Pide al usuario que ingrese un capital inicial, la tasa de interés y el tiempo. Calcula el interés simple (I = P × r × t) y muestra el total a pagar.
+
+4.1. Operaciones de entrada y salida
+Conversión de Moneda: Pide al usuario que ingrese una cantidad en euros y convierte esa cantidad a dólares, utilizando un tipo de cambio proporcionado por el usuario.
+
+Generador de Contraseñas: Pide al usuario que ingrese la longitud deseada de una contraseña y genera una contraseña aleatoria que contenga letras y números.
+
+Estadísticas de una Lista: Pide al usuario que ingrese una serie de números (hasta que ingrese "fin"). Luego, calcula y muestra el promedio, el mínimo y el máximo.
+
+Generador de Frases Aleatorias: Crea una lista de sujetos, verbos y objetos. Pide al usuario que ingrese cuántas frases desea generar y produce frases aleatorias.
+
+Lista de Compras: Permite al usuario ingresar varios elementos para una lista de compras (hasta que ingrese "fin"). Luego, muestra la lista ordenada alfabéticamente.
+
+4.2. Operaciones con números y cadenas
+Palíndromo: Pide al usuario que ingrese una cadena y verifica si es un palíndromo (se lee igual de izquierda a derecha que de derecha a izquierda).
+
+Conversión de Números Romanos: Pide al usuario que ingrese un número entero entre 1 y 10 y convierte ese número a su representación en números romanos.
+
+Valor Absoluto: Pide al usuario que ingrese un número y calcula su valor absoluto (sin usar la función abs()).
+
+Eliminar Espacios: Pide al usuario que ingrese una cadena y elimina todos los espacios en blanco, imprimiendo la cadena resultante.
+
+Contar Consonantes: Pide al usuario que ingrese una cadena y cuenta cuántas consonantes hay en ella, imprimiendo el resultado.
+
+4.3. Especificación e implementación de algoritmos con estructuras secuenciales
+Suma de Números Pares: Pide al usuario que ingrese un número entero positivo y calcula la suma de todos los números pares hasta ese número.
+
+Conversión de Grados a Radianes: Pide al usuario que ingrese un ángulo en grados y convierte ese valor a radianes (radianes = grados × π / 180).
+
+Factorial: Pide al usuario que ingrese un número y calcula su factorial (n! = n × (n-1) × ... × 1) sin usar funciones recursivas.
+
+Media Geométrica: Pide al usuario que ingrese una serie de números positivos (hasta que ingrese "fin") y calcula la media geométrica.
+
+Números Amigos: Pide al usuario que ingrese dos números y determina si son números amigos (la suma de los divisores propios de uno es igual al otro).
+
+Cálculo de Desviación Estándar: Pide al usuario que ingrese varios números (hasta "fin") y calcula la desviación estándar de esos números.
+
+Códigos de Barras: Pide al usuario que ingrese un número de 12 dígitos y verifica si es un código de barras válido (el último dígito es el dígito de control).
+
+Ajustar Precio con IVA: Pide al usuario que ingrese un precio sin IVA y una tasa de IVA. Calcula y muestra el precio final con el IVA incluido.
+
+Juego de Adivinanza: Pide al usuario que adivine un número entre 1 y 50, dando pistas de "mayor" o "menor" hasta que adivine correctamente.
+
+Conversor de Binario a Decimal: Pide al usuario que ingrese un número en formato binario y lo convierte a decimal.
+'''

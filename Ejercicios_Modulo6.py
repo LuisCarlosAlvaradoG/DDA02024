@@ -303,3 +303,174 @@ if validar_contrasena(contrasena):
     print("Contraseña válida.")
 else:
     print("La contraseña no cumple con los criterios mínimos de seguridad.")
+
+'''Elevar lista al cuadrado'''
+lista = [1, 2, 3, 4, 5]
+new_list = [i**2 if i % 2 == 0 else 0 for i in lista]
+list(i**2 if i % 2 == 0 else 0 for i in lista)
+
+
+
+'''Palabras que empiezan y terminan en vocal'''
+palabras = ["avion", "idea", "experiencia", "aire", "oro", "uso"]
+resultado = [i for i in palabras if i[0] in "aeiou" and i[-1] in "aeiou"]
+print(resultado) 
+
+resultado = [i for i in palabras if i.startswith(('a','e','i','o','u')) and i.endswith(('a','e','i','o','u'))]
+print(resultado) 
+
+lista_anidada = [[1, 2, 3], [4, 6, 6], [7, 8, 9]]
+resultado = list(set([j for i in lista_anidada for j in i]))
+print(resultado)
+
+matriz = [[1,2,3],[4,5,6],[7,8,9]]
+lista = []
+j = 0
+for i in matriz:
+    lista.append(i[j])
+    j+=1
+lista
+
+# Definir dimensiones de la matriz
+n = int(input("Introduce el número de filas (n): "))  # filas
+m = int(input("Introduce el número de columnas (m): "))  # columnas
+
+matriz = [[0 for _ in range(m)] for _ in range(n)]
+matriz
+
+for i in range(n):
+    for j in range(m):
+        numero = int(input(f"Ingresa un número del 0 al 9 para la posición ({i}, {j}): "))
+        while numero < 0 or numero > 9:
+            numero = int(input("Número inválido. Ingresa un número del 0 al 9: "))
+        matriz[i][j] = numero  
+
+import random
+
+def organizar_estanterias(cajas):
+    estanterias = []
+    actual = []
+
+    for caja in cajas:
+        if sum(actual) + caja <= 100:
+            actual.append(caja)
+        else:
+            estanterias.append(actual)
+            actual = [caja]
+
+    # if actual:
+    #     estanterias.append(actual)
+
+    return estanterias
+
+# Generar lote de cajas
+cajas = [random.randint(1, 30) for _ in range(random.randint(1, 10))]
+cajas
+estanterias = organizar_estanterias(cajas)
+print(f"Se utilizaron {len(estanterias)} estanterías para acomodar todas las cajas.")
+print("Distribución de estanterías:", estanterias)
+
+lista = [1,2,3]
+lista_h = []
+lista_h.append(lista)
+
+lista = [[]]
+
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+suma_filas = [sum(fila) for fila in matriz]
+suma_columnas = [sum(matriz[i][j] for i in range(len(matriz))) for j in range(len(matriz[0]))]
+
+print("Suma de filas:", suma_filas)
+print("Suma de columnas:", suma_columnas)
+
+matriz = [
+    [3, 5, 1],
+    [8, 7, 6],
+    [2, 9, 4]
+]
+
+max_min_por_fila = [(max(fila), min(fila)) for fila in matriz]
+
+print("Máximo y mínimo por fila:", max_min_por_fila)
+
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+rotada = [[matriz[i][j] for i in range(len(matriz) - 1, -1, -1)] for j in range(len(matriz))]
+print("Matriz rotada 90 grados a la derecha:", rotada)
+
+matriz = [
+    [5, 3, 7],
+    [1, 8, 6],
+    [4, 2, 9]
+]
+x = int(input("Introduce el valor a buscar: "))
+encontrado = False
+
+for i in range(len(matriz)):
+    for j in range(len(matriz[i])):
+        if matriz[i][j] == x:
+            print(f"Valor encontrado en la posición ({i}, {j})")
+            encontrado = True
+            break
+if not encontrado:
+    print("El valor no se encuentra en la matriz")
+
+matriz = [
+    [5, 3, 7],
+    [1, 8, 6],
+    [4, 2, 9]
+]
+encontrado = False
+x = 2
+for i in range(len(matriz)):
+    try:
+        j = matriz[i].index(x) 
+        print(f"Valor encontrado en la posición ({i}, {j})")
+        encontrado = True
+        break 
+    except ValueError:
+        continue
+if not encontrado:
+    print("El valor no se encuentra en la matriz")
+
+
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+promedios_columnas = [sum(i[j] for i in matriz) / len(matriz) for j in range(len(matriz[0]))]
+print("Promedios por columna:", promedios_columnas)
+
+# Semana 13
+inventario = [
+    ["Laptop", "Monitor", "Teclado"],
+    ["Mesa", "Silla", "Lámpara"],
+    ["Café", "Té", "Galletas"]
+]
+
+print("Categorías:")
+for i, categoria in enumerate(inventario):
+    print(f"{i + 1}. {categoria}")
+
+cat_index = int(input("Selecciona una categoría para ver el inventario: ")) - 1
+print("Productos en la categoría seleccionada:", inventario[cat_index])
+
+producto = input("Introduce el nombre del producto a agregar: ")
+if producto not in inventario[cat_index]:
+    inventario[cat_index].append(producto)
+    print("Producto agregado.")
+else:
+    print("El producto ya existe en la categoría.")
+
+print("Inventario actualizado:", inventario)
