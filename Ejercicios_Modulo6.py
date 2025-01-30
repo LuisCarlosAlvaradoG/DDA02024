@@ -474,3 +474,159 @@ else:
     print("El producto ya existe en la categoría.")
 
 print("Inventario actualizado:", inventario)
+
+matriz = [
+    [3, 5, 2, 8],
+    [1, 4, 7, 6],
+    [9, 0, 3, 1]
+]
+
+suma_pares = 0
+for fila in matriz:
+    for j in range(0, len(fila), 2):  # Solo columnas pares
+        suma_pares += fila[j]
+
+print("Suma de elementos en columnas pares:", suma_pares)
+
+
+
+
+
+
+
+
+
+
+
+
+matriz = [
+    [3, 5, 2, 8],
+    [1, 5, 2, 6],
+    [3, 0, 2, 1]
+]
+
+conteo_ocurrencias = {}
+for fila in matriz:
+    for num in fila:
+        conteo_ocurrencias[num] = conteo_ocurrencias.get(num, 0) + 1
+
+x = matriz[0]
+x.get(3)
+
+print("Ocurrencias de cada elemento:", conteo_ocurrencias)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+matriz = [
+    [3, 5, 2, 8],
+    [1, 5, 2, 6],
+    [3, 0, 2, 1]
+]
+new_matriz = [j for i in matriz for j in i]
+elementos = set(new_matriz)
+# dic = {}
+for i in elementos:
+    print(f"Elemento {i} se repite {new_matriz.count(i)} veces")
+    # dic[i] = new_matriz.count(i)
+
+
+
+# REPASO EXAMEN FINAL
+
+turnos = [
+    [85, 90, 78],
+    [45, 88, 92],
+    [70, 75, 80],
+    [95, 98, 85]
+]
+
+# Calcular el desempeño promedio por turno
+promedios_turnos = [sum(turno) / len(turno) for turno in turnos]
+
+# Turno con mejor desempeño promedio
+turno_mejor = promedios_turnos.index(max(promedios_turnos))
+
+# Verificar bajo rendimiento
+bajo_rendimiento = any(p < 50 for turno in turnos for p in turno)
+
+# Puntaje promedio general
+promedio_general = sum(promedios_turnos) / len(turnos)
+
+print(f"Turno con mejor desempeño: {turno_mejor} con promedio {max(promedios_turnos):.2f}")
+print("¿Hubo bajo rendimiento? ", "Sí" if bajo_rendimiento else "No")
+print(f"Promedio general: {promedio_general:.2f}")
+
+tiempos = [
+    [0, 15, 30, 50],
+    [15, 0, 45, 20],
+    [30, 45, 0, 10],
+    [50, 20, 10, 0]
+]
+
+matriz = [(tiempos[i][j], (i, j)) for i in range(len(tiempos)) for j in range(len(tiempos)) if i != j]
+min(matriz)
+sorted(matriz)[:3]
+any(matriz[i][0]>=60 for i in range(len(matriz)))
+any()
+ 
+# Ruta más rápida entre estaciones
+min_tiempo = min((tiempos[i][j], (i, j)) for i in range(len(tiempos)) for j in range(len(tiempos)) if i != j)
+
+# Detectar tiempos superiores a 60 minutos
+lento = any(tiempos[i][j] > 60 for i in range(len(tiempos)) for j in range(len(tiempos)) if i != j)
+
+# Tres conexiones más rápidas
+conexiones_rapidas = sorted([(tiempos[i][j], (i, j)) for i in range(len(tiempos)) for j in range(len(tiempos)) if i != j], key=lambda x: x[0])[:3]
+
+print("Ruta más rápida:", min_tiempo)
+print("¿Conexiones mayores a 60 minutos?", "Sí" if lento else "No")
+print("Tres conexiones más rápidas:", conexiones_rapidas)
+
+ciudad = [
+    [60, 90, 50],  # Zona 1: agua, energía, alimentos
+    [45, 70, 40],  # Zona 2
+    [80, 60, 55]   # Zona 3
+]
+
+# Zona con recurso total más bajo por tipo
+recursos_min = [[ciudad[i][j] for i in range(len(ciudad))] for j in range(len(ciudad[0]))]
+zona_recursos_min = [i.index(min(i))+1 for i in recursos_min]
+
+promedio_recursos = [sum(i) / len(i) for i in recursos_min]
+
+# Reasignar recursos si alguna zona tiene menos de 50
+for zona in ciudad:
+    for i in range(len(zona)):
+        if zona[i] < 50:
+            zona[i] += 10
+
+# Promedio por tipo de recurso
+print("Zona con recurso más bajo por tipo:", zona_recursos_min)
+print("Promedio por tipo de recurso:", promedio_recursos)
+print("Ciudad después de reasignar recursos:", ciudad)
+
+
+def reverse_number(num):
+  # Reverse the number
+  reverse = str(num)[::-1]
+  # Return the number
+  return int(reverse)
+
+## Example usage:
+print(reverse_number(1223)) # Output: 3221
+print(reverse_number(987654321)) # Output: 123456789
+
+x = [True, False, True]
