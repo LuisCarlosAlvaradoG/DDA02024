@@ -14,13 +14,13 @@ else:
 
 # Ejercicio 2: Determinar si un año es bisiesto
 # Ingreso de datos
-anio = int(input("Ingrese un año: "))
+año = int(input("Ingrese un año: "))
 
 # Estructura condicional para verificar si el año es bisiesto
-if (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0):
-    print(f"El año {anio} es bisiesto.")
+if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):
+    print(f"El año {año} es bisiesto.")
 else:
-    print(f"El año {anio} no es bisiesto.")
+    print(f"El año {año} no es bisiesto.")
 
 # Ejercicio 3: Calcular el descuento en una compra según el monto
 # Ingreso de datos

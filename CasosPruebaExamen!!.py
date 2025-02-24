@@ -308,8 +308,8 @@ if t == 0:
     print("No")
 
 # Salida
-for simulacion in simulaciones_validas:
-    print(simulacion)
+# for simulacion in simulaciones_validas:
+    # print(simulacion)
 
 def modificar_matriz(matriz, N, M):
     # Función para calcular la suma de los vecinos para un elemento que no está en los bordes
@@ -393,4 +393,118 @@ for fila in matriz_modificada:
     print(" ".join(map(str, fila)))
 
 
+#Tipo 1
+a, b, c, d = 3, 2, -1, 1
+print(a - c + 2 * 5 / b * d)
+a, b, c, d = 4, 1, -2, 1
+print(8 % b - a * c ** 4 + d / 5)
 
+ingreso = 52000
+deducciones = 5000
+
+if ingreso > 50000:
+    if deducciones > 4000:
+        if ingreso - deducciones > 45000:
+            print("Debe pagar impuestos altos")
+        else:
+            print("Debe pagar impuestos moderados")
+    else:
+        print("Debe pagar impuestos estándar")
+else:
+    if ingreso > 30000:
+        print("Debe pagar impuestos bajos")
+    else:
+        print("Está exento de impuestos")
+
+nivel = 7
+puntos = 1200
+
+if nivel > 5:
+    if puntos > 1000:
+        if nivel % 2 == 0:
+            print("Ascenso a nivel superior con bonificación")
+        else:
+            print("Ascenso a nivel superior sin bonificación")
+    else:
+        if puntos > 500:
+            print("Mantenimiento de nivel")
+        else:
+            print("Descenso de nivel")
+else:
+    print("Revisión de estado")
+
+#TIPO 1
+
+# 1.	Es una descripción detallada de alto nivel, legible, compacta e informal	Pseudocódigo (g)
+# 2.	Característica de un algoritmo donde las instrucciones se ejecutan una después de otra en un orden específico	Ordenado (i)
+# 3.	Formado por un conjunto de símbolos y reglas sintácticas y semánticas	Lenguaje de programación (f)
+# 4.	Se constituye por un identificador, un tipo de dato, un valor y un ámbito	Variable (b)
+# 5.	Clasificación de un lenguaje de programación	Orientado a objetos(a)
+# 6.	Programa que está a cargo de traducir línea a línea el código fuente	Intérprete (h)
+# 7.	Tipo de dato que admite solo dos valores: False o Verdadero	Lógico (d)
+# 8.	Función que devuelve el tipo de dato de una variable	Type() (k)
+# 9.	Prioridad de los operadores para evaluar una expresión	Precedencia (c)
+# 10.	Manejo de sangrías para delimitar bloques de código	Identación (l)
+#9
+#-63.8
+#Debe pagar impuestos altos
+#Ascenso a nivel superior sin bonificación
+
+# TIPO 2
+
+a, b, c, d = 2, 3, 1, -1
+print(a + b - c ** 2 + d/4)
+a, b, c, d = 1, 4, 3, -1
+print(b + c * 5 / 4 ** d * a)
+
+a, b, c = 7, 7, 10
+
+if a == b == c:
+    print("Triángulo equilátero")
+elif a == b or b == c or a == c:
+    if a**2 + b**2 == c**2 or b**2 + c**2 == a**2 or a**2 + c**2 == b**2:
+        print("Triángulo isósceles y rectángulo")
+    else:
+        print("Triángulo isósceles")
+else:
+    if a**2 + b**2 == c**2 or b**2 + c**2 == a**2 or a**2 + c**2 == b**2:
+        print("Triángulo escaleno y rectángulo")
+    else:
+        print("Triángulo escaleno")
+
+usuario = "admin"
+clave = "segura123"
+intentos = 2
+
+if usuario == "admin":
+    if clave == "segura123":
+        if intentos < 3:
+            print("Acceso permitido")
+        else:
+            print("Cuenta bloqueada por intentos fallidos")
+    else:
+        print("Contraseña incorrecta")
+else:
+    if usuario == "invitado":
+        print("Acceso restringido con permisos limitados")
+    else:
+        print("Usuario no reconocido")
+
+
+
+# 1.	Se constituye por un identificador, un tipo de dato, un valor y un ámbito	Variable (e)
+# 2.	Formado por un conjunto de símbolos y reglas sintácticas y semánticas	Lenguaje de programación (f)
+# 3.	Característica de un algoritmo donde las instrucciones se ejecutan una 
+# después de otra en un orden específico	Ordenado (a)
+# 4.	Es una descripción detallada de alto nivel, legible, compacta e informal	Pseudocódigo (i)
+# 5.	Función que devuelve el tipo de dato de una variable	Type() (b)
+# 6.	Programa que está a cargo de traducir línea a línea el código fuente	Intérprete (j)
+# 7.	Tipo de dato que admite solo dos valores: False o Verdadero	Lógico (ñ)
+# 8.	Clasificación de un lenguaje de programación	Orientado a objetos(g)
+# 9.	Manejo de sangrías para delimitar bloques de código	Identación (l)
+# 10.	Prioridad de los operadores para evaluar una expresión	Precedencia (c)
+
+# 3.75 15/4
+# 64 
+# Triángulo isósceles
+# Acceso permitido
