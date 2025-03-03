@@ -116,4 +116,67 @@ Slicing
 x[inicio:fin:paso]
 '''
 x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+x[:4]
+
+x[::-1]
+
+
 x[:4:-1]
+
+'''
+Sintaxis de map()
+función: Aplicar una función a todos los elementos de la iterable
+
+Características: Si se proporciona más de una iterable, la funciónm debe aceptar 
+tantos argumentos como iterables se pasen
+'''
+# Función
+def cuadrado(x):
+    return x ** 2
+
+cuadrado(2)
+
+numeros = [1, 2, 3, 4, 5]
+resultado = map(cuadrado, numeros)
+list(resultado)
+
+#Aplicar map con función lambda
+numeros = [1, 2, 3, 4, 5]
+resultado = map(lambda x: x ** 2, numeros)
+list(resultado)
+
+# Dadas 2 listas de números, hacer la suma por cada posición
+
+numeros1 = [1, 2, 3, 4, 5]
+numeros2 = [6, 7, 8, 9, 10]
+resultado = map(lambda x, y: x + y, numeros1, numeros2)
+list(resultado)
+
+def suma(x, y):
+    return x + y
+
+resultado = map(suma, numeros1, numeros2)
+list(resultado)
+
+# Dadas 2 listas de números, hacer la suma por cada posición
+numeros1 = [1, 2, 3, 4, 5]
+numeros2 = [6, 7, 8, 9, 10]
+len(numeros1)
+
+i = 0
+resultado = []
+
+while i < len(numeros1):
+    suma = numeros1[i] + numeros2[i]
+    resultado.append(suma)
+    i += 1
+print(resultado)
+
+
+
+
+
+
+
+# resultado
+# resultado = [7, 9, 11, 13, 15]
