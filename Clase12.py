@@ -1,19 +1,3 @@
-# Problema 9
-num = int(input())
-resultado = num 
-
-while True:
-    num = int(input())
-    if num == -1:
-        break
-
-    a, b = resultado, num
-    while b:
-        a, b = b, a % b
-    resultado = a  
-
-print(resultado)
-
 # Listas
 
 lista = [1, 2, 3, 4, 5]
