@@ -129,12 +129,17 @@ while True:
 
 print(mcd)
 #Problema 10
-product = 1
+producto = 1
+i = 0 
 
 while True:
-    num = int(input().strip())
+    num = int(input())
     if num == -1:
         break
-    product *= num
-
-print(product)
+    producto *= num
+    i += 1
+    
+if i  == 0:
+    print()
+else:
+    print(producto)
