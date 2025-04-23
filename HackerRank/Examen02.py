@@ -36,6 +36,30 @@ print("True" if found else "False")
 print(count)
 
 # Problema 3
+products = eval(input().strip())   
+transactions = eval(input().strip())  
+
+processed = []  
+for trans in transactions:
+    prod_name, req_qty = trans
+    found = False
+    for product in products:
+        if product[0] == prod_name:
+            found = True
+            if product[1] >= req_qty:
+                product[1] -= req_qty
+                processed.append([prod_name, 'Compra aprobada'])
+            else:
+                processed.append([prod_name, 'Sin stock'])
+            break
+    if not found:
+        processed.append([prod_name, 'Sin stock'])
+
+for tran in processed:
+    print(str(tran).replace(", ",","))
+
+
+# Problema 3
 def p3(matrix):
     # matrix = eval(input().strip())
     m = len(matrix)
@@ -81,7 +105,7 @@ def barba(entrada):
     for i in sumas:
         if i < Menor:
             Menor = i
-    print(i)
+    print(Menor)
 
 L = [5, 2, 9, 1]
 for i in range(len(L) - 1):
