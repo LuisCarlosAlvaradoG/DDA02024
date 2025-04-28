@@ -23,7 +23,9 @@ import numpy as np
 # Output Format: Un número entero: la suma de los elementos.
 # --------------------------------
 def problem1(arr):
-    #Escribe aquí tu código
+    # arreglo = np.array(arr)
+    # resultado = np.sum(arreglo)
+    # return resultado
     pass
 
 # TESTS Problema 1
@@ -81,12 +83,13 @@ print(f"Problema 2: {correct}/10")
 # Output Format: Un número (float) redondeado a dos decimales.
 # --------------------------------
 def problem3(arr):
-    #Escribe aquí tu código
-    pass
-
+    arreglo = np.array(arr)
+    resultado = np.std(arreglo)
+    return resultado
+    # pass
 # TESTS Problema 3
 _t3_in = [[1,2,3,4,5],[10,10,10],[1,2],[4,4,4,4],[1,3,5,7],[2,4,6,8,10],[0,0,1,1],[5,6,7,8],[3,3,5,7],[9,8,7,6]]
-_t3_exp = [1.41,0.00,0.50,0.00,2.24,2.83,0.50,1.12,1.63,1.12]
+_t3_exp = [1.41,0.00,0.50,0.00,2.24,2.83,0.50,1.12,1.66,1.12]
 correct = 0
 for inp, exp in zip(_t3_in, _t3_exp):
     res = None

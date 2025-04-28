@@ -24,6 +24,9 @@ def clasificar_hba1c(valor):
 
 df["HbA1c_clasificacion"] = df["hbA1c_level"].apply(clasificar_hba1c)
 
+df.columns
+df["age"]
+
 # Clasificar IMC manualmente
 df["bmi_categoria"] = df["bmi"].apply(
     lambda x: "Bajo peso" if x < 18.5 else
@@ -58,6 +61,9 @@ while i < 5:
 # ===============================
 # Crear una lista de listas con [edad, glucosa] solo de pacientes diabéticos
 lista_pacientes = []
+
+df.loc[0, "diabetes"] == 1
+
 for i in range(len(df)):
     if df.loc[i, "diabetes"] == 1:
         lista_pacientes.append([df.loc[i, "age"], df.loc[i, "blood_glucose_level"]])
@@ -71,8 +77,8 @@ print(lista_pacientes[:3])  # Mostrar solo los 3 primeros
 
 # Histograma de IMC por grupo
 plt.figure(figsize=(10, 5))
-plt.hist(df[df["diabetes"] == 1]["bmi"], bins=15, alpha=0.7, label="Diabéticos", color="darkred")
 plt.hist(df[df["diabetes"] == 0]["bmi"], bins=15, alpha=0.7, label="No diabéticos", color="darkgreen")
+plt.hist(df[df["diabetes"] == 1]["bmi"], bins=15, alpha=0.7, label="Diabéticos", color="red")
 plt.title("Distribución de IMC por diagnóstico")
 plt.xlabel("IMC")
 plt.ylabel("Frecuencia")
