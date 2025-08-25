@@ -43,7 +43,6 @@ def max_of_three(a: int, b: int, c: int) -> int:
 # Ejemplos
 print("[P01]", max_of_three(5, 7, 3), max_of_three(-1, -5, -2), max_of_three(9, 9, 3))
 
-
 # ===============================================================
 # PROBLEMA 02 — TIPO DE TRIÁNGULO A PARTIR DE TRES LADOS
 # ===============================================================
