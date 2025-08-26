@@ -1,3 +1,64 @@
+# NÚMERO CORTES:
+# INICIO
+#   ESCRIBIR "Ingrese N (entero positivo): "
+#   LEER N
+
+#   SI N <= 0 ENTONCES
+#      ESCRIBIR "Entrada inválida: N debe ser entero positivo"
+#      FIN
+#   FIN_SI
+
+#   n_temp ← N
+#   MIENTRAS n_temp MOD 2 = 0 HACER
+#       n_temp ← n_temp / 2
+#   FIN_MIENTRAS
+
+#   SI n_temp = 1 ENTONCES
+#       ESCRIBIR "N es potencia de 2 → NO es cortés"
+#   SINO
+#       ESCRIBIR "N NO es potencia de 2 → SÍ es cortés"
+#   FIN_SI
+# FIN
+
+# DETERMINAR EL MAYOR DE TRES NÚMEROS
+# INICIO
+#   ESCRIBIR "Ingrese A, B y C (enteros): "
+#   LEER A, B, C
+
+#   mayor ← A
+#   SI B > mayor ENTONCES
+#      mayor ← B
+#   FIN_SI
+#   SI C > mayor ENTONCES
+#      mayor ← C
+#   FIN_SI
+
+#   ESCRIBIR "El mayor es: ", mayor
+# FIN
+
+# DETERMINAR TRIÁNGULO Y SU TIPO
+# INICIO
+#   ESCRIBIR "Ingrese los tres lados a, b, c (reales positivos): "
+#   LEER a, b, c
+
+#   SI (a <= 0) O (b <= 0) O (c <= 0) ENTONCES
+#      ESCRIBIR "No es triángulo (lados deben ser positivos)"
+#      FIN
+#   FIN_SI
+
+#   SI (a + b > c) Y (a + c > b) Y (b + c > a) ENTONCES
+#       SI (a = b) Y (b = c) ENTONCES
+#           ESCRIBIR "Equilátero"
+#       SINO SI (a = b) O (a = c) O (b = c) ENTONCES
+#           ESCRIBIR "Isósceles"
+#       SINO
+#           ESCRIBIR "Escaleno"
+#       FIN_SI
+#   SINO
+#       ESCRIBIR "No es triángulo"
+#   FIN_SI
+# FIN
+
 
 # ===============================================================
 # 00.- PROBLEMAS PARA DIAGRAMAS DE FLUJO Y PSEUDOCÓDIGO
