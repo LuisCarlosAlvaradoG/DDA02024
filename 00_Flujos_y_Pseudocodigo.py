@@ -573,3 +573,287 @@ def safe_division(a_str: str, b_str: str):
     return a / b
 
 print("[P20]", safe_division("10","2"), safe_division("x","2"), safe_division("5","0"))
+
+# ===============================================================
+# P21 — SUMA DE LOS PRIMEROS N NÚMEROS (1..N)
+# ===============================================================
+# ENUNCIADO: Dado N (entero >= 0), calcular S = 1+2+...+N usando un ciclo.
+# ENTRADAS: N (entero >= 0)
+# SALIDAS: S (entero)
+#
+# PSEUDOCÓDIGO:
+#   LEER N
+#   S <- 0
+#   PARA i <- 1 HASTA N HACER
+#       S <- S + i
+#   FIN_PARA
+#   ESCRIBIR S
+
+def sum_first_n(n: int) -> int:
+    s = 0
+    for i in range(1, n+1):
+        s += i
+    return s
+
+print("[P21]", sum_first_n(0), sum_first_n(5), sum_first_n(10))
+
+
+# ===============================================================
+# P22 — CONTAR POSITIVOS HASTA LEER 0 (CENTINELA)
+# ===============================================================
+# ENUNCIADO: Leer enteros uno a uno y contar cuántos son > 0.
+#            Terminar cuando se lea 0 (centinela).
+# ENTRADAS: Secuencia de enteros, terminada en 0.
+# SALIDAS: Conteo de positivos.
+#
+# PSEUDOCÓDIGO:
+#   count <- 0
+#   LEER x
+#   MIENTRAS x != 0 HACER
+#       SI x > 0 ENTONCES
+#           count <- count + 1
+#       FIN_SI
+#       LEER x
+#   FIN_MIENTRAS
+#   ESCRIBIR count
+
+def count_positive_until_zero(sequence: list[int]) -> int:
+    count = 0
+    for x in sequence:
+        if x == 0:
+            break
+        if x > 0:
+            count += 1
+    return count
+
+print("[P22]", count_positive_until_zero([3, -1, 5, 0, 7]))
+
+
+# ===============================================================
+# P23 — FACTORIAL DE N
+# ===============================================================
+# ENUNCIADO: Calcular N! = 1*2*...*N con un ciclo. Tomar 0! = 1.
+# ENTRADAS: N (entero >= 0)
+# SALIDAS: N!
+#
+# PSEUDOCÓDIGO:
+#   LEER N
+#   SI N=0 -> ESCRIBIR 1
+#   SINO
+#     F <- 1
+#     PARA i <- 1 HASTA N HACER
+#         F <- F * i
+#     FIN_PARA
+#     ESCRIBIR F
+
+def factorial(n: int) -> int:
+    if n == 0:
+        return 1
+    f = 1
+    for i in range(1, n+1):
+        f *= i
+    return f
+
+print("[P23]", factorial(0), factorial(5), factorial(7))
+
+
+# ===============================================================
+# P24 — PROMEDIO DE M CALIFICACIONES
+# ===============================================================
+# ENUNCIADO: Dado M y luego M calificaciones, calcular el promedio.
+# ENTRADAS: M (entero > 0), calificaciones (reales)
+# SALIDAS: promedio (real)
+#
+# PSEUDOCÓDIGO:
+#   LEER M
+#   sum <- 0
+#   PARA i <- 1 HASTA M HACER
+#       LEER cal
+#       sum <- sum + cal
+#   FIN_PARA
+#   prom <- sum / M
+#   ESCRIBIR prom
+
+def average_grades(grades: list[float]) -> float:
+    if len(grades) == 0:
+        return 0.0
+    s = 0.0
+    for g in grades:
+        s += g
+    return s / len(grades)
+
+print("[P24]", average_grades([100, 80, 90]))
+
+
+# ===============================================================
+# P25 — TABLA DE MULTIPLICAR (1..10)
+# ===============================================================
+# ENUNCIADO: Dado un entero N, imprimir su tabla de multiplicar del 1 al 10.
+# ENTRADAS: N (entero)
+# SALIDAS: 10 líneas con N x i = resultado
+#
+# PSEUDOCÓDIGO:
+#   LEER N
+#   PARA i <- 1 HASTA 10 HACER
+#       ESCRIBIR N, "x", i, "=", N*i
+#   FIN_PARA
+
+def multiplication_table(n: int) -> list[str]:
+    lines = []
+    for i in range(1, 11):
+        lines.append(f"{n} x {i} = {n*i}")
+    return lines
+
+print("[P25]")
+for line in multiplication_table(7):
+    print("  ", line)
+
+
+# ===============================================================
+# P26 — CONTAR DÍGITOS DE UN ENTERO (|N|)
+# ===============================================================
+# ENUNCIADO: Dado un entero N, contar cuántos dígitos tiene su valor absoluto.
+# ENTRADAS: N (entero)
+# SALIDAS: cantidad de dígitos (entero >= 1, excepto N=0 -> 1)
+#
+# PSEUDOCÓDIGO:
+#   LEER N
+#   N <- |N|
+#   SI N = 0 -> ESCRIBIR 1, FIN
+#   count <- 0
+#   MIENTRAS N > 0 HACER
+#       N <- N DIV 10
+#       count <- count + 1
+#   FIN_MIENTRAS
+#   ESCRIBIR count
+
+def count_digits(n: int) -> int:
+    n = abs(n)
+    if n == 0:
+        return 1
+    c = 0
+    while n > 0:
+        n //= 10
+        c += 1
+    return c
+
+print("[P26]", count_digits(0), count_digits(7), count_digits(12345), count_digits(-900))
+
+
+# ===============================================================
+# P27 — VALIDAR ENTERO POSITIVO (REPETIR HASTA SER VÁLIDO)
+# ===============================================================
+# ENUNCIADO: Pedir un entero > 0. Si no lo es, volver a pedir.
+# ENTRADAS: secuencia de intentos
+# SALIDAS: valor válido (>0)
+#
+# PSEUDOCÓDIGO:
+#   LEER x
+#   MIENTRAS x <= 0 HACER
+#       ESCRIBIR "inválido, reintente"
+#       LEER x
+#   FIN_MIENTRAS
+#   ESCRIBIR x
+
+def validate_positive_attempts(attempts: list[int]) -> int | str:
+    # Simulación sin input interactivo: retorna el primer >0 o "sin válido"
+    for x in attempts:
+        if x > 0:
+            return x
+    return "sin válido"
+
+print("[P27]", validate_positive_attempts([-3, 0, -1, 4]))
+
+
+# ===============================================================
+# P28 — MÁXIMO DE UNA SECUENCIA HASTA "FIN"
+# ===============================================================
+# ENUNCIADO: Leer números hasta que el usuario escriba "FIN".
+#            Reportar el máximo leído (si hubo al menos uno).
+# ENTRADAS: secuencia de entradas (números o "FIN")
+# SALIDAS: máximo o aviso de vacío
+#
+# PSEUDOCÓDIGO:
+#   max_set <- FALSO
+#   LEER s
+#   MIENTRAS s != "FIN" HACER
+#       x <- convertir_a_numero(s)
+#       SI no hubo error ENTONCES
+#           SI max_set=FALSO O x>max ENTONCES
+#              max <- x; max_set <- VERDADERO
+#           FIN_SI
+#       FIN_SI
+#       LEER s
+#   FIN_MIENTRAS
+#   SI max_set -> ESCRIBIR max
+#   SINO -> "sin datos"
+
+def max_until_fin(tokens: list[str]) -> str:
+    has = False
+    m = None
+    for tok in tokens:
+        if tok.upper() == "FIN":
+            break
+        try:
+            x = float(tok)
+        except Exception:
+            continue
+        if not has or x > m:
+            m = x; has = True
+    return str(m) if has else "sin datos"
+
+print("[P28]", max_until_fin(["10", "-3", "22.5", "FIN", "100"]))
+
+
+# ===============================================================
+# P29 — SUMA DE PARES ENTRE 1 Y N
+# ===============================================================
+# ENUNCIADO: Dado N (entero >= 1), sumar los números pares en [1..N].
+# ENTRADAS: N
+# SALIDAS: suma_par
+#
+# PSEUDOCÓDIGO:
+#   LEER N
+#   suma <- 0
+#   PARA i <- 2 HASTA N PASO 2 HACER
+#       suma <- suma + i
+#   FIN_PARA
+#   ESCRIBIR suma
+
+def sum_even_to_n(n: int) -> int:
+    s = 0
+    for i in range(2, n+1, 2):
+        s += i
+    return s
+
+print("[P29]", sum_even_to_n(1), sum_even_to_n(10), sum_even_to_n(11))
+
+
+# ===============================================================
+# P30 — SERIE DE FIBONACCI (N TÉRMINOS)
+# ===============================================================
+# ENUNCIADO: Generar los primeros N términos de Fibonacci: 0,1,1,2,3,5,...
+# ENTRADAS: N (entero >= 1)
+# SALIDAS: lista con N términos
+#
+# PSEUDOCÓDIGO:
+#   LEER N
+#   SI N=1 -> [0]
+#   SI N>=2 -> lista <- [0,1]
+#   PARA i <- 3 HASTA N HACER
+#       nuevo <- lista[-1] + lista[-2]
+#       agregar nuevo
+#   FIN_PARA
+#   ESCRIBIR lista
+
+def fibonacci_n(n: int) -> list[int]:
+    if n <= 0:
+        return []
+    if n == 1:
+        return [0]
+    seq = [0, 1]
+    for _ in range(3, n+1):
+        seq.append(seq[-1] + seq[-2])
+    return seq
+
+print("[P30]", fibonacci_n(1), fibonacci_n(5), fibonacci_n(10))
