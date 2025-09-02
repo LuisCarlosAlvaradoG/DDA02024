@@ -608,6 +608,7 @@ print("[P21]", sum_first_n(0), sum_first_n(5), sum_first_n(10))
 #
 # PSEUDOCÓDIGO:
 #   count <- 0
+#   ESCRIBIR "Dame un entero"
 #   LEER x
 #   MIENTRAS x != 0 HACER
 #       SI x > 0 ENTONCES
