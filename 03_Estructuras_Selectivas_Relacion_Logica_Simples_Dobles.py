@@ -1,41 +1,6 @@
 
 # ===============================================================
 # 3.- ESTRUCTURAS SELECTIVAS: RELACIÓN, LÓGICA, SIMPLES Y DOBLES
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - SOLO se usan conceptos ya vistos: entrada/salida, operaciones con números y cadenas,
-#     y AHORA condiciones SIMPLES (if) y DOBLES (if-else) con operadores de RELACIÓN y LÓGICA.
-#   - ESTRICTAMENTE PROHIBIDO (en esta sesión): elif (múltiples), if anidados, while/for,
-#     try/except, funciones definidas por el usuario, listas/tuplas/diccionarios.
-#   - Objetivo: dominar la toma de decisiones binarias (sí/no) combinando relaciones y lógica.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: valores booleanos y verdad en Python
-#   C) Teoría: operadores de RELACIÓN (==, !=, <, <=, >, >=) y encadenados
-#   D) Teoría: operadores LÓGICOS (and, or, not) y precedencia
-#   E) Teoría: if (simple) e if-else (doble)
-#   F) Casos de uso secuenciales con condiciones (scripts guiados)
-#   G) Buenas prácticas, ventajas y desventajas
-#   H) Banco de ejercicios (con SOLUCIONES completas, sin elif/loops)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender cómo Python evalúa expresiones a valores booleanos: True/False.
-# - Usar operadores de RELACIÓN para comparar números y cadenas.
-# - Usar operadores LÓGICOS para combinar condiciones.
-# - Escribir decisiones SIMPLES (if) y DOBLES (if-else) sin elif ni anidar if.
-# - Resolver problemas BINARIOS (dos rutas) con entradas por teclado y salidas formateadas.
-#
-# ALCANCE Y LIMITACIONES EN ESTA SESIÓN
-# - NO se usa elif (se verá en la Sesión 4). NO if anidados.
-# - NO se usan ciclos. NO se usan colecciones. NO se usa manejo de excepciones.
-# - Se pueden usar operaciones numéricas y de cadenas estudiadas en la Sesión 2.
 
 # ---------------------------------------------------------------
 # B) TEORÍA: VALORES BOOLEANOS Y "VERDAD" EN PYTHON
@@ -54,7 +19,6 @@
 #   if "hola":   # True porque no es cadena vacía
 #       print("Cadena no vacía es verdadera")
 #
-# En esta sesión preferiremos condiciones explícitas como: if x != 0, if s != "".
 
 # --- Código ilustrativo: truthiness explícita ---
 value_num = 10
@@ -83,7 +47,7 @@ print("bool('') ->", bool(""))
 # - Es útil para chequear intervalos sin escribir x dos veces.
 #
 # IGUALDAD vs IDENTIDAD
-# - == compara valores; 'is' compara identidad de objeto (no usaremos 'is' aquí).
+# - == compara valores; 'is' compara identidad de objeto .
 
 # --- Código ilustrativo: relación ---
 a = 7
@@ -114,7 +78,6 @@ print("1 < x < 10:", 1 < x < 10)  # encadenada
 # CORTOCIRCUITO (short-circuit):
 # - En (A and B): si A es False, no evalúa B.
 # - En (A or B): si A es True, no evalúa B.
-# - En esta sesión, nos basta entender que esto ocurre; no haremos trucos avanzados.
 
 # --- Código ilustrativo: lógica ---
 p = (10 > 3)          # True
@@ -142,12 +105,6 @@ print("not (p or q):", not (p or q))  # niega la disyunción
 #   else:
 #       # bloque si False
 #
-# REGLAS DIDÁCTICAS DE ESTA SESIÓN
-# - Solo se permite UNA condición con posible else (no elif, no anidados).
-# - La condición puede combinar relaciones con and/or/not.
-# - Se pueden usar conversiones de tipos y operaciones estudiadas en Sesión 2.
-#
-# EJEMPLOS (ver código a continuación).
 
 # --- Código ilustrativo: if simples y dobles ---
 # Simple
@@ -171,38 +128,37 @@ else:
     print("No discount")
 
 # ---------------------------------------------------------------
-# F) CASOS DE USO (SEC UENCIALES, sin elif/loops)
+# F) CASOS DE USO (SECUENCIALES)
 # ---------------------------------------------------------------
 
 # Caso 1) Acceso sencillo por contraseña (igualdad de cadena, normalizando)
-# (Descomenta para probar)
-# pwd = input("Password: ")
-# if pwd.strip() == "abc123":
-#     print("Access granted")
-# else:
-#     print("Access denied")
+pwd = input("Password: ")
+if pwd.strip() == "abc123":
+    print("Access granted")
+else:
+    print("Access denied")
 
 # Caso 2) Umbral de envío gratis (números + formateo)
-# subtotal = float(input("Subtotal: "))
-# if subtotal >= 799.0:
-#     print("Free shipping!")
-# else:
-#     shipping = 99.0
-#     print("Shipping cost: ${:.2f}".format(shipping))
+subtotal = float(input("Subtotal: "))
+if subtotal >= 799.0:
+    print("Free shipping!")
+else:
+    shipping = 99.0
+    print("Shipping cost: ${:.2f}".format(shipping))
 
 # Caso 3) Verificación de rango (comparación encadenada)
-# x = float(input("Enter a value for x: "))
-# if 0.0 <= x <= 1.0:
-#     print("x in [0,1]")
-# else:
-#     print("x outside [0,1]")
+x = float(input("Enter a value for x: "))
+if 0.0 <= x <= 1.0:
+    print("x in [0,1]")
+else:
+    print("x outside [0,1]")
 
 # Caso 4) Comparación de cadenas sin sensibilidad a mayúsculas
-# city = input("City: ")
-# if city.strip().lower() == "guadalajara":
-#     print("Hola, tapatío/a.")
-# else:
-#     print("Bienvenido/a.")
+city = input("City: ")
+if city.strip().lower() == "guadalajara":
+    print("Hola, tapatío/a.")
+else:
+    print("Bienvenido/a.")
 
 # ---------------------------------------------------------------
 # G) BUENAS PRÁCTICAS, VENTAJAS Y DESVENTAJAS

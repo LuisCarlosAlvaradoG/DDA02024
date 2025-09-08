@@ -1,47 +1,5 @@
-
 # ===============================================================
 # 1.- ESTRUCTURAS SECUENCIALES: CONSTANTES Y VARIABLES, ENTRADA Y SALIDA
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - SOLO se usan estructuras secuenciales (ejecución línea a línea).
-#   - NO se usan condicionales (if/elif/else), NO ciclos (for/while),
-#     NO funciones definidas por el usuario, NO excepciones (try/except),
-#     NO listas/tuplas/diccionarios/conjuntos (se verán en sesiones futuras).
-#   - Se utiliza impresiones con print() e ingreso de datos con input().
-#   - Se permite el uso mínimo de aritmética para ejemplificar asignaciones,
-#     pero el estudio profundo de operaciones se realizará en la Sesión 2.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance de la sesión
-#   B) Teoría: constantes, variables e identificadores
-#   C) Teoría: entrada y salida (input/print)
-#   D) Casos de uso (pequeños scripts guiados)
-#   E) Ventajas y desventajas / buenas prácticas
-#   F) Banco de ejercicios para trabajo en clase (con plantillas y soluciones comentadas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender qué es una ESTRUCTURA SECUENCIAL: el programa se ejecuta
-#   instrucción por instrucción en orden descendente (de arriba hacia abajo).
-# - Diferenciar entre CONSTANTES (por convención) y VARIABLES (cajas con valor).
-# - Conocer qué es un IDENTIFICADOR (nombre de variable) y las reglas para nombrarlos.
-# - Reconocer los tipos de datos básicos que usaremos aquí: int, float, str, bool.
-# - Utilizar correctamente la función print() para mostrar resultados en consola.
-# - Utilizar correctamente la función input() para leer datos del usuario.
-# - Convertir (castear) cadenas de entrada a números cuando se requiera.
-# - Escribir pequeños scripts SECUENCIALES sin usar decisiones ni ciclos.
-#
-# ALCANCE Y LIMITACIONES EN ESTA SESIÓN
-# - NO veremos condiciones (if), ni ciclos (while/for), ni estructuras compuestas.
-# - NO veremos manejo de errores con try-except.
-# - NO veremos estructuras de datos (listas, tuplas, diccionarios, etc.).
-# - El estudio profundo de operaciones numéricas y de cadenas queda para la Sesión 2.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: CONSTANTES, VARIABLES E IDENTIFICADORES
 # ---------------------------------------------------------------
@@ -61,12 +19,7 @@
 # - NO pueden empezar con dígito.
 # - Son sensibles a mayúsculas/minúsculas: nombre != Nombre != NOMBRE
 # - NO pueden ser palabras reservadas del lenguaje (keywords).
-#
-# ESTILOS DE NOMBRADO (PEP 8, guía de estilo de Python)
-# - variables: lower_snake_case      -> total_price, user_name
-# - constantes por convención: UPPER_SNAKE_CASE -> MAX_STUDENTS, PI
-# - evitar nombres de una sola letra (salvo en contextos muy cortos).
-#
+
 # TIPOS BÁSICOS EN ESTA SESIÓN
 # - int   (enteros): 0, 1, -3, 42
 # - float (reales):  3.14, -0.5, 2.0
@@ -75,9 +28,6 @@
 #
 # OBSERVACIÓN SOBRE INMUTABILIDAD (ideas introductorias)
 # - Las cadenas (str) son INMUTABLES: no se puede cambiar un carácter por índice.
-# - Lo mostraremos solo como teoría, sin provocar errores en ejecución aquí.
-
-# --- Código ilustrativo: asignaciones y tipos (secuencial) ---
 
 # Asignación simple (variable -> valor)
 course_name = "Algoritmos y Programación"   # str
@@ -90,10 +40,6 @@ print("course_name:", course_name, "| type:", type(course_name))
 print("credits:", credits, "| type:", type(credits))
 print("average_grade:", average_grade, "| type:", type(average_grade))
 print("is_active:", is_active, "| type:", type(is_active))
-
-# Reasignación: el identificador puede referenciar otro valor (mismo u otro tipo)
-credits = "seis"  # Ahora es str (SOLO para ilustrar dinámico; en práctica, usar tipos coherentes)
-print("credits (after reassign):", credits, "| type:", type(credits))
 
 # Constante por convención (no se debe modificar)
 PI = 3.14159
@@ -175,40 +121,39 @@ print(f"Alumno: {student} | Edad: {age}")                  # f-string (recomenda
 # ---------------------------------------------------------------
 
 # Caso 1) Ficha de registro simple (eco de datos)
-# (Descomenta para usar en clase)
-# full_name = input("Nombre completo: ")
-# student_id = input("Matrícula/ID: ")
-# degree = input("Programa académico (ej. 'Ing. Civil', 'Ing. en Nanotecnología'): ")
-# semester = input("Semestre (texto o número): ")
-# print("\n--- RESUMEN ---")
-# print(f"Nombre: {full_name}")
-# print(f"ID: {student_id}")
-# print(f"Programa: {degree}")
-# print(f"Semestre: {semester}")
+full_name = input("Nombre completo: ")
+student_id = input("Matrícula/ID: ")
+degree = input("Programa académico (ej. 'Ing. Civil', 'Ing. en Nanotecnología'): ")
+semester = input("Semestre (texto o número): ")
+print("\n--- RESUMEN ---")
+print(f"Nombre: {full_name}")
+print(f"ID: {student_id}")
+print(f"Programa: {degree}")
+print(f"Semestre: {semester}")
 
 # Caso 2) Tarjeta de presentación (formateo de salida)
-# first_name = input("Nombre: ")
-# last_name = input("Apellido: ")
-# email = input("Correo institucional: ")
-# print("\n----- TARJETA -----")
-# print(f"{last_name}, {first_name}")
-# print(email)
+first_name = input("Nombre: ")
+last_name = input("Apellido: ")
+email = input("Correo institucional: ")
+print("\n----- TARJETA -----")
+print(f"{last_name}, {first_name}")
+print(email)
 
 # Caso 3) Comprobante de inscripción (composición de cadenas)
-# curso = input("Curso: ")
-# grupo = input("Grupo: ")
-# aula = input("Aula/Laboratorio: ")
-# horario = input("Horario (ej. 'Lun-Mié 7:00-9:00'): ")
-# print("\n*** COMPROBANTE ***")
-# print("Curso:", curso, "| Grupo:", grupo, "| Aula:", aula, "| Horario:", horario)
+curso = input("Curso: ")
+grupo = input("Grupo: ")
+aula = input("Aula/Laboratorio: ")
+horario = input("Horario (ej. 'Lun-Mié 7:00-9:00'): ")
+print("\n*** COMPROBANTE ***")
+print("Curso:", curso, "| Grupo:", grupo, "| Aula:", aula, "| Horario:", horario)
 
 # Caso 4) Eco numérico con conversión (sin operaciones avanzadas)
-# horas_str = input("Horas inscritas (entero): ")
-# horas = int(horas_str)
-# creditos_str = input("Créditos (entero): ")
-# creditos = int(creditos_str)
-# print("\nResumen numérico -> horas:", horas, ", créditos:", creditos)
-# # (Operaciones detalladas se verán en la Sesión 2).
+horas_str = input("Horas inscritas (entero): ")
+horas = int(horas_str)
+creditos_str = input("Créditos (entero): ")
+creditos = int(creditos_str)
+print("\nResumen numérico -> horas:", horas, ", créditos:", creditos)
+# (Operaciones detalladas se verán en la Sesión 2).
 
 # ---------------------------------------------------------------
 # E) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS

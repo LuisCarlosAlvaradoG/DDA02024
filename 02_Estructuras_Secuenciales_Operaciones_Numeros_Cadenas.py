@@ -1,47 +1,5 @@
-
 # ===============================================================
 # 2.- ESTRUCTURAS SECUENCIALES: OPERACIONES, NÚMEROS Y CADENAS
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - SOLO se usan estructuras SECUENCIALES (ejecución línea a línea).
-#   - NO se usan condicionales (if/elif/else), NO ciclos (for/while),
-#     NO funciones definidas por el usuario, NO excepciones (try/except),
-#     NO listas/tuplas/diccionarios/conjuntos.
-#   - Se permiten entradas con input() y salidas con print().
-#   - Este tema profundiza en OPERACIONES con números y CADENAS,
-#     sin usar estructuras de control.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance de la sesión
-#   B) Teoría: números, literales y operadores aritméticos
-#   C) Teoría: precedencia y asociatividad
-#   D) Teoría: conversión de tipos y funciones numéricas básicas
-#   E) Teoría: cadenas (strings), operadores y métodos fundamentales
-#   F) Casos de uso secuenciales (scripts guiados)
-#   G) Ventajas y desventajas / buenas prácticas
-#   H) Banco de ejercicios de práctica (con SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender los TIPOS numéricos int y float y cómo se escriben sus literales.
-# - Dominar los OPERADORES aritméticos: +, -, *, /, //, %, **
-# - Entender PRECEDENCIA (orden) y ASOCIATIVIDAD de operadores.
-# - Realizar CONVERSIONES de tipos (int <-> float <-> str) y utilizar funciones
-#   numéricas integradas: abs(), round(), pow(), min(), max(), divmod().
-# - Trabajar con CADENAS: concatenación (+), repetición (*), longitud len(),
-#   acceso por índice y por rebanado (slicing), y métodos comunes:
-#   .upper(), .lower(), .title(), .strip(), .replace(), .find(), .startswith(), .endswith(), .split(), .join()
-# - Formatear salidas con format() y f-strings (alineación, precisión, ancho).
-#
-# Alcance y LIMITACIONES
-# - NO se utilizan estructuras selectivas ni repetitivas.
-# - NO se maneja aún el control de errores con try/except.
-# - NO se emplean colecciones (listas, tuplas, etc.).
 
 # ---------------------------------------------------------------
 # B) TEORÍA: NÚMEROS, LITERALES Y OPERADORES ARITMÉTICOS
@@ -155,7 +113,6 @@ print("round(3.141592, 2):", round(3.141592, 2))
 print("pow(2, 10):", pow(2, 10))
 print("min(4, 9, -2, 7):", min(4, 9, -2, 7))
 print("max(4, 9, -2, 7):", max(4, 9, -2, 7))
-print("divmod(29, 5):", divmod(29, 5))   # SOLO demostración, no procesamos la tupla aún
 
 # ---------------------------------------------------------------
 # E) TEORÍA: CADENAS (STRINGS), OPERADORES Y MÉTODOS
@@ -176,13 +133,13 @@ print("divmod(29, 5):", divmod(29, 5))   # SOLO demostración, no procesamos la 
 #   * inicio incluido, fin excluido; cualquiera puede omitirse.
 #   * Ejemplos: s[:3], s[3:], s[1:5], s[::-1] (inverso)
 #
-# MÉTODOS FRECUENTES (no exhaustivo)
+# MÉTODOS FRECUENTES 
 # - s.upper(), s.lower(), s.title()
 # - s.strip(), s.lstrip(), s.rstrip()
 # - s.replace(old, new)
 # - s.find(sub)      -> índice o -1 si no existe
 # - s.startswith(pre), s.endswith(suf)
-# - s.split(sep)     -> lista de partes (aún no profundizamos en listas; se muestra resultado)
+# - s.split(sep)     -> lista de partes (aún no profundizamos en listas)
 # - 'sep'.join(iterable_de_cadenas)  -> une con separador
 #
 # FORMATO DE CADENAS
@@ -237,47 +194,46 @@ print("Ceros a la izquierda -> {:06d}".format(42))
 print("Miles ->", format(1_234_567, ","))
 
 # ---------------------------------------------------------------
-# F) CASOS DE USO (SEC UENCIALES, sin if/for/while)
+# F) CASOS DE USO (SECUENCIALES)
 # ---------------------------------------------------------------
 
 # Caso 1) Mini calculadora secuencial (solo operaciones)
-# (Descomentar para probar en clase)
-# a = float(input("A: "))
-# b = float(input("B: "))
-# print("Suma:", a + b)
-# print("Resta:", a - b)
-# print("Producto:", a * b)
-# print("División real:", a / b)
-# print("División entera:", a // b)
-# print("Residuo:", a % b)
-# print("Potencia A**B:", a ** b)
+a = float(input("A: "))
+b = float(input("B: "))
+print("Suma:", a + b)
+print("Resta:", a - b)
+print("Producto:", a * b)
+print("División real:", a / b)
+print("División entera:", a // b)
+print("Residuo:", a % b)
+print("Potencia A**B:", a ** b)
 
 # Caso 2) Formateo de recibo (cadenas + números)
-# concept = input("Concepto: ")
-# qty = int(input("Cantidad: "))
-# price = float(input("Precio unitario: "))
-# total = qty * price
-# print("----- RECIBO -----")
-# print(f"Concepto: {concept}")
-# print("Cantidad: {:>10d}".format(qty))
-# print("Precio:   ${:>10.2f}".format(price))
-# print("-------------------")
-# print("TOTAL:    ${:>10.2f}".format(total))
+concept = input("Concepto: ")
+qty = int(input("Cantidad: "))
+price = float(input("Precio unitario: "))
+total = qty * price
+print("----- RECIBO -----")
+print(f"Concepto: {concept}")
+print("Cantidad: {:>10d}".format(qty))
+print("Precio:   ${:>10.2f}".format(price))
+print("-------------------")
+print("TOTAL:    ${:>10.2f}".format(total))
 
 # Caso 3) Conversión de unidades (temperaturas)
-# c = float(input("Temperatura en °C: "))
-# f = c * 9/5 + 32
-# k = c + 273.15
-# print("°F:", round(f, 2), "| K:", round(k, 2))
+c = float(input("Temperatura en °C: "))
+f = c * 9/5 + 32
+k = c + 273.15
+print("°F:", round(f, 2), "| K:", round(k, 2))
 
 # Caso 4) Plantilla de reporte con padding
-# course = input("Curso: ")
-# teacher = input("Profesor: ")
-# group = input("Grupo: ")
-# print("----- REPORTE -----")
-# print("Curso   : {:<20}".format(course))
-# print("Profesor: {:<20}".format(teacher))
-# print("Grupo   : {:<20}".format(group))
+course = input("Curso: ")
+teacher = input("Profesor: ")
+group = input("Grupo: ")
+print("----- REPORTE -----")
+print("Curso   : {:<20}".format(course))
+print("Profesor: {:<20}".format(teacher))
+print("Grupo   : {:<20}".format(group))
 
 # ---------------------------------------------------------------
 # G) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS

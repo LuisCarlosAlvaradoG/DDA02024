@@ -1,45 +1,6 @@
 
 # ===============================================================
 # 4.- ESTRUCTURAS SELECTIVAS: MÚLTIPLES, ANIDADAS, TRY-EXCEPT
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - SOLO se usan conceptos ya vistos: entrada/salida (input/print),
-#     operaciones, números y cadenas; y de la sesión 3: if e if-else.
-#   - En esta sesión se incorporan: elif (múltiples), if ANIDADOS,
-#     y manejo básico de errores con try-except (ValueError, ZeroDivisionError, etc.).
-#   - ESTRICTAMENTE PROHIBIDO: ciclos (for/while), estructuras de datos
-#     (listas, tuplas, diccionarios, conjuntos), funciones definidas por el usuario,
-#     manejo de archivos, librerías externas.
-#   - Se permite format(), f-strings y operaciones con cadenas (sin profundizar en listas).
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: if-elif-else (selección múltiple)
-#   C) Teoría: if anidados (decisiones dentro de decisiones)
-#   D) Teoría: try-except (manejo básico de errores)
-#   E) Casos de uso guiados (sin ciclos, sin colecciones)
-#   F) Buenas prácticas, ventajas y desventajas
-#   G) Banco de ejercicios (SOLUCIONES completas, sin ciclos)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Dominar la selección MÚLTIPLE con if-elif-else para resolver problemas
-#   con más de dos rutas posibles.
-# - Entender y aplicar if ANIDADOS cuando una decisión depende de otra.
-# - Manejar errores frecuentes durante la entrada y operaciones con try-except
-#   (por ejemplo, convertir texto a número y dividir entre cero).
-# - Integrar todo con entradas (input) y salidas (print) claras y formateadas.
-#
-# ALCANCE Y LIMITACIONES
-# - NO se usan ciclos (for/while).
-# - NO se usan estructuras de datos (listas/tuplas/etc.).
-# - NO se definen funciones propias; todo es secuencial.
-# - try-except se usa de forma básica (sin técnicas avanzadas).
 
 # ---------------------------------------------------------------
 # B) TEORÍA: IF-ELIF-ELSE (SELECCIÓN MÚLTIPLE)
@@ -156,51 +117,50 @@ finally:
     print("Done attempt")
 
 # ---------------------------------------------------------------
-# E) CASOS DE USO GUIADOS (sin ciclos ni colecciones)
+# E) CASOS DE USO GUIADOS 
 # ---------------------------------------------------------------
 
 # Caso 1) Clasificador de temperatura del agua
-# (Descomenta para probar)
-# t = float(input("Temp (C): "))
-# if t <= 0.0:
-#     print("Solid (ice)")
-# elif t < 100.0:
-#     print("Liquid")
-# else:
-#     print("Gas (vapor)")
+t = float(input("Temp (C): "))
+if t <= 0.0:
+    print("Solid (ice)")
+elif t < 100.0:
+    print("Liquid")
+else:
+    print("Gas (vapor)")
 
 # Caso 2) Registro con validación y try-except (edad numérica)
-# name = input("Name: ")
-# age_str = input("Age: ")
-# try:
-#     age = int(age_str)
-#     if age >= 18:
-#         print(f"{name} is adult")
-#     else:
-#         print(f"{name} is minor")
-# except ValueError:
-#     print("Error: age must be an integer")
+name = input("Name: ")
+age_str = input("Age: ")
+try:
+    age = int(age_str)
+    if age >= 18:
+        print(f"{name} is adult")
+    else:
+        print(f"{name} is minor")
+except ValueError:
+    print("Error: age must be an integer")
 
 # Caso 3) Cálculo de tarifa según tramo
-# usage = float(input("kWh used: "))
-# if usage < 150:
-#     rate = 0.85
-# elif usage < 300:
-#     rate = 1.05
-# else:
-#     rate = 1.25
-# total = usage * rate
-# print("Total: ${:.2f}".format(total))
+usage = float(input("kWh used: "))
+if usage < 150:
+    rate = 0.85
+elif usage < 300:
+    rate = 1.05
+else:
+    rate = 1.25
+total = usage * rate
+print("Total: ${:.2f}".format(total))
 
 # Caso 4) Verificación de correo del dominio permitido (anidado)
-# email = input("Email: ").strip()
-# if "@" in email:
-#     if email.lower().endswith("@uni.mx"):
-#         print("Allowed")
-#     else:
-#         print("Domain not allowed")
-# else:
-#     print("Invalid email (missing @)")
+email = input("Email: ").strip()
+if "@" in email:
+    if email.lower().endswith("@uni.mx"):
+        print("Allowed")
+    else:
+        print("Domain not allowed")
+else:
+    print("Invalid email (missing @)")
 
 # ---------------------------------------------------------------
 # F) BUENAS PRÁCTICAS, VENTAJAS Y DESVENTAJAS
@@ -557,13 +517,13 @@ else:
 
 # --- SOLUCIÓN ---
 
-m = int(input("Month (1-12: "
-if m == 1 or m == 3 or m == 5 or m == 7 or m == 8 or m == 10 or m == 121, 3, 5, 7, 8, 10, 12:
-    print(31
-elif m == 1 or m == 3 or m == 5 or m == 7 or m == 8 or m == 10 or m == 124, 6, 9, 11:
-    print(30
+m = int(input("Month (1-12: "))
+if m == 1 or m == 3 or m == 5 or m == 7 or m == 8 or m == 10 or m == 12:
+    print(31)
+elif m == 4 or m == 6 or m == 9 or m == 10:
+    print(30)
 else:
-    print(28
+    print(28)
 
 
 # ---------------------------------------------------------------
