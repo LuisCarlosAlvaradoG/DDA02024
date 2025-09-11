@@ -56,6 +56,9 @@ print("Check identity:", num == (num // den) * den + (num % den))
 
 # Precisión en float (simple demostración)
 print("0.1 + 0.2 =", 0.1 + 0.2)
+print(0.1 + 0.2 == 0.3)
+import math
+math.isclose(0.1+0.2,0.3)
 
 # ---------------------------------------------------------------
 # C) TEORÍA: PRECEDENCIA Y ASOCIATIVIDAD
@@ -98,17 +101,21 @@ print("(2 + 3) * 4 =", expr2)                # 20
 # - max(x, y, ...) : máximo
 
 # --- Código ilustrativo: casting y funciones numéricas ---
+a = "10"
+b = "20"
+int(a) + int(b)
+
 print("int('15'):", int("15"))
 print("float('2.75'):", float("2.75"))
 print("str(123):", str(123))
 print("int(3.99):", int(3.99))
 
 print("abs(-7):", abs(-7))
-print("round(2.5):", round(2.5))
+print("round(2.5):", round(2.50))
 print("round(3.5):", round(3.5))
 print("round(3.141592, 2):", round(3.141592, 2))
 print("pow(2, 10):", pow(2, 10))
-print("min(4, 9, -2, 7):", min(4, 9, -2, 7))
+print("min(4, 9, -2, 7):", min(4, -9, -2, 7))
 print("max(4, 9, -2, 7):", max(4, 9, -2, 7))
 
 # ---------------------------------------------------------------
@@ -149,7 +156,17 @@ print("max(4, 9, -2, 7):", max(4, 9, -2, 7))
 # - s[0] = 'H'  -> ERROR (no se puede asignar por índice).
 # - Para "modificar", se construye una nueva cadena.
 
+'''
+Hola Buen Día
+Son las 7 a.m.
+Dario no pone atención
+'''
+
 # --- Código ilustrativo: cadenas ---
+a = "Hola "
+b = "Buenos días"
+a * 5 # Hola Hola Hola Hola Hola 
+
 s = "  Python para todos  "
 print("s ->", repr(s))
 print("len(s) ->", len(s))
@@ -158,7 +175,7 @@ print("len(s) ->", len(s))
 t = "algoritmo"
 print("t[0] ->", t[0])
 print("t[-1] ->", t[-1])
-print("t[0:4] ->", t[0:4])   # 'algo'
+print("t[0:4] ->", t[0:4])  
 print("t[:4] ->", t[:4])
 print("t[4:] ->", t[4:])
 print("t[::-1] ->", t[::-1]) # reversa
@@ -176,7 +193,7 @@ print("u.startswith('pro') ->", u.startswith("pro"))
 print("u.endswith('cion') ->", u.endswith("cion"))
 
 # split y join (solo demostración de resultado)
-name_line = "Luis,24,Guadalajara"
+name_line = "Luis,25,Guadalajara"
 parts = name_line.split(",")
 print("split(',',) ->", parts)    # se imprime una lista; aún no se estudian a fondo
 print("join ->", " | ".join(["A", "B", "C"]))
@@ -185,9 +202,9 @@ print("join ->", " | ".join(["A", "B", "C"]))
 student = "Luis"
 score = 9.3571
 print("format() -> Alumno: {} | Cal: {:.2f}".format(student, score))
-print(f"f-string -> Alumno: {student} | Cal: {score:.2f}")
+print(f"f-string -> Alumno: {student} | Cal: {score:.3f}")
 print("Ancho y alineación -> |{:>10}|{:<10}|{:^10}|".format("der", "izq", "centro"))
-print("Ceros a la izquierda -> {:06d}".format(42))
+print("Ceros a la izquierda -> {:08d}".format(42))
 print("Miles ->", format(1_234_567, ","))
 
 # ---------------------------------------------------------------
@@ -249,3 +266,22 @@ print("Grupo   : {:<20}".format(group))
 # - Usar paréntesis para dejar clara la intención en expresiones complejas.
 # - Mantener nombres descriptivos y consistentes.
 # - Al formatear dinero, mostrar 2 decimales y alinear columnas.
+
+# ---------------------------------------------------------------
+# Ejercicio 20 - Conversión horas a segundos
+# Enunciado: Lee horas (int) y conviértelas a segundos.
+# (Ejercicio de práctica; abajo se incluye la SOLUCIÓN completa.)
+# ---------------------------------------------------------------
+horas = int(input("Ingresa la cantidad de horas:"))
+segundos = horas * 3600
+print("Segundos:", segundos)
+
+# ---------------------------------------------------------------
+# Ejercicio 24 - Extracto de iniciales
+# Enunciado: Lee nombre y apellido y muestra iniciales en mayúsculas (solo slicing).
+# (Ejercicio de práctica; abajo se incluye la SOLUCIÓN completa.)
+# ---------------------------------------------------------------
+nombre = input("Ingresa tu nombre:")
+apellido = input("Ingresa tu apellido:")
+iniciales = nombre[0].upper() + apellido[0].upper()
+print("Tus iniciales son:", iniciales)
