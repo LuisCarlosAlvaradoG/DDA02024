@@ -6,7 +6,7 @@
 # B) TEORÍA: VALORES BOOLEANOS Y "VERDAD" EN PYTHON
 # ---------------------------------------------------------------
 # - Un valor booleano es True o False.
-# - Muchas expresiones devuelven booleanos, por ejemplo 3 < 5 -> True.
+# - Muchas expresiones devuelven booleanos, por ejemplo 3 < 5 -> True.+
 # - "Verdad" en Python (truthiness):
 #   * Números: 0 es False; cualquier otro número es True.
 #   * Cadenas: "" (vacía) es False; cualquier cadena no vacía es True.
@@ -26,7 +26,8 @@ value_str = "python"
 print("bool(10) ->", bool(value_num))
 print("bool('python') ->", bool(value_str))
 print("bool(0) ->", bool(0))
-print("bool('') ->", bool(""))
+print(bool(""))
+
 
 # ---------------------------------------------------------------
 # C) TEORÍA: OPERADORES DE RELACIÓN
@@ -52,15 +53,16 @@ print("bool('') ->", bool(""))
 # --- Código ilustrativo: relación ---
 a = 7
 b = 10
-print("a == b:", a == b)
-print("a != b:", a != b)
-print("a < b:", a < b)
-print("a <= 7:", a <= 7)
-print("b > 5:", b > 5)
-print("'Ana' == 'ana':", "Ana" == "ana")
-print("'ana'.lower() == 'ana':", "ana".lower() == "ana")
+print(a == b)
+print(a != b)
+print(a < b)
+print(a <= 7)
+print(b > 5)
+print("Ana" == "ana")
+print("ANA".lower() == "ana")
 x = 5
-print("1 < x < 10:", 1 < x < 10)  # encadenada
+print(1 < x < 10)  # encadenada
+print(x > 1 and x < 10)
 
 # ---------------------------------------------------------------
 # D) TEORÍA: OPERADORES LÓGICOS Y PRECEDENCIA
@@ -84,12 +86,12 @@ p = (10 > 3)          # True
 q = ("py" in "python") # True
 r = (0 == 1)          # False
 
-print("p and q:", p and q)      # True
-print("p or r:", p or r)        # True
-print("not r:", not r)          # True
+print("p and q:", p and q)      
+print("p or r:", p or r)        
+print("not r:", not r)        
 
 # Precedencia
-print("not p or q:", not p or q)      # (not p) or q
+print("not p or q:", not not not r and not not p and not not not q)      # (not p) or q
 print("not (p or q):", not (p or q))  # niega la disyunción
 
 # ---------------------------------------------------------------
@@ -109,19 +111,19 @@ print("not (p or q):", not (p or q))  # niega la disyunción
 # --- Código ilustrativo: if simples y dobles ---
 # Simple
 temperature = 101.0
-if temperature >= 100.0:
-    print("Boiling or above (>= 100°C)")
+if temperature >= 100.0:                 # if condicion :
+    print("Boiling or above (>= 100°C)") # Lo que sucede si la condicion es True
 
 # Doble
 age = 17
 if age >= 18:
-    print("Adult")
+    print("Adulto")
 else:
-    print("Minor")
+    print("Menor")
 
 # Combinando lógica
 total = 1200.0
-has_coupon = "yes"
+has_coupon = "YeS"
 if (total >= 1000.0) and (has_coupon.lower() == "yes"):
     print("Discount applies")
 else:
@@ -176,3 +178,20 @@ else:
 # - Expresar condiciones de forma clara y directa; usar paréntesis explicativos.
 # - Normalizar entradas de texto: .strip(), .lower() antes de comparar.
 # - Para floats, considerar tolerancia: abs(a-b) <= 1e-9 (según magnitud).
+
+# ---------------------------------------------------------------
+# Ejercicio 17 - Palíndromo
+# Enunciado: Lee una palabra y muestra 'Palindrome' si s == s[::-1].
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+s = input("Ingresa la palabra:")
+if s == s[::-1]:
+    print("Sí es palíndromo")
+else:
+    print("No es palíndromo")
+
+# ---------------------------------------------------------------
+# Ejercicio 21 - Calefacción
+# Enunciado: Lee temperatura y muestra 'ON' si < 18.0, si no 'OFF'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------

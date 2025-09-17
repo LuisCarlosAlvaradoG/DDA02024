@@ -245,7 +245,7 @@ course = input("Curso: ")
 teacher = input("Profesor: ")
 group = input("Grupo: ")
 print("----- REPORTE -----")
-print("Curso   : {:<20}".format(course))
+print("Curso   : {:^20}".format(course))
 print("Profesor: {:<20}".format(teacher))
 print("Grupo   : {:<20}".format(group))
 
