@@ -1,46 +1,5 @@
-
 # ===============================================================
 # 5.- ESTRUCTURAS REPETITIVAS: CONTADORES, ACUMULADORES Y CENTINELAS
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - SOLO se usan conceptos ya vistos: entrada/salida (input/print),
-#     operaciones con números y cadenas, condicionales simples/dobles/múltiples,
-#     if anidados y try-except.
-#   - IMPORTANTE: En esta sesión ENSEÑAMOS la idea de repetición con
-#     CONTADORES, ACUMULADORES y CENTINELAS SIN usar ciclos (while/for),
-#     porque los ciclos formales se presentarán en las Sesiones 6 y 7.
-#   - Repetición = simulada con bloques secuenciales + condicionales anidados.
-#   - Prohibido: for, while, break, continue, colecciones (listas/tuplas/dicts),
-#     funciones definidas por el usuario, archivos, librerías externas.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: ¿Qué son contador, acumulador y centinela?
-#   C) Patrones de actualización (x = x + 1, x += 1, etc.) y errores comunes
-#   D) Patrones SIN CICLOS para simular repetición (paso a paso)
-#   E) Casos de uso guiados (sin ciclos)
-#   F) Buenas prácticas, ventajas y desventajas
-#   G) Banco de ejercicios (SOLUCIONES completas; sin ciclos)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender la diferencia entre CONTADOR (cuenta ocurrencias) y
-#   ACUMULADOR (suma o agrega valores).
-# - Entender el concepto de CENTINELA (valor especial que indica "terminar").
-# - Practicar la actualización paso a paso de variables (x = x + 1, total = total + valor).
-# - Integrar dichas ideas con condicionales, entrada/salida y operaciones básicas.
-# - Simular repetición SIN usar ciclos; preparar el terreno para while/for.
-#
-# LIMITACIONES
-# - NO se usan while/for; eso vendrá en Sesión 6 (while) y 7 (for).
-# - NO se usan listas/tuplas/diccionarios; solo números y cadenas.
-# - NO se definen funciones propias; todo es secuencial.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: DEFINICIONES Y USOS
 # ---------------------------------------------------------------
@@ -106,7 +65,7 @@ if b > 0:
     count = count + 1
 if c > 0:
     count = count + 1
-print("Positives among a,b,c:", count)
+print(count)
 
 # D2) Acumular tres precios y mostrar total formateado
 p1 = 199.90
@@ -116,107 +75,48 @@ total = 0.0
 total = total + p1
 total = total + p2
 total = total + p3
-print("Total purchase: ${:.2f}".format(total))
-
-# D3) Centinela simulada (hasta 3 datos) sin bucle
-#   Si en cualquier punto se ingresa 'fin' (insensible a mayúsculas), se termina.
-acc = 0.0
-raw1 = "10"   # simularía input
-if raw1.strip().lower() != "fin":
-    try:
-        v1 = float(raw1)
-        acc = acc + v1
-        raw2 = "fin"   # simularía input
-        if raw2.strip().lower() != "fin":
-            try:
-                v2 = float(raw2)
-                acc = acc + v2
-                raw3 = "5"
-                if raw3.strip().lower() != "fin":
-                    try:
-                        v3 = float(raw3)
-                        acc = acc + v3
-                    except ValueError:
-                        print("Error: invalid number at step 3")
-            except ValueError:
-                print("Error: invalid number at step 2")
-print("Accumulated (up to sentinel):", acc)
+print(total)
 
 # ---------------------------------------------------------------
 # E) CASOS DE USO GUIADOS (SIN CICLOS)
 # ---------------------------------------------------------------
 
 # Caso 1) Suma y promedio de 3 calificaciones
-# (Descomenta para usar en clase)
-# g1 = float(input("Grade 1: "))
-# g2 = float(input("Grade 2: "))
-# g3 = float(input("Grade 3: "))
-# total = 0.0
-# total = total + g1
-# total = total + g2
-# total = total + g3
-# avg = total / 3
-# print("Total:", total)
-# print("Average:", round(avg, 2))
+g1 = float(input("Grade 1: "))
+g2 = float(input("Grade 2: "))
+g3 = float(input("Grade 3: "))
+total = 0.0
+total = total + g1
+total = total + g2
+total = total + g3
+avg = total / 3
+print(total)
+print(round(avg, 2))
 
 # Caso 2) Contador de positivos/negativos entre 3 valores
-# a = float(input("a: "))
-# b = float(input("b: "))
-# c = float(input("c: "))
-# positives = 0
-# negatives = 0
-# if a > 0: positives = positives + 1
-# if a < 0: negatives = negatives + 1
-# if b > 0: positives = positives + 1
-# if b < 0: negatives = negatives + 1
-# if c > 0: positives = positives + 1
-# if c < 0: negatives = negatives + 1
-# print("Positives:", positives, "| Negatives:", negatives)
+a = float(input("a: "))
+b = float(input("b: "))
+c = float(input("c: "))
+positives = 0
+negatives = 0
+if a > 0: positives = positives + 1
+if a < 0: negatives = negatives + 1
+if b > 0: positives = positives + 1
+if b < 0: negatives = negatives + 1
+if c > 0: positives = positives + 1
+if c < 0: negatives = negatives + 1
+print(positives, negatives)
 
-# Caso 3) Centinela 'fin' hasta 5 números (if anidados)
-# acc = 0.0
-# raw1 = input("Value 1 (or 'fin'): ")
-# if raw1.strip().lower() != "fin":
-#     try:
-#         acc += float(raw1)
-#         raw2 = input("Value 2 (or 'fin'): ")
-#         if raw2.strip().lower() != "fin":
-#             try:
-#                 acc += float(raw2)
-#                 raw3 = input("Value 3 (or 'fin'): ")
-#                 if raw3.strip().lower() != "fin":
-#                     try:
-#                         acc += float(raw3)
-#                         raw4 = input("Value 4 (or 'fin'): ")
-#                         if raw4.strip().lower() != "fin":
-#                             try:
-#                                 acc += float(raw4)
-#                                 raw5 = input("Value 5 (or 'fin'): ")
-#                                 if raw5.strip().lower() != "fin":
-#                                     try:
-#                                         acc += float(raw5)
-#                                     except ValueError:
-#                                         print("Error: not a number (5)")
-#                             except ValueError:
-#                                 print("Error: not a number (4)")
-#                     except ValueError:
-#                         print("Error: not a number (3)")
-#             except ValueError:
-#                 print("Error: not a number (2)")
-#     except ValueError:
-#         print("Error: not a number (1)")
-# print("Accumulated:", acc)
-
-# Caso 4) Acumulador de importes y contador de artículos (3 piezas)
-# item1 = float(input("Item 1 price: "))
-# item2 = float(input("Item 2 price: "))
-# item3 = float(input("Item 3 price: "))
-# total = 0.0
-# count = 0
-# total += item1; count += 1
-# total += item2; count += 1
-# total += item3; count += 1
-# print("Items:", count, "| Total:", "{:.2f}".format(total))
+# Caso 3) Acumulador de importes y contador de artículos (3 piezas)
+item1 = float(input("Item 1 price: "))
+item2 = float(input("Item 2 price: "))
+item3 = float(input("Item 3 price: "))
+total = 0.0
+count = 0
+total += item1; count += 1
+total += item2; count += 1
+total += item3; count += 1
+print(count, total)
 
 # ---------------------------------------------------------------
 # F) BUENAS PRÁCTICAS, VENTAJAS Y DESVENTAJAS

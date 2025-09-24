@@ -1,86 +1,123 @@
-a = 3  
-b = 2  
-c = - 1  
-d = 1
-r1_a = a - c + 2 * 5 / b * d
+def examen_A():
+    print("Examen Tipo A")
+    # Preguntas teóricas
+    print("1)  Pseudocódigo (g)")
+    print("2)  Ordenado (i)")
+    print("3)  Lenguaje de programación (f)")
+    print("4)  De procesos (h)")
+    print("5)  Orientado a objetos(a)")
+    print("6)  Variable (b)")
+    print("7)  Lógico (d)")
+    print("8)  Type() (k)")
+    print("9)  Precedencia (c)")
+    print("10) Identación (l)")
+    # Precedencia de operadores
+    a = 3  
+    b = 2  
+    c = - 1  
+    d = 1
+    r1_a = a - c + 2 * 5 / b * d
+    print(f"Desarrollo = 3 - -1 + 2 * 5 / 2 * 1 = 4 + 10 / 2 * 1 = 4 + 5 * 1 = {r1_a}")
 
-a = 4
-b = 1
-c = - 2
-d = 1
-r2_a = 8 % b - a * c ** 4 + d / 5
+    a = 4
+    b = 1
+    c = - 2
+    d = 1
+    r2_a = 8 % b - a * c ** 4 + d / 5
+    print(f"Desarrollo = 8 % 1 - 4 * -2 ** 4 + 1 / 5 = 0 - 4 * 16 + 0.2 = {r2_a}")
+          
 
-a = 2
-b = 3
-c = 1
-d = -1
-r1_b = a + b - c ** 2 + d / 4
+    # Examen tipo A
+    # 1) Torneo e-sports: acceso e inscripción 
+    edad = 17
+    ranking = 420
+    tutor = True
 
-a = 1
-b = 4
-c = 3
-d = -1
-r2_b = b + c * 5 / 4 ** d * a
+    if (edad >= 18 or tutor) and ranking <= 500:
+        print("Puede competir")
+    else:
+        print("No cumple los requisitos")
 
-# 1) Torneo e-sports: acceso e inscripción
-edad = 17
-ranking = 420
-tutor = True
+    if (ranking <= 100 and edad >= 16) or (tutor and ranking <= 400):
+        print("Inscripción con bonificación")
+    else:
+        print("Inscripción estándar")
 
-if (edad >= 18 or tutor) and ranking <= 500:
-    print("Puede competir")
-else:
-    print("No cumple los requisitos")
+    # 2) Tienda online: envío y descuento
+    total = 1350
+    cupon = "VIP"          
+    destino = "Nacional"   
 
-if (ranking <= 100 and edad >= 16) or (tutor and ranking <= 400):
-    print("Inscripción con bonificación")
-else:
-    print("Inscripción estándar")
+    if (total >= 800 and destino == "Nacional") or cupon == "ENVIOFREE":
+        print("Envío gratis")
+    else:
+        print("Envío con costo")
 
-# 2) Tienda online: envío y descuento
-total = 1350
-cupon = "VIP"          
-destino = "Nacional"   
+    if (cupon == "VIP" and total >= 1500) or (destino == "Internacional" and total >= 2000):
+        print("Descuento adicional aplicado")
+    else:
+        print("Sin descuento adicional")
 
-if (total >= 800 and destino == "Nacional") or cupon == "ENVIOFREE":
-    print("Envío gratis")
-else:
-    print("Envío con costo")
+examen_A()
 
-if (cupon == "VIP" and total >= 1500) or (destino == "Internacional" and total >= 2000):
-    print("Descuento adicional aplicado")
-else:
-    print("Sin descuento adicional")
+def examen_B():
+    print("Examen Tipo B")
+    # Preguntas teóricas
+    print("1)  Pseudocódigo (g)")
+    print("2)  Ordenado (i)")
+    print("3)  Lenguaje de programación (f)")
+    print("4)  Orientado a objetos(a)")
+    print("5)  De procesos")
+    print("6)  Variable (b)")
+    print("7)  Lógico (d)")
+    print("8)  Type() (k)")
+    print("9)  Precedencia (c)")
+    print("10) Identación (l)")
+    a = 2
+    b = 3
+    c = 1
+    d = -1
+    r1_b = a + b - c ** 2 + d / 4
+    print(r1_b)
 
-# 3) Estatus académico y servicios
-promedio = 8.7
-faltas = 3
-adeudo = False
+    a = 1
+    b = 4
+    c = 3
+    d = -1
+    r2_b = b + c * 5 / 4 ** d * a
+    print(r2_b)
+    #Examen tipo B
+    # 1) Estatus académico y servicios
+    promedio = 8.7
+    faltas = 3
+    adeudo = False
 
-if (promedio >= 8.5 and faltas <= 5) or promedio >= 9.5:
-    print("Estatus: Alumno regular")
-else:
-    print("Estatus: En seguimiento")
+    if (promedio >= 8.5 and faltas <= 5) or promedio >= 9.5:
+        print("Estatus: Alumno regular")
+    else:
+        print("Estatus: En seguimiento")
 
-if (not adeudo) and (promedio >= 8 or faltas < 2):
-    print("Acceso a biblioteca habilitado")
-else:
-    print("Acceso a biblioteca restringido")
+    if (not adeudo) and (promedio >= 8 or faltas < 2):
+        print("Acceso a biblioteca habilitado")
+    else:
+        print("Acceso a biblioteca restringido")
 
-# 4) Sistema de seguridad y ventilación
-temperatura = 41     
-humedad = 25        
-puerta_cerrada = False
+    # 2) Sistema de seguridad y ventilación
+    temperatura = 41     
+    humedad = 25        
+    puerta_cerrada = False
 
-if (temperatura > 40 and humedad < 30) or (not puerta_cerrada):
-    print("Alarma activada")
-else:
-    print("Sistema estable")
+    if (temperatura > 40 and humedad < 30) or (not puerta_cerrada):
+        print("Alarma activada")
+    else:
+        print("Sistema estable")
 
-if (temperatura >= 35 and humedad < 50) or puerta_cerrada:
-    print("Activar ventilación")
-else:
-    print("Ventilación normal")
+    if (temperatura >= 35 and humedad < 50) or puerta_cerrada:
+        print("Activar ventilación")
+    else:
+        print("Ventilación normal")
+
+
 
 # --- Entradas (ajústalas para tus pruebas) ---
 clase = "economy"

@@ -1,44 +1,5 @@
-
 # ===============================================================
 # 6.- ESTRUCTURAS REPETITIVAS: CICLOS WHILE
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - Se introducen CICLOS WHILE (pre-test).
-#   - Se permite usar: entrada/salida, operaciones numéricas y de cadenas,
-#     condicionales (if/elif/else, anidadas), try-except, contadores,
-#     acumuladores y centinelas.
-#   - ESTRICTAMENTE PROHIBIDO: for, listas/tuplas/diccionarios, funciones
-#     definidas por el usuario, break/continue (se verán más adelante),
-#     archivos y librerías externas.
-#   - Todos los ejemplos son autosuficientes y sin dependencias externas.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: while (pre-test), flujo y terminación
-#   C) Patrones clásicos con while: contadores, acumuladores y centinelas
-#   D) Validación de entradas con while y try-except
-#   E) Casos de uso guiados
-#   F) Ventajas, desventajas y buenas prácticas
-#   G) Banco de ejercicios (con SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender la estructura de un ciclo while y su condición de continuación.
-# - Construir bucles con CONTADORES (iteraciones conocidas), ACUMULADORES
-#   (sumas/productos) y CENTINELAS (finalizar por valor especial).
-# - Implementar validación de entrada con while y try-except (sin break/continue).
-# - Evitar bucles infinitos asegurando actualización de variables.
-#
-# LIMITACIONES
-# - NO usar for (se verá en la siguiente sesión).
-# - NO usar colecciones (listas, tuplas, diccionarios) ni funciones propias.
-# - NO usar break/continue para simplificar la lógica en esta introducción.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: WHILE (PRE-TEST), FLUJO Y TERMINACIÓN
 # ---------------------------------------------------------------
@@ -96,7 +57,7 @@ print("Sum 1..N:", total)
 print("Enter values, 'fin' to stop:")  # (Ejemplo demostrativo)
 acc = 0.0
 count = 0
-val = "5"      # simulado; en clase usar input()
+val = input("Value (or 'fin'): ")
 while val.strip().lower() != "fin":
     try:
         x = float(val)
@@ -104,7 +65,6 @@ while val.strip().lower() != "fin":
         count = count + 1
     except ValueError:
         print("Invalid:", val)
-    # siguiente lectura (simulación de ejemplo)
     if count == 1:
         val = "3"
     elif count == 2:
@@ -138,19 +98,18 @@ else:
 # Nota: sin break/continue, la bandera controla la permanencia en el bucle.
 
 # --- Ejemplo: leer un entero entre 1 y 5 ---
-# (Descomentar para usar en clase)
-# valid = False
-# while not valid:
-#     raw = input("Enter an integer [1..5]: ")
-#     try:
-#         n = int(raw)
-#         if 1 <= n <= 5:
-#             valid = True
-#         else:
-#             print("Out of range.")
-#     except ValueError:
-#         print("Not an integer.")
-# print("Accepted:", n)
+valid = False
+while not valid:
+    raw = input("Enter an integer [1..5]: ")
+    try:
+        n = int(raw)
+        if 1 <= n <= 5:
+            valid = True
+        else:
+            print("Out of range.")
+    except ValueError:
+        print("Not an integer.")
+print("Accepted:", n)
 
 # ---------------------------------------------------------------
 # E) CASOS DE USO GUIADOS
@@ -158,65 +117,64 @@ else:
 
 # Caso 1) Sumatoria de N reales
 # (Lee N y luego N valores, acumulando la suma)
-# (Descomenta para usar en clase)
-# N_raw = input("How many values? ")
-# try:
-#     N = int(N_raw)
-#     i = 1
-#     acc = 0.0
-#     while i <= N:
-#         x = float(input("Value " + str(i) + ": "))
-#         acc = acc + x
-#         i = i + 1
-#     print("Sum:", acc)
-# except ValueError:
-#     print("Invalid N")
+N_raw = input("How many values? ")
+try:
+    N = int(N_raw)
+    i = 1
+    acc = 0.0
+    while i <= N:
+        x = float(input("Value " + str(i) + ": "))
+        acc = acc + x
+        i = i + 1
+    print("Sum:", acc)
+except ValueError:
+    print("Invalid N")
 
 # Caso 2) Promedio con centinela 'fin'
-# acc = 0.0
-# count = 0
-# val = input("Value (or 'fin'): ")
-# while val.strip().lower() != "fin":
-#     try:
-#         x = float(val)
-#         acc = acc + x
-#         count = count + 1
-#     except ValueError:
-#         print("Invalid:", val)
-#     val = input("Value (or 'fin'): ")
-# if count == 0:
-#     print("No numbers")
-# else:
-#     print("Sum:", acc, "| Avg:", acc / count)
+acc = 0.0
+count = 0
+val = input("Value (or 'fin'): ")
+while val.strip().lower() != "fin":
+    try:
+        x = float(val)
+        acc = acc + x
+        count = count + 1
+    except ValueError:
+        print("Invalid:", val)
+    val = input("Value (or 'fin'): ")
+if count == 0:
+    print("No numbers")
+else:
+    print("Sum:", acc, "| Avg:", acc / count)
 
 # Caso 3) Menú sencillo (sin break/continue)
-# option = ""
-# while option != "4":
-#     print("\nMENU")
-#     print("1) Greet")
-#     print("2) Double a number")
-#     print("3) Square a number")
-#     print("4) Exit")
-#     option = input("Choose: ").strip()
-#     if option == "1":
-#         name = input("Name: ")
-#         print("Hello,", name)
-#     elif option == "2":
-#         try:
-#             x = float(input("Number: "))
-#             print("Double:", 2*x)
-#         except ValueError:
-#             print("Invalid number")
-#     elif option == "3":
-#         try:
-#             x = float(input("Number: "))
-#             print("Square:", x*x)
-#         except ValueError:
-#             print("Invalid number")
-#     elif option == "4":
-#         print("Bye!")
-#     else:
-#         print("Invalid option")
+option = ""
+while option != "4":
+    print("\nMENU")
+    print("1) Greet")
+    print("2) Double a number")
+    print("3) Square a number")
+    print("4) Exit")
+    option = input("Choose: ").strip()
+    if option == "1":
+        name = input("Name: ")
+        print("Hello,", name)
+    elif option == "2":
+        try:
+            x = float(input("Number: "))
+            print("Double:", 2*x)
+        except ValueError:
+            print("Invalid number")
+    elif option == "3":
+        try:
+            x = float(input("Number: "))
+            print("Square:", x*x)
+        except ValueError:
+            print("Invalid number")
+    elif option == "4":
+        print("Bye!")
+    else:
+        print("Invalid option")
 
 # ---------------------------------------------------------------
 # F) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS

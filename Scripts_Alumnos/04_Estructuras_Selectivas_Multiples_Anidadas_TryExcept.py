@@ -35,6 +35,17 @@ elif grade >= 60:
 else:
     print("F")
 
+if grade >= 90:
+    print("A")
+if grade >= 80 and grade < 90:
+    print("B")
+if grade >= 70 and grade < 80:
+    print("C")
+if grade >= 60 and grade < 70:
+    print("D")
+if grade < 60:
+    print("F")
+
 # ---------------------------------------------------------------
 # C) TEORÍA: IF ANIDADOS (DECISIONES DENTRO DE DECISIONES)
 # ---------------------------------------------------------------
@@ -62,6 +73,14 @@ if username == "admin":
         print("Welcome admin")
     else:
         print("Wrong password")
+else:
+    print("Unknown user")
+
+
+if username == "admin" and pwd == "XYZ":
+    print("Welcome admin")
+elif username == "admin" and pwd != "XYZ":
+    print("Wrong password")
 else:
     print("Unknown user")
 
@@ -96,25 +115,31 @@ try:
     n = int(text)
     print("Parsed:", n)
 except ValueError:
-    print("Error: invalid integer literal")
+    print("Te salió un error")
 
 # 2) División con captura de ZeroDivisionError
 a, b = 10, 0
+
+a = 10
+b = 0
+
 try:
     print("Division:", a / b)
 except ZeroDivisionError:
-    print("Error: division by zero")
+    print("No pongas 0 como denominador")
+except ValueError:
+     print("Value Error")
 
 # 3) Uso de else/finally
 raw = "45"
 try:
     x = int(raw)
 except ValueError:
-    print("Not an integer")
+    print("Not an integer")  
 else:
     print("OK, x =", x)
 finally:
-    print("Done attempt")
+    print("Done attempt") 
 
 # ---------------------------------------------------------------
 # E) CASOS DE USO  
@@ -179,3 +204,31 @@ else:
 # - Ordenar elif del caso más específico al más general.
 # - Usar nombres claros y normalizar entradas de texto (.strip(), .lower()).
 # - En try-except, capturar solo el error esperado (p.ej., ValueError) y dar mensajes útiles.
+
+# ---------------------------------------------------------------
+# Ejercicio 36 - Validación de formato 'ABC-123'
+# Enunciado: Lee código; si 3 letras + guion + 3 dígitos -> 'Valid'; si no 'Invalid'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+
+codigo = input()
+codigo = codigo.upper()
+
+flag = False
+
+if len(codigo) == 7:
+    if ("A" <= codigo[0] <= "Z") and ("A" <= codigo[1] <= "Z") and ("A" <= codigo[2] <= "Z"):
+        if codigo[3] == "-":
+            if ("0" <= codigo[4] <= "9") and ("0" <= codigo[4] <= "9") and ("0" <= codigo[4] <= "9"):
+                flag = True
+
+if flag:
+    print("Valid")
+else:
+    print("Invalid")
+
+
+if len(codigo) == 7 and codigo[:3].isalpha() and codigo[3]=="-" and codigo[4:].isdigit():
+    print("Valid")
+else:
+    print("Invalid")
