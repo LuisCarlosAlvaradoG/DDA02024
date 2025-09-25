@@ -4,12 +4,20 @@
 # B) TEORÍA: WHILE (PRE-TEST), FLUJO Y TERMINACIÓN
 # ---------------------------------------------------------------
 # Sintaxis básica:
-#   while condicion:
+#   while (condicion and condicion2):
+#       operacion 
 #       # bloque que se repite mientras la condición sea True
 #
 # Ideas clave:
 # - "Pre-test": la condición se evalúa ANTES de cada iteración.
 # - Si la condición es False desde el inicio, el cuerpo no se ejecuta nunca.
+
+# while False:
+    # Esto de aquí, nunca se va a ejecutar
+
+# while True:
+    # Esto de aquí, nunca se va a detener
+
 # - Para TERMINAR el bucle, en algún punto debe volver False la condición.
 # - Para ello, normalmente ACTUALIZAMOS variables dentro del cuerpo.
 #
@@ -50,14 +58,14 @@ total = 0
 while i <= N:
     total = total + i
     i = i + 1
-print("Sum 1..N:", total)
+print(total)
 
 # Patrón C3) Centinela textual: leer hasta 'fin' (sin listas)
 
-print("Enter values, 'fin' to stop:")  # (Ejemplo demostrativo)
+print("Enter values, fin to stop:")  # (Ejemplo demostrativo)
 acc = 0.0
 count = 0
-val = input("Value (or 'fin'): ")
+val = input("Value (or fin): ")
 while val.strip().lower() != "fin":
     try:
         x = float(val)
@@ -65,14 +73,9 @@ while val.strip().lower() != "fin":
         count = count + 1
     except ValueError:
         print("Invalid:", val)
-    if count == 1:
-        val = "3"
-    elif count == 2:
-        val = "fin"
-    else:
-        val = "fin"
+    val = input("Value (or fin): ")
 if count == 0:
-    print("No numbers")
+    print("No numbers entered")
 else:
     print("Sum:", acc, "| Avg:", acc / count)
 
@@ -192,3 +195,4 @@ while option != "4":
 # - Ubica la INICIALIZACIÓN antes del while y la ACTUALIZACIÓN dentro del cuerpo.
 # - Prefiere banderas (valid = False) para control de repetición en validación.
 # - Usa mensajes de error claros en try-except para ayudar al usuario.
+

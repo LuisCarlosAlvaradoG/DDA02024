@@ -6,6 +6,7 @@
 # CONTADOR (counter)
 # - Variable numérica que incrementamos/decrementamos para contar eventos.
 # - Ejemplo: count = count + 1 cuando detectamos un número positivo.
+# count = count + 1
 #
 # ACUMULADOR (accumulator)
 # - Variable numérica que agrega (suma) valores a lo largo del tiempo.
@@ -28,11 +29,26 @@
 # - x = x + valor   # acumula 'valor' (acumulador)
 # - x += 1          # atajo de x = x + 1
 # - x += valor      # atajo de x = x + valor
+
+# contador =  contador + 1
+# contador += 1 Esto sí
+# contador =+1 Esto no
+
+# acumulador += valor
+
 #
 # ERRORES COMUNES
 # - Usar = (asignación) cuando se quería == (comparación) en condiciones.
 # - Reiniciar el contador/total dentro del "flujo" por error (debe iniciarse una vez).
 # - Tomar valores no numéricos sin conversión (usar int()/float() con try-except).
+
+# a = 5
+# b = 2
+# a == b   True / False
+
+# 5 es igual a 2
+
+# cadena [::-1]
 
 # ---------------------------------------------------------------
 # D) PATRONES SIN CICLOS PARA SIMULAR REPETICIÓN
@@ -73,7 +89,9 @@ p2 = 49.99
 p3 = 120.00
 total = 0.0
 total = total + p1
+total = 0.0
 total = total + p2
+total = 0.0
 total = total + p3
 print(total)
 
