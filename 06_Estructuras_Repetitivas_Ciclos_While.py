@@ -54,10 +54,10 @@ print("Sum 1..N:", total)
 
 # Patrón C3) Centinela textual: leer hasta 'fin' (sin listas)
 
-print("Enter values, 'fin' to stop:")  # (Ejemplo demostrativo)
+print("Enter values, fin to stop:")  # (Ejemplo demostrativo)
 acc = 0.0
 count = 0
-val = input("Value (or 'fin'): ")
+val = input("Value (or fin): ")
 while val.strip().lower() != "fin":
     try:
         x = float(val)
@@ -65,16 +65,12 @@ while val.strip().lower() != "fin":
         count = count + 1
     except ValueError:
         print("Invalid:", val)
-    if count == 1:
-        val = "3"
-    elif count == 2:
-        val = "fin"
-    else:
-        val = "fin"
+    val = input("Value (or fin): ")
 if count == 0:
-    print("No numbers")
+    print("No numbers entered")
 else:
     print("Sum:", acc, "| Avg:", acc / count)
+
 
 # ---------------------------------------------------------------
 # D) VALIDACIÓN DE ENTRADAS CON WHILE Y TRY-EXCEPT (sin break/continue)
