@@ -1,11 +1,11 @@
 # Problema 1
-# Se recibe la lista en formato literal, por ejemplo: [1,2,3,4,5]
-lista = eval(input())
+# Cuenta los elementos de una cadena
 
-suma = 0
-for num in lista:
-    suma += num
-print(suma)
+cadena = input()
+contador = 0
+for caracter in cadena:
+    contador += 1
+print(contador)
 
 # Problema 2
 # Se recibe una cadena, por ejemplo: "hello"
@@ -30,28 +30,27 @@ for caracter in cadena:
 print(invertida)
 
 # Problema 4
-# Entrada en formato literal, por ejemplo: [1,2,3,4,5]
-lista = eval(input())
-
-maximo = lista[0]
-for num in lista:
-    if num > maximo:
-        maximo = num
-print(maximo)
+# Dado un número entero en formato string, encuentra el dígito máximo dentro del entero usando un ciclo for e if-else.
+numero_str = input().strip()  # Se recibe como cadena para iterar sobre sus dígitos
+max_digito = -1  # Inicializamos con un valor menor que cualquier díg
+for caracter in numero_str:
+    digito = int(caracter)  # Convertimos el caracter a entero
+    if digito > max_digito:
+        max_digito = digito
+print(max_digito)
 
 # Problema 5
-# Entrada en formato literal, por ejemplo: [1,-2,3,0,-4]
-lista = eval(input())
-
-positivos = 0
-negativos = 0
-for num in lista:
-    if num > 0:
-        positivos += 1
-    elif num < 0:
-        negativos += 1
-# Se ignoran los ceros
-print(positivos, negativos)
+#Dado un entero, cuenta dígitos de ese entero se encuentran entre 0 - 4 y cuántos entre 5 - 9 usando un ciclo for e if-else.
+numero = input().strip()
+count_0_4 = 0
+count_5_9 = 0
+for caracter in numero:
+    digito = int(caracter)  
+    if 0 <= digito <= 4:
+        count_0_4 += 1
+    elif 5 <= digito <= 9:
+        count_5_9 += 1
+print(count_0_4, count_5_9)
 
 # Problema 6
 # Se recibe un entero n (por ejemplo: 5)
@@ -89,14 +88,16 @@ for i in range(n // 2):
 print("True" if es_palindromo else "False")
 
 # Problema 9
-# Se recibe una lista de palabras, por ejemplo: ["apple","banana","cherry"]
-palabras = eval(input())
-
-longitud_maxima = 0
-for palabra in palabras:
-    if len(palabra) > longitud_maxima:
-        longitud_maxima = len(palabra)
-print(longitud_maxima)
+# Se recibe un entero n (por ejemplo: 5)
+n = int(input())
+for i in range(n):
+    line = ""
+    for j in range(n):
+        if j == i or j == (n-1-i):
+            line = line + "X"
+        else:
+            line = line + " "
+    print(line)
 
 # Problema 10
 # Se recibe un número entero (no negativo) en formato literal, por ejemplo: 12345
