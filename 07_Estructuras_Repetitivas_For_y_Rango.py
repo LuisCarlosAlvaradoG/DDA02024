@@ -1,46 +1,4 @@
-
-# ===============================================================
 # 7.- ESTRUCTURAS REPETITIVAS: FOR Y RANGO
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - En esta sesión se introducen y dominan los ciclos FOR y la función range().
-#   - Se permite usar: entrada/salida, operaciones con números y cadenas, if/elif/else
-#     (incluyendo anidados), try-except, y los patrones de contadores/acumuladores/centinelas.
-#   - while puede aparecer SOLO para validaciones puntuales cuando sea necesario.
-#   - ESTRICTAMENTE PROHIBIDO: listas/tuplas/diccionarios, comprensiones, funciones propias,
-#     break/continue, librerías externas y manejo de archivos.
-#   - Iteraremos SOBRE range() y SOBRE CADENAS exclusivamente (listas vendrán más adelante).
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: ciclo for — sintaxis y flujo
-#   C) Teoría: range() — formas y casos
-#   D) For sobre cadenas: por carácter y por índice
-#   E) For anidados: patrones de texto y tablas
-#   F) Contadores y acumuladores con for
-#   G) Casos de uso guiados
-#   H) Buenas prácticas, ventajas y desventajas
-#   I) Banco de ejercicios (SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender la sintaxis y el flujo del ciclo for.
-# - Dominar range() en sus variantes: range(stop), range(start, stop), range(start, stop, step)
-#   incluyendo pasos negativos y rangos vacíos.
-# - Iterar sobre CADENAS para procesar caracteres (contar, buscar, transformar).
-# - Construir for ANIDADOS para producir patrones y tablas sencillas.
-# - Aplicar contadores, acumuladores y validación/banderas con for.
-#
-# ALCANCE Y LÍMITES
-# - NO usamos colecciones (listas/tuplas/dicts) ni comprensiones.
-# - NO usamos break/continue; resolveremos sin estas sentencias.
-# - Podemos usar if/elif/else, try-except, entrada y salida, números y cadenas.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: CICLO FOR — SINTAXIS Y FLUJO
 # ---------------------------------------------------------------
@@ -211,40 +169,39 @@ print("Count 'a'/'A':", count_a)
 # ---------------------------------------------------------------
 
 # Caso 1) Suma de N reales (N leído por teclado)
-# (Descomenta para usar en clase)
-# N = int(input("How many values? "))
-# acc = 0.0
-# for i in range(N):
-#     x = float(input("Value " + str(i+1) + ": "))
-#     acc = acc + x
-# print("Sum:", acc)
+N = int(input("How many values? "))
+acc = 0.0
+for i in range(N):
+    x = float(input("Value " + str(i+1) + ": "))
+    acc = acc + x
+print("Sum:", acc)
 
 # Caso 2) Impresión de rango con paso
-# start = int(input("Start: "))
-# stop = int(input("Stop (exclusive): "))
-# step = int(input("Step: "))
-# for v in range(start, stop, step):
-#     print(v)
+start = int(input("Start: "))
+stop = int(input("Stop (exclusive): "))
+step = int(input("Step: "))
+for v in range(start, stop, step):
+    print(v)
 
 # Caso 3) Procesamiento de cadena: contar dígitos, letras y otros
-# s = input("Text: ")
-# digits = 0
-# letters = 0
-# others = 0
-# for ch in s:
-#     if "0" <= ch <= "9":
-#         digits = digits + 1
-#     elif ("a" <= ch <= "z") or ("A" <= ch <= "Z"):
-#         letters = letters + 1
-#     else:
-#         others = others + 1
-# print("Digits:", digits, "Letters:", letters, "Others:", others)
+s = input("Text: ")
+digits = 0
+letters = 0
+others = 0
+for ch in s:
+    if "0" <= ch <= "9":
+        digits = digits + 1
+    elif ("a" <= ch <= "z") or ("A" <= ch <= "Z"):
+        letters = letters + 1
+    else:
+        others = others + 1
+print("Digits:", digits, "Letters:", letters, "Others:", others)
 
 # Caso 4) Tabla de multiplicar de un número hasta m
-# n = int(input("n: "))
-# m = int(input("m: "))
-# for i in range(1, m+1):
-#     print(n, "x", i, "=", n*i)
+n = int(input("n: "))
+m = int(input("m: "))
+for i in range(1, m+1):
+    print(n, "x", i, "=", n*i)
 
 # ---------------------------------------------------------------
 # H) BUENAS PRÁCTICAS, VENTAJAS Y DESVENTAJAS

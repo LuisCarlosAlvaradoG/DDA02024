@@ -4,7 +4,7 @@
 # B) TEORÍA: WHILE (PRE-TEST), FLUJO Y TERMINACIÓN
 # ---------------------------------------------------------------
 # Sintaxis básica:
-#   while (condicion and condicion2):
+#   while condicion or (condicion2 and condicion3):
 #       operacion 
 #       # bloque que se repite mientras la condición sea True
 #
@@ -22,6 +22,7 @@
 # - Para ello, normalmente ACTUALIZAMOS variables dentro del cuerpo.
 #
 # Pseudocódigo típico (contador):
+#   N = 5
 #   i = 1                     # inicialización
 #   while i <= N:             # condición
 #       # trabajo
@@ -66,14 +67,16 @@ print("Enter values, fin to stop:")  # (Ejemplo demostrativo)
 acc = 0.0
 count = 0
 val = input("Value (or fin): ")
-while val.strip().lower() != "fin":
+while val.strip().lower() != "fin":    #Centinela
     try:
         x = float(val)
-        acc = acc + x
-        count = count + 1
+        acc = acc + x         # Acumulador
+        count = count + 1     # Contador
     except ValueError:
         print("Invalid:", val)
+
     val = input("Value (or fin): ")
+
 if count == 0:
     print("No numbers entered")
 else:
@@ -196,3 +199,31 @@ while option != "4":
 # - Prefiere banderas (valid = False) para control de repetición en validación.
 # - Usa mensajes de error claros en try-except para ayudar al usuario.
 
+# Calcula la cantidad de números pares e impares de 1 hasta la N que da el usuario.
+N = int(input("Ingresa un número entero: "))
+cont = 1
+par = 0
+impar = 0
+while cont <= N:
+    if cont % 2 == 0:
+        par += 1
+    else:
+        impar += 1
+    cont += 1
+else:
+    print(f"Tienes {par} pares y {impar} impares")
+
+# ---------------------------------------------------------------
+# Ejercicio 05 - Contar dígitos
+# Enunciado: Lee un entero (como texto o número) y cuenta cuántos dígitos tiene (sin strings).
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+N = int(input())
+if N == 0:
+    count = 1
+else:
+    count = 0
+    while N != 0:
+        N = N // 10
+        count = count + 1
+print(count)
