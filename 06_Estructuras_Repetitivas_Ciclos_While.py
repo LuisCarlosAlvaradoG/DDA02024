@@ -384,11 +384,12 @@ print(count)
 
 # ---------------------------------------------------------------
 # Ejercicio 11 - Mínimo y máximo
-# Enunciado: Lee números hasta 'fin' y muestra el mínimo y máximo (si hubo datos).
+# Enunciado: Lee números hasta 'fin' y 
+# muestra el mínimo y máximo (si hubo datos).
 # (Ejercicio de práctica; SOLUCIÓN completa abajo.)
 # ---------------------------------------------------------------
 
-# --- SOLUCIÓN ---
+# --- SOLUCIÓN ---  
 
 have = False
 mn = 0.0
@@ -535,7 +536,8 @@ print(x)
 
 # ---------------------------------------------------------------
 # Ejercicio 18 - Conteo de vocales
-# Enunciado: Lee texto y cuenta vocales con while.
+# Enunciado: Lee texto y cuenta vocales 
+# con while.
 # (Ejercicio de práctica; SOLUCIÓN completa abajo.)
 # ---------------------------------------------------------------
 
@@ -609,8 +611,10 @@ print("Chosen:", choice)
 
 
 # ---------------------------------------------------------------
-# Ejercicio 22 - Conteo de caracteres numéricos
-# Enunciado: Lee cadena y cuenta cuántos chars están entre '0' y '9'.
+# Ejercicio 22 - Conteo de caracteres 
+# numéricos
+# Enunciado: Lee cadena y cuenta cuántos 
+# chars están entre '0' y '9'.
 # (Ejercicio de práctica; SOLUCIÓN completa abajo.)
 # ---------------------------------------------------------------
 

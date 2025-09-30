@@ -227,3 +227,26 @@ else:
         N = N // 10
         count = count + 1
 print(count)
+
+# ---------------------------------------------------------------
+# Ejercicio 18 - Conteo de vocales
+# Enunciado: Lee texto y cuenta vocales 
+# con while.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+
+# --- SOLUCIÓN ---
+cont_vocales = 0
+cont_indice = 0
+texto = input("Dame una texto ").strip().lower()
+vocales = "aeiouáéíóú"
+
+while cont_indice < len(texto):
+    if texto[cont_indice] in vocales:
+        cont_vocales += 1
+    cont_indice += 1
+print(f"Tienes {cont_vocales} vocales en el texto {texto}")
+
+
+
+

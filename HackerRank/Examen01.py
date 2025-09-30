@@ -63,29 +63,29 @@ examen_A()
 def examen_B():
     print("Examen Tipo B")
     # Preguntas teóricas
-    print("1)  Pseudocódigo (g)")
-    print("2)  Ordenado (i)")
-    print("3)  Lenguaje de programación (f)")
-    print("4)  Orientado a objetos(a)")
-    print("5)  De procesos")
-    print("6)  Variable (b)")
-    print("7)  Lógico (d)")
-    print("8)  Type() (k)")
-    print("9)  Precedencia (c)")
-    print("10) Identación (l)")
+    print("1)  De procesos (j) ")
+    print("2)  Lenguaje de programación (f)")
+    print("3)  Ordenado (a)")
+    print("4)  Pseudocódigo (i)")
+    print("5)  Type (k)")
+    print("6)  Variable (e)")
+    print("7)  Logico (ñ)")
+    print("8)  Orientado a objetos(g)")
+    print("9)  Identacion (l)")
+    print("10) Precedencia (c)")
     a = 2
     b = 3
     c = 1
     d = -1
     r1_b = a + b - c ** 2 + d / 4
-    print(r1_b)
+    print("2 + 3 - 1 ** 2 + -1 / 4 = 5 - 1 + -0.25 = 4 - 0.25 = ", r1_b)
 
     a = 1
     b = 4
     c = 3
     d = -1
     r2_b = b + c * 5 / 4 ** d * a
-    print(r2_b)
+    print("4 + 3 * 5 / 4 ** -1 * 1 = 4 + 15 / 0.25 * 1 = 4 + 60 * 1 = ", r2_b)
     #Examen tipo B
     # 1) Estatus académico y servicios
     promedio = 8.7
@@ -117,7 +117,7 @@ def examen_B():
     else:
         print("Ventilación normal")
 
-
+examen_B()
 
 # --- Entradas (ajústalas para tus pruebas) ---
 clase = "economy"
@@ -159,3 +159,13 @@ if msg == "":
     msg = "Embarque estándar"
 
 print(msg)
+
+#Función que devuelve una calificación con base a 15 puntos, según un número del 0 al 10.
+def calificador():
+    nota = float(input("Ingrese la calificación (o 'FIN' para terminar): "))
+    while nota != "FIN":
+        nota = nota
+        nota_15 = (nota / 10) * 15
+        print(round(nota_15, 2))
+        nota = float(input("Ingrese la calificación (o 'FIN' para terminar): "))
+calificador()
