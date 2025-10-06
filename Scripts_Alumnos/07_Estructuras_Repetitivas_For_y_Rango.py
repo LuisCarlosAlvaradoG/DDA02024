@@ -21,19 +21,18 @@
 
 # --- Código ilustrativo: for básico con range ---
 print("Contar de 0 a 4:")
-for i in range(5):           # 0,1,2,3,4
+for i in range(5):      # Cuando sólo pones un argumento, representa el fin del rango
     print(i)
 
 print("Contar de 3 a 7:")
-for x in range(3, 8):        # 3,4,5,6,7
+for x in range(3, 8):  #Cuando pones dos argumentos, representa el inicio-fin del rango
     print(x)
 
 print("Pares de 2 a 10 (paso 2):")
-for n in range(2, 11, 2):    # 2,4,6,8,10
+for n in range(2, 11, 2):     #Cuando pones tres argumentos, representa el inicio-fin-paso del rango
     print(n)
 
-print("Descendiente de 5 a 1 (paso -1):")
-for k in range(5, 0, -1):    # 5,4,3,2,1
+for k in range(5, -5, -1):    # 5,4,3,2,1
     print(k)
 
 # ---------------------------------------------------------------
@@ -55,16 +54,13 @@ for k in range(5, 0, -1):    # 5,4,3,2,1
 # - Olvidar que el paso negativo exige start>stop.
 
 # --- Código ilustrativo: variantes de range ---
-print("range(0) -> no itera:")
 for _ in range(0):
     print("no verás esto")
 
-print("range(2, 2) -> vacío también:")
-for _ in range(2, 2):
-    print("tampoco verás esto")
+for i in range(2, 2):
+    print(i)
 
-print("range(10, 0, -3):")
-for v in range(10, 0, -3):   # 10,7,4,1
+for v in range(10, 0, -3):   
     print(v)
 
 # ---------------------------------------------------------------
@@ -84,6 +80,18 @@ for v in range(10, 0, -3):   # 10,7,4,1
 # Recordatorio: cadenas son inmutables; para "modificar" se construye una nueva.
 
 # --- Código ilustrativo: cadenas ---
+palabra = "Hola"
+for letra in palabra:
+    print(letra)
+
+for i in range(len(palabra)):
+    print(palabra[i])
+
+i = 7
+for i in range(10, 15):
+    print(i)
+
+
 s = "Algoritmos"
 count_vowels = 0
 vowels = "aeiouáéíóúAEIOUÁÉÍÓÚ"
@@ -94,8 +102,15 @@ print(count_vowels)
 
 # Índices
 t = "Python"
-for i in range(len(t)):
+for i in range(len(t)): #Aqui manejo el caracter como una posicion dentro de la palabra
     print(t[i])
+
+for i in t: #Aqui manejo el caracter directamente
+    print(i)
+
+i = 7
+for i in range(11):
+    print(i)
 
 # ---------------------------------------------------------------
 # E) FOR ANIDADOS: PATRONES Y TABLAS
@@ -114,7 +129,7 @@ for i in range(len(t)):
 
 # --- Código ilustrativo: patrones y tabla ---
 # Rectángulo 3x5
-rows = 3
+rows = 3 
 cols = 5
 for i in range(rows):
     line = ""
@@ -219,3 +234,10 @@ for i in range(1, m+1):
 # - Nombrar claramente las variables de control (i, j) y las de estado (acc, count).
 # - Comprobar casos límite: N=0, cadenas vacías, rangos vacíos.
 # - Evitar dependencias externas en cada iteración (ej. no convertir repetidamente lo mismo).
+
+
+# ---------------------------------------------------------------
+# Ejercicio 10 - Contar dígitos
+# Enunciado: Lee un texto y cuenta cuántos caracteres son dígitos ('0'..'9').
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------

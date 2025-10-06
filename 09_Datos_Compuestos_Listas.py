@@ -1,40 +1,4 @@
-
-# ===============================================================
 # 9.- DATOS COMPUESTOS: LISTAS (I) — BASES Y PATRONES FUNDAMENTALES
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - Introducimos LISTAS: creación, acceso, mutación, recorrido y métodos básicos.
-#   - SOLO usamos conceptos ya vistos: entrada/salida, operaciones con números y cadenas,
-#     condicionales (simples/dobles/múltiples/anidadas), try-except, while, for y range,
-#     contadores, acumuladores, centinelas y depuración con prints.
-#   - ESTRICTAMENTE PROHIBIDO: tuplas, diccionarios, funciones definidas por el usuario,
-#     librerías externas, archivos, parámetros 'key' en sort (requiere funciones), break/continue.
-#   - NO usamos comprensiones de listas en esta primera parte (se verán en Listas II).
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: ¿Qué es una lista? creación, mutabilidad, tipos de elementos
-#   C) Índices, cortes (slices) y modificación in-place
-#   D) Recorridos: for por elemento / por índice; while con índice
-#   E) Métodos básicos: append, insert, extend, remove, pop, clear, index, count, reverse, sort
-#   F) Construcción de listas a partir de entradas (fijo, centinela, validación)
-#   G) Casos de uso guiados
-#   H) Ventajas, desventajas y buenas prácticas (incluye depuración)
-#   I) Banco de ejercicios (SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender la estructura y propiedades de las listas (mutables, ordenadas).
-# - Crear listas y manipular sus elementos por índice.
-# - Aplicar recorridos con for/while para contar, acumular, buscar y transformar.
-# - Utilizar métodos básicos de listas sin adelantarnos a funciones ni colecciones avanzadas.
-# - Construir listas a partir de entradas del usuario con cantidad fija o con centinela.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: ¿QUÉ ES UNA LISTA?
 # ---------------------------------------------------------------
@@ -62,28 +26,28 @@ print(nums, words, mix, empty)
 # - El primer elemento está en índice 0. El último en len(lista) - 1.
 # - Índices negativos: -1 -> último, -2 -> penúltimo, etc.
 a = [5, 6, 7, 8]
-print("a[0] =", a[0], "a[1] =", a[1], "a[-1] =", a[-1])
+print(a[0], a[1], a[-1])
 
 # Asignación a posiciones:
 a[1] = 60       # modifica el segundo elemento
-print("a modificado:", a)
+print(a)
 
 # Cortes (slices):
 # - a[inicio:fin] devuelve una SUBLISTA desde inicio hasta fin-1.
 # - a[:k] desde el inicio hasta k-1; a[k:] desde k hasta el final; a[:] copia completa.
 b = [10, 20, 30, 40, 50, 60]
-print("b[1:4] ->", b[1:4])     # [20,30,40]
-print("b[:3]  ->", b[:3])      # [10,20,30]
-print("b[3:]  ->", b[3:])      # [40,50,60]
-print("b[:]   ->", b[:])       # copia superficial (shallow copy)
+print(b[1:4])     # [20,30,40]
+print(b[:3])      # [10,20,30]
+print(b[3:])      # [40,50,60]
+print(b[:])       # copia superficial (shallow copy)
 
 # Asignación con slices (reemplazo de segmentos):
 b[1:3] = [200, 300]            # reemplaza 20,30 por 200,300
-print("b slice-replace:", b)
+print(b)
 
 # Eliminar segmentos con slices vacíos:
 b[2:4] = []                    # elimina posiciones 2 y 3
-print("b slice-delete:", b)
+print(b)
 
 # ---------------------------------------------------------------
 # D) RECORRIDOS: FOR POR ELEMENTO / POR ÍNDICE; WHILE CON ÍNDICE
@@ -93,13 +57,13 @@ lst = [3, 7, 2, 9]
 total = 0
 for x in lst:
     total = total + x
-print("Sum (for by element):", total)
+print(total)
 
 # For por índice:
 total2 = 0
 for i in range(len(lst)):
     total2 = total2 + lst[i]
-print("Sum (for by index):", total2)
+print(total2)
 
 # While con índice:
 i = 0
@@ -107,139 +71,112 @@ total3 = 0
 while i < len(lst):
     total3 = total3 + lst[i]
     i = i + 1
-print("Sum (while by index):", total3)
+print(total3)
 
 # Búsqueda lineal: ¿existe el 7?
 found = False
 for x in lst:
     if x == 7:
         found = True
-print("Contains 7?", found)
+print(found)
 
 # ---------------------------------------------------------------
-# E) MÉTODOS BÁSICOS DE LISTA (SIN KEY, SIN FUNCIONES AVANZADAS)
+# E) MÉTODOS BÁSICOS DE LISTA
 # ---------------------------------------------------------------
 m = [1, 2, 3]
 m.append(4)         # agrega al final
-print("append ->", m)
+print(m)
 m.insert(1, 99)     # inserta 99 en índice 1 (desplaza a la derecha)
-print("insert ->", m)
+print(m)
 
 n = [10, 20]
 m.extend(n)         # extiende con elementos de n
-print("extend ->", m)
+print(m)
 
 m.remove(99)        # elimina la PRIMERA aparición de 99 (ValueError si no está)
-print("remove ->", m)
+print(m)
 
 last = m.pop()      # saca y retorna el último
-print("pop() ->", last, "| m ->", m)
+print(last, m)
 mid = m.pop(2)      # saca y retorna elemento en índice 2
-print("pop(2) ->", mid, "| m ->", m)
+print(mid, m)
 
-print("count(2) ->", m.count(2))   # cuántas veces aparece 2
-print("index(2) ->", m.index(2))   # primer índice de 2 (ValueError si no está)
+print(m.count(2))   # cuántas veces aparece 2
+print(m.index(2))   # primer índice de 2 (ValueError si no está)
 
 m.reverse()         # invierte in-place
-print("reverse ->", m)
+print(m)
 
 m.sort()            # ordena ascendente in-place (SOLO números o SOLO cadenas)
-print("sort asc ->", m)
+print(m)
 m.sort(reverse=True)
-print("sort desc ->", m)
+print(m)
 
-# Copia superficial vs alias:
-u = [5, 6, 7]
-v = u              # alias: apuntan al mismo objeto
-w = u[:]           # copia superficial independiente (para elementos "simples")
-u[0] = 500
-print("alias v:", v, "| copy w:", w)
 
 # ---------------------------------------------------------------
 # F) CONSTRUCCIÓN DE LISTAS DESDE ENTRADAS
 # ---------------------------------------------------------------
 # F1) Cantidad fija (for + range)
-# (Descomenta para usar en clase)
-# N = int(input("How many integers? "))
-# L = []
-# for i in range(N):
-#     val = int(input("Value " + str(i+1) + ": "))
-#     L.append(val)
-# print("L =", L)
+N = int(input("How many integers? "))
+L = []
+for i in range(N):
+    val = int(input("Value " + str(i+1) + ": "))
+    L.append(val)
+print(L)
 
 # F2) Centinela textual (while) hasta 'fin'
-# (Descomenta para usar en clase)
-# L = []
-# raw = input("Value (or 'fin'): ")
-# while raw.strip().lower() != "fin":
-#     try:
-#         x = float(raw)
-#         L.append(x)
-#     except ValueError:
-#         print("Invalid:", raw)
-#     raw = input("Value (or 'fin'): ")
-# print("Collected:", L)
-
-# F3) Validación por rango
-# (Descomenta para usar en clase)
-# N = int(input("How many [1..5]? "))
-# L = []
-# for _ in range(N):
-#     valid = False
-#     while not valid:
-#         r = input("Enter int [1..5]: ")
-#         try:
-#             v = int(r)
-#             if 1 <= v <= 5:
-#                 L.append(v)
-#                 valid = True
-#             else:
-#                 print("Out of range.")
-#         except ValueError:
-#             print("Not an integer.")
-# print("Validated list:", L)
+L = []
+raw = input("Value (or 'fin'): ")
+while raw.strip().lower() != "fin":
+    try:
+        x = float(raw)
+        L.append(x)
+    except ValueError:
+        print("Invalid:", raw)
+    raw = input("Value (or 'fin'): ")
+print(L)
 
 # ---------------------------------------------------------------
 # G) CASOS DE USO GUIADOS
 # ---------------------------------------------------------------
 
 # Caso 1) Suma, promedio, mínimo y máximo en una lista
-# L = [10, 5, 8, 15, 3]
-# acc = 0
-# for x in L:
-#     acc = acc + x
-# mn = L[0]; mx = L[0]
-# for x in L:
-#     if x < mn: mn = x
-#     if x > mx: mx = x
-# avg = acc / len(L)
-# print("Sum:", acc, "Avg:", avg, "Min:", mn, "Max:", mx)
+L = [10, 5, 8, 15, 3]
+acc = 0
+for x in L:
+    acc = acc + x
+mn = L[0]; mx = L[0]
+for x in L:
+    if x < mn: mn = x
+    if x > mx: mx = x
+avg = acc / len(L)
+print("Sum:", acc, "Avg:", avg, "Min:", mn, "Max:", mx)
 
 # Caso 2) Filtrar positivos en una nueva lista (sin comprensiones)
-# L = [3, -2, 0, 7, -5, 9]
-# P = []
-# for x in L:
-#     if x > 0:
-#         P.append(x)
-# print("Positives:", P)
+L = [3, -2, 0, 7, -5, 9]
+P = []
+for x in L:
+    if x > 0:
+        P.append(x)
+print("Positives:", P)
 
 # Caso 3) Eliminar TODAS las apariciones de un valor dado (sin funciones avanzadas)
-# L = [2, 3, 2, 4, 2, 5]
-# val = 2
-# R = []
-# for x in L:
-#     if x != val:
-#         R.append(x)
-# print("Removed all", val, "->", R)
+L = [2, 3, 2, 4, 2, 5]
+val = 2
+R = []
+for x in L:
+    if x != val:
+        R.append(x)
+print("Removed all", val, "->", R)
 
 # Caso 4) Unir dos listas por concatenación y por extend
-# A = [1,2,3]
-# B = [4,5]
-# C = A + B       # crea NUEVA lista
-# print("A+B ->", C)
-# A_copy = A[:]   # copia antes de modificar
-# A_copy.extend(B) # modifica A_copy in-place
-# print("extend ->", A_copy)
+A = [1,2,3]
+B = [4,5]
+C = A + B       # crea NUEVA lista
+print(C)
+A_copy = A[:]   # copia antes de modificar
+A_copy.extend(B) # modifica A_copy in-place
+print(A_copy)
 
 # ---------------------------------------------------------------
 # H) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS

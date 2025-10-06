@@ -1,8 +1,11 @@
 # Problema 1
+#entrada = eval(input())
 entrada = input().strip()
 # Quitar los corchetes y dividir por comas
 numeros_str = entrada[1:-1].split(',')
-numeros = list(map(int, numeros_str))
+numeros = []
+for i in numeros_str:
+    numeros.append(int(i))
 
 suma_pares = 0
 i = 0
@@ -52,7 +55,9 @@ entrada = input().strip()
 # Quitar los corchetes y separar los números
 contenido = entrada[1:-1]
 numeros_str = contenido.split(',') if contenido else []
-numeros = list(map(int, numeros_str))
+numeros = []
+for i in numeros_str:
+    numeros.append(int(i))
 
 resultados = []
 i = 0
@@ -67,17 +72,20 @@ while i < len(numeros):
             digito = n % 10
             invertido = invertido * 10 + digito
             n //= 10
-    resultados.append(invertido)
+    resultados.append(str(invertido))
     i += 1
 
 # Convertir la lista de resultados a una cadena en el formato [a,b,c,...]
-salida = "[" + ",".join(map(str, resultados)) + "]"
+salida = "[" + ",".join(resultados) + "]"
 print(salida)
 
 # Problema 4
 entrada = input().strip()
 contenido = entrada[1:-1]
-lista = list(map(int, contenido.split(","))) if contenido else []
+lista = []
+if contenido:
+    for i in contenido.split(","):
+        lista.append(int(i))
 
 resultados = []
 i = 0
@@ -85,16 +93,19 @@ acumulado = 0
 
 while i < len(lista):
     acumulado += lista[i]
-    resultados.append(acumulado)
+    resultados.append(str(acumulado))
     i += 1
 
-salida = "[" + ",".join(map(str, resultados)) + "]"
+salida = "[" + ",".join(resultados) + "]"
 print(salida)
 
 # Problema 5
 entrada = input().strip()
 contenido = entrada[1:-1]
-lista = list(map(int, contenido.split(","))) if contenido else []
+lista = []
+if contenido:
+    for i in contenido.split(","):
+        lista.append(int(i))
 
 min_val = lista[0]
 max_val = lista[0]
@@ -112,7 +123,10 @@ print(min_val, max_val)
 # Problema 6
 entrada = input().strip()
 contenido = entrada[1:-1]
-lista = list(map(int, contenido.split(","))) if contenido else []
+lista = []
+if contenido:
+    for i in contenido.split(","):
+        lista.append(int(i))
 
 es_creciente = True
 i = 1
@@ -127,7 +141,9 @@ print("True" if es_creciente else "False")
 # Problema 7
 entrada = input().strip()
 contenido = entrada[1:-1]
-lista = list(map(int, contenido.split(",")))
+lista = []
+for i in contenido.split(","):
+    lista.append(int(i))
 
 objetivo = lista[0]
 contador = 0
@@ -142,16 +158,19 @@ print(contador)
 # Problema 8
 entrada = input().strip()
 contenido = entrada[1:-1]
-lista = list(map(int, contenido.split(","))) if contenido else []
+lista = []
+if contenido:
+    for i in contenido.split(","):
+        lista.append(int(i))
 
 impares = []
 i = 0
 while i < len(lista):
     if lista[i] % 2 != 0:
-        impares.append(lista[i])
+        impares.append(str(lista[i]))
     i += 1
 
-print("[" + ",".join(map(str, impares)) + "]")
+print("[" + ",".join(impares) + "]")
 
 # Problema 9
 entrada = input().strip()
@@ -190,18 +209,12 @@ print(resultado)
 entrada = input().strip()
 contenido = entrada[1:-1]  # Quitar corchetes
 numeros_str = contenido.split(",") if contenido else []
-numeros = []
-i = 0
 
+i = 0
 while i < len(numeros_str):
-    numeros.append(int(numeros_str[i]))
+    if numeros_str[i] == "0":
+        numeros_str[i] = "-1"
     i += 1
 
-i = 0
-while i < len(numeros):
-    if numeros[i] == 0:
-        numeros[i] = -1
-    i += 1
-
-salida = "[" + ",".join(map(str, numeros)) + "]"
+salida = "[" + ",".join(numeros_str) + "]"
 print(salida)
