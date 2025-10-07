@@ -241,3 +241,38 @@ for i in range(1, m+1):
 # Enunciado: Lee un texto y cuenta cuántos caracteres son dígitos ('0'..'9').
 # (Ejercicio de práctica; SOLUCIÓN completa abajo.)
 # ---------------------------------------------------------------
+
+# ---------------------------------------------------------------
+# Ejercicio 25 - Bordes de rectángulo hueco
+# Enunciado: Lee r y c e imprime un rectángulo con bordes '*' y espacio dentro.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+filas = int(input())
+columnas = int(input())
+
+for fila in range(filas):
+    linea = ""
+    for columna in range(columnas):
+        if fila == 0 or columna == 0 or fila == filas-1 or columna == columnas-1:
+            linea += "*"
+        else:
+            linea += " "
+    print(linea)
+
+# ---------------------------------------------------------------
+# Ejercicio 31 - Pirámide centrada
+# Enunciado: Lee h e imprime una pirámide centrada de altura h con '*'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+
+h = int(input())
+for i in range(1,h+1):
+    print((h-i)*" " + "*"*(2*i-1))
+
+h = int(input())
+for i in range(1, h+1):
+    linea = ""
+    espacios = h - i
+    asteriscos = i * 2 - 1
+    linea += " " * espacios + "*" * asteriscos
+    print(linea)

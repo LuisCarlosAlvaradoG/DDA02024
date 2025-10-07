@@ -755,7 +755,6 @@ for i in range(1, h+1):
         line = line + "*"
     print(line)
 
-
 # ---------------------------------------------------------------
 # Ejercicio 32 - Alternar mayúscula/minúscula
 # Enunciado: Lee texto y alterna el caso: índice par -> mayúscula, impar -> minúscula.
