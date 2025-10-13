@@ -100,6 +100,7 @@ for i in range(m):
         product[i][j] = sum_val
 for row in product:
     print(str(row).replace(", ",","))
+    
 # Problema 8
 matrix = eval(input().strip())
 n = len(matrix)
