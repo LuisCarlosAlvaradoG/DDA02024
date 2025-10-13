@@ -1,43 +1,4 @@
-
-# ===============================================================
 # 11.- DATOS COMPUESTOS: TUPLAS — INMUTABILIDAD, EMPAQUETADO Y RECORRIDOS
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-#
-# Reglas pedagógicas de este archivo .py:
-#   - En esta sesión introducimos TUPLAS (colección ordenada e INMUTABLE).
-#   - SOLO usamos conceptos ya vistos: entrada/salida, operaciones con números y cadenas,
-#     condicionales (simples/dobles/múltiples/anidadas), try-except, while, for y range,
-#     contadores, acumuladores, centinelas, depuración con prints y LISTAS (de sesiones 9 y 10).
-#   - ESTRICTAMENTE PROHIBIDO: diccionarios (siguiente sesión), funciones definidas por el usuario,
-#     librerías externas, archivos, parámetros 'key' en sort (requiere funciones), break/continue.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: ¿Qué es una tupla? creación, inmutabilidad, tipos de elementos
-#   C) Índices y slices; concatenación (+) y repetición (*)
-#   D) Recorridos con for/while; pertenencia 'in'
-#   E) Métodos y operaciones disponibles: len, index, count, conversión list<->tuple
-#   F) Empaquetado y desempaquetado (multiple assignment, swap, *star unpacking)
-#   G) Tuplas anidadas y tuplas con listas (peligro de mutabilidad interna)
-#   H) Casos de uso guiados
-#   I) Ventajas, desventajas y buenas prácticas
-#   J) Banco de ejercicios (SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Entender que una TUPLA es una secuencia ORDENADA e INMUTABLE.
-# - Crear tuplas correctamente, incluyendo tupla de 1 elemento y tupla vacía.
-# - Acceder por índice, usar slices, concatenar y repetir.
-# - Recorrer con for/range y while; verificar pertenencia con 'in'.
-# - Usar len(), .index(), .count(), y convertir entre lista y tupla.
-# - Aplicar empaquetado/desempaquetado para asignaciones múltiples y swap de variables.
-# - Reconocer implicaciones de inmutabilidad cuando la tupla contiene listas u otras tuplas.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: ¿QUÉ ES UNA TUPLA?
 # ---------------------------------------------------------------
@@ -47,39 +8,39 @@
 #
 # Ejemplos:
 t = (10, 20, 30)
-print("t:", t)
+print(t)
 u = ("uno", "dos", "tres")
-print("u:", u)
+print(u)
 mix = (1, "A", 2.5)  # posible, pero se recomienda homogeneidad cuando sea práctico
-print("mix:", mix)
+print(mix)
 empty = ()           # tupla vacía
-print("empty:", empty)
+print(empty)
 #
 # Tupla de 1 elemento (¡requiere coma!):
 one = (5,)           # si escribes (5) es solo el entero 5
-print("one:", one, "type(one):", type(one))
+print(one, type(one))
 not_tuple = (5)
-print("not_tuple:", not_tuple, "type(not_tuple):", type(not_tuple))
+print(not_tuple, type(not_tuple))
 #
 # Inmutabilidad:
-# - No puedes reasignar t[0] = 99 (TypeError). Demostración comentada:
-# t[0] = 99  # Descomenta para ver TypeError
+# - No puedes reasignar t[0] = 99 (TypeError).
+t[0] = 99  
 
 # ---------------------------------------------------------------
 # C) ÍNDICES Y SLICES; CONCATENACIÓN (+) Y REPETICIÓN (*)
 # ---------------------------------------------------------------
 a = (5, 6, 7, 8, 9)
-print("a[0] =", a[0], "a[-1] =", a[-1])
-print("a[1:4] ->", a[1:4])   # subtupla desde 1 hasta 3
-print("a[:3]  ->", a[:3])
-print("a[3:]  ->", a[3:])
-print("a[:]   ->", a[:])     # copia superficial (nuevo objeto tupla)
-#
+print(a[0], a[-1])
+print(a[1:4])   # subtupla desde 1 hasta 3
+print(a[:3])
+print(a[3:])
+print(a[:])     # copia superficial (nuevo objeto tupla)
+
 # Operadores:
 x = (1, 2)
 y = (3, 4, 5)
-print("x + y ->", x + y)     # concatenación -> (1,2,3,4,5)
-print("y * 2 ->", y * 2)     # repetición -> (3,4,5,3,4,5)
+print(x + y)     # concatenación
+print(y * 2)     # repetición 
 
 # ---------------------------------------------------------------
 # D) RECORRIDOS CON FOR/WHILE; PERTENENCIA 'in'
@@ -88,23 +49,23 @@ t = (3, 7, 2, 9)
 total = 0
 for val in t:
     total = total + val
-print("Sum (for-by-element):", total)
+print(total)
 
 total2 = 0
 for i in range(len(t)):
     total2 = total2 + t[i]
-print("Sum (for-by-index):", total2)
+print(total2)
 
 i = 0
 total3 = 0
 while i < len(t):
     total3 = total3 + t[i]
     i = i + 1
-print("Sum (while):", total3)
+print(total3)
 
 # Pertenencia:
-print("7 in t?", 7 in t)
-print("10 in t?", 10 in t)
+print(7 in t)
+print(10 in t)
 
 # ---------------------------------------------------------------
 # E) MÉTODOS Y OPERACIONES DISPONIBLES
@@ -115,116 +76,61 @@ print("10 in t?", 10 in t)
 # Conversión: list(t) para obtener lista mutable; tuple(L) para crear tupla desde lista
 #
 w = ("a", "b", "a", "c", "a")
-print("len(w) ->", len(w))
-print("w.count('a') ->", w.count("a"))
-print("w.index('b') ->", w.index("b"))
+print(len(w))
+print(w.count("a"))
+print(w.index("b"))
 #
 L = list(w)         # copia en lista
 L[0] = "A"          # modifico la lista (no la tupla original)
-print("L modificada:", L)
+print(L)
 w2 = tuple(L)       # vuelvo a tupla
-print("w2:", w2)
+print(w2)
 #
 # join/split con tuplas de cadenas (permitido):
 parts = ("hola", "mundo")
-print("join:", " ".join(parts))
+print(" ".join(parts))
 line = "uno dos tres"
 tok = tuple(line.split())  # tuple de tokens
-print("split->tuple:", tok)
+print(tok)
 
 # ---------------------------------------------------------------
 # F) EMPAQUETADO Y DESEMPAQUETADO
 # ---------------------------------------------------------------
 # Empaquetado: se crea una tupla sin paréntesis usando comas.
 p = 10, 20, 30
-print("p empaquetado:", p, "type:", type(p))
+print(p, type(p))
 
 # Desempaquetado múltiple:
 a, b, c = p
-print("a:", a, "b:", b, "c:", c)
+print(a, b, c)
 
 # Swap (intercambio) de variables usando tuplas:
 x = 1; y = 2
 x, y = y, x
-print("swap -> x:", x, "y:", y)
+print(x, y)
 
 # Desempaquetado con * (estrella) para capturar "el resto":
 t = (1, 2, 3, 4, 5, 6)
 first, *middle, last = t
-print("first:", first, "middle:", middle, "last:", last)
+print(first, middle, last)
 # Nota: middle es una LISTA (lo permite Python); puedes convertirla a tupla si lo necesitas:
 middle_t = tuple(middle)
-print("middle_t:", middle_t, "type:", type(middle_t))
+print(middle_t, type(middle_t))
 
 # ---------------------------------------------------------------
 # G) TUPLAS ANIDADAS Y TUPLAS CON LISTAS
 # ---------------------------------------------------------------
 # Tuplas anidadas:
 T = ( (1,2), (3,4,5), (6,) )
-print("T:", T, "T[1][2] ->", T[1][2])
+print(T, T[1][2])
 
 # Tupla con lista interna (la tupla es inmutable, pero la lista sí cambia):
 U = (1, [10, 20], 3)
-print("U antes:", U)
+print(U)
 U[1].append(99)    # válido: NO cambiamos la tupla, cambiamos la lista que contiene
-print("U después:", U)
+print(U)
 #
 # Cuidado: U[0] = 100 -> TypeError (prohibido modificar posiciones de la tupla)
-
-# ---------------------------------------------------------------
-# H) CASOS DE USO GUIADOS
-# ---------------------------------------------------------------
-
-# Caso 1) Registrar una fecha como tupla (año, mes, día) y compararla con otra
-# (Descomenta para usar en clase)
-# a1 = int(input("año1: ")); m1 = int(input("mes1: ")); d1 = int(input("día1: "))
-# a2 = int(input("año2: ")); m2 = int(input("mes2: ")); d2 = int(input("día2: "))
-# f1 = (a1, m1, d1)
-# f2 = (a2, m2, d2)
-# # comparación lexicográfica: primero año, luego mes, luego día
-# if f1 < f2:
-#     print("f1 es anterior")
-# elif f1 > f2:
-#     print("f1 es posterior")
-# else:
-#     print("mismas fechas")
-
-# Caso 2) Convertir lista de calificaciones a tupla inmutable y calcular promedio con for
-# L = [80, 95, 70, 100]
-# T = tuple(L)
-# s = 0
-# for x in T:
-#     s = s + x
-# print("Promedio:", s / len(T))
-
-# Caso 3) Parsear una línea "x,y,z" en tupla (x,y,z) de enteros
-# line = input("x,y,z: ")
-# toks = line.split(",")
-# if len(toks) == 3:
-#     try:
-#         t = (int(toks[0]), int(toks[1]), int(toks[2]))
-#         print("Tupla:", t)
-#     except ValueError:
-#         print("Valores no enteros")
-# else:
-#     print("Formato inválido")
-
-# ---------------------------------------------------------------
-# I) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS
-# ---------------------------------------------------------------
-# Ventajas:
-# - Inmutabilidad: protege datos que no deben cambiar (seguridad y claridad).
-# - Empaquetado/desempaquetado: facilita asignaciones múltiples y swaps.
-# - Menor sobrecarga que la lista cuando solo se requiere lectura.
-#
-# Desventajas / riesgos:
-# - No se pueden insertar/eliminar/modificar elementos (no hay append/remove/...).
-# - Si la tupla contiene una lista interna, esa lista SÍ puede cambiar (mutabilidad interna).
-#
-# Buenas prácticas:
-# - Usa tuplas para "registros" de tamaño fijo (ej.: (día, mes, año), (x, y)).
-# - Si necesitas modificar con frecuencia, prefiere listas y al final convierte a tupla.
-# - Al depurar, imprime los valores antes/después de desempaquetar para validar posiciones.
 
 # ---------------------------------------------------------------
 # J) BANCO DE EJERCICIOS — SOLUCIONES COMPLETAS

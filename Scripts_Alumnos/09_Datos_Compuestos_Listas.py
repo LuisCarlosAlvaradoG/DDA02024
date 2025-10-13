@@ -12,7 +12,7 @@ words = ["uno", "dos", "tres"]  # lista de cadenas
 mix = [1, "A", 2.5]             # mezcla (posible), pero en el curso RECOMENDAMOS homogeneidad
 empty = []                       # lista vacía
 print(nums, words, mix, empty)
-#
+
 # Propiedades:
 # - Ordenada: mantiene el orden de inserción y acceso por posición (índice).
 # - Mutable: se puede cambiar un elemento específico o rebanadas.
@@ -26,7 +26,10 @@ print(nums, words, mix, empty)
 # - El primer elemento está en índice 0. El último en len(lista) - 1.
 # - Índices negativos: -1 -> último, -2 -> penúltimo, etc.
 a = [5, 6, 7, 8]
-print(a[0], a[1], a[-1])
+print(a[0])
+print(a[3])
+print(a[0:2])
+print(a[-1])
 
 # Asignación a posiciones:
 a[1] = 60       # modifica el segundo elemento
@@ -52,7 +55,7 @@ print(b)
 # ---------------------------------------------------------------
 # D) RECORRIDOS: FOR POR ELEMENTO / POR ÍNDICE; WHILE CON ÍNDICE
 # ---------------------------------------------------------------
-lst = [3, 7, 2, 9]
+lst = [3, 7, 2, 9] #len = ¿Cuántos elementos tiene esta lista?
 # For por elemento:
 total = 0
 for x in lst:
@@ -61,10 +64,27 @@ print(total)
 
 # For por índice:
 total2 = 0
-for i in range(len(lst)):
+for i in range(len(lst)): #range(4)
     total2 = total2 + lst[i]
 print(total2)
 
+total3 = 0
+for i in range(len(lst)):
+    total3 = total3 + i
+print(total3)
+
+# Listas de listas
+lista = [
+    [1,[2,2,4],3], #Primer elemento de la lista más externa
+    [4,5,6],
+    [7,8,9]
+]
+
+lista[0][1][2]
+lista[0] #[1,2,3]
+lista[0][0] #1
+
+lst = [3, 7, 2, 9]
 # While con índice:
 i = 0
 total3 = 0
@@ -73,12 +93,18 @@ while i < len(lst):
     i = i + 1
 print(total3)
 
+lst = [3, 7, 2, 9, 7, 10 ,20, 8, 7]
 # Búsqueda lineal: ¿existe el 7?
 found = False
+cont_7 = 0
 for x in lst:
+    print(x)
     if x == 7:
         found = True
-print(found)
+        cont_7 += 1
+        print("Encontré 7")
+        break
+print(found, cont_7)
 
 # ---------------------------------------------------------------
 # E) MÉTODOS BÁSICOS DE LISTA
@@ -89,10 +115,12 @@ print(m)
 m.insert(1, 99)     # inserta 99 en índice 1 (desplaza a la derecha)
 print(m)
 
+
 n = [10, 20]
 m.extend(n)         # extiende con elementos de n
 print(m)
 
+m = [1, 2, 5, 6, 8, 6]
 m.remove(99)        # elimina la PRIMERA aparición de 99 (ValueError si no está)
 print(m)
 
@@ -101,6 +129,7 @@ print(last, m)
 mid = m.pop(2)      # saca y retorna elemento en índice 2
 print(mid, m)
 
+m = [1, 3, 2, 4, 2]
 print(m.count(2))   # cuántas veces aparece 2
 print(m.index(2))   # primer índice de 2 (ValueError si no está)
 
@@ -196,3 +225,99 @@ print(A_copy)
 # - Maneja excepciones de remove/index con try-except o verifica pertenencia con 'in'.
 # - Para copiar usa lista[:] o list(lista) (copia superficial).
 # - Usa banderas DEBUG y prints en iteraciones clave si algo no cuadra.
+
+# Ejercicio 05 - Búsqueda lineal (índice de primera aparición)
+# Enunciado: 
+# Print the first index of target or -1 if not found (don't use list.index).
+
+#INPUT
+# [34, 25, 47, 52]
+# 47
+# OUTPUT
+# 2
+# Preprocesamiento
+lista = input()
+target = int(input())
+lista = lista[1:-1].split(",")
+lista_final = []
+for x in lista:
+    lista_final.append(int(x.strip()))
+
+# Alternativa
+lista = input()
+lista = eval(lista)
+
+indice = False
+for x in range(len(lista_final)):
+    if lista_final[x] == target:
+        indice = x
+
+print(indice)
+
+# Ejercicio 06 - Eliminar todas las apariciones (con nueva lista)
+# Enunciado: 
+# Remove all occurrences of 'val' from L without using remove in a loop (build new list).
+#INPUT
+# [34, 25, 47, 52, 34]
+# 34
+# OUTPUT
+# [25, 47, 52]
+lista = input()
+target = int(input())
+lista = lista[1:-1].split(",")
+lista_final = []
+for x in lista:
+    lista_final.append(int(x.strip()))
+
+resultado = []
+for x in lista_final:
+    if x != target:
+        resultado.append(x)
+print(resultado)
+
+# Ejercicio 07 - Invertir lista (sin reverse)
+# Enunciado: 
+# Construye una lista invertida de derecha a izquierda sin usar reverse o sclicing[::-1]
+#INPUT
+# [34, 25, 47, 52]
+# OUTPUT
+# [52, 47, 25, 34]
+
+lista = input()
+lista = lista[1:-1]
+lista_palabras = lista.split(",") if lista else []
+palabras = []
+for i in lista_palabras:
+    palabras.append(i.strip('"'))
+
+vocales = "aeiouAEIOU"
+voc = 0
+for i in palabras:
+    if i[0] in vocales:
+        voc += 1
+print(voc)
+
+lista = input()
+lista = lista[1:-1]
+lista_numeros = lista.split(",") if lista else []
+numeros = []
+for i in lista_numeros:
+    numeros.append(int(i.strip()))
+
+resultado = []
+i = 0
+while i < len(numeros):
+    n = numeros[i]
+    invertido = 0
+    if n == 0:
+        invertido = 0
+    else:
+        while n > 0:
+            digito = n % 10
+            invertido = invertido * 10 + digito
+            n //= 10
+    resultado.append(str(invertido))
+    i += 1
+
+
+

@@ -1,41 +1,4 @@
-
-# ===============================================================
 # 12.- DATOS COMPUESTOS: DICCIONARIOS — CLAVES Y VALORES, PATRONES FUNDAMENTALES
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-#
-# Reglas pedagógicas de este archivo .py:
-#   - Introducimos DICCIONARIOS: mapeos clave->valor, mutables y no ordenados por inserción
-#     (nota: en versiones modernas mantienen orden de inserción, pero NO dependas de ello aquí).
-#   - SOLO usamos conceptos ya vistos: entrada/salida, operaciones con números y cadenas,
-#     condicionales (simples/dobles/múltiples/anidadas), try-except, while, for y range,
-#     contadores, acumuladores, centinelas, depurador (prints) y estructuras previas (listas, tuplas).
-#   - ESTRICTAMENTE PROHIBIDO: funciones definidas por el usuario, librerías externas,
-#     archivos, comprensiones de diccionarios, parámetros 'key' en sort/lambda, break/continue.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: ¿Qué es un diccionario? creación, tipos de claves y valores
-#   C) Acceso, inserción, actualización y eliminación
-#   D) Recorridos: por claves, por valores, por ítems (pares)
-#   E) Métodos básicos: get, pop, clear, keys, values, items, update (manual)
-#   F) Construcción desde entradas (cantidad fija, centinela, validación)
-#   G) Casos de uso guiados
-#   H) Ventajas, desventajas y buenas prácticas
-#   I) Banco de ejercicios (SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender el diccionario como estructura de mapeo clave->valor.
-# - Elegir claves válidas (inmutables: números, cadenas, tuplas) y valores adecuados (cualquier tipo).
-# - Realizar operaciones CRUD: crear, leer, actualizar y eliminar pares.
-# - Recorrer diccionarios para contar, buscar, filtrar y transformar.
-# - Construir diccionarios a partir de entradas del usuario, con validación y centinelas.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: ¿QUÉ ES UN DICCIONARIO?
 # ---------------------------------------------------------------
@@ -53,7 +16,7 @@ coords = {(1,2): "A12", (3,4): "C34"}              # tupla -> str (clave compues
 print(empty, phone, ages, coords)
 #
 # Acceso por clave (KeyError si no existe):
-print("Ana phone:", phone["Ana"])
+print(phone["Ana"])
 # print(phone["Juan"])  # Descomenta para ver KeyError
 #
 # Inmutabilidad de la CLAVE vs mutabilidad del VALOR:
@@ -61,16 +24,16 @@ print("Ana phone:", phone["Ana"])
 # - Si el valor es una lista, se puede mutar la lista SIN cambiar la clave:
 catalog = {"A": [10, 20]}
 catalog["A"].append(30)   # mutar el valor (lista) es válido
-print("catalog:", catalog)
+print(catalog)
 
 # ---------------------------------------------------------------
 # C) ACCESO, INSERCIÓN, ACTUALIZACIÓN Y ELIMINACIÓN
 # ---------------------------------------------------------------
 D = {}                   # crear vacío
 D["x"] = 10              # inserción (si no existe crea, si existe actualiza)
-print("after insert:", D)
+print(D)
 D["x"] = D["x"] + 5      # actualización
-print("after update:", D)
+print(D)
 #
 # Lectura segura con verificación previa:
 key = "y"
@@ -81,9 +44,9 @@ else:
 #
 # Eliminación:
 D["y"] = 99
-print("before del:", D)
+print(D)
 del D["y"]               # elimina la clave (KeyError si no está)
-print("after del:", D)
+print(D)
 #
 # Eliminación segura con try-except:
 try:
@@ -99,137 +62,79 @@ grades = {"Ana": 90, "Luis": 75, "Marta": 100}
 s = 0
 for name in grades:
     s = s + grades[name]
-print("Sum:", s)
+print(s)
 # Explícito por claves:
 for k in grades.keys():
-    print("key:", k)
+    print(k)
 # Por valores:
 acc = 0
 for v in grades.values():
     acc = acc + v
-print("Sum by values:", acc)
+print(acc)
 # Por ítems (par clave-valor):
 for pair in grades.items():
-    print("item:", pair)       # par como tupla (k, v)
+    print(pair)       # par como tupla (k, v)
 # Desempaquetando (tuplas) en el for:
 total = 0
 for k, v in grades.items():
     total = total + v
-print("Total:", total)
+print(total)
 
 # ---------------------------------------------------------------
 # E) MÉTODOS BÁSICOS
 # ---------------------------------------------------------------
 data = {"a": 1, "b": 2}
-print("len:", len(data))                # cantidad de claves
-print("'a' in data?", "a" in data)     # pertenencia por clave
+print(len(data))                # cantidad de claves
+print("a" in data)     # pertenencia por clave
 #
 # get: lectura con valor por defecto (no lanza KeyError)
-print("get('c'):", data.get("c"))                # None si no está
-print("get('c', 0):", data.get("c", 0))         # 0 por defecto
+print(data.get("c"))                # None si no está
+print(data.get("c", 0))         # 0 por defecto
 #
 # pop: extrae valor y elimina la clave
 data["x"] = 10
 val = data.pop("x")                    # si no está -> KeyError
-print("popped:", val, "rest:", data)
+print(val, data)
 # pop con valor por defecto (evita excepción)
 val2 = data.pop("x", None)
-print("popped missing ->", val2, "rest:", data)
+print( val2, data)
 #
 # clear: vacía
 tmp = {"k": 1}
 tmp.clear()
-print("cleared:", tmp)
+print(tmp)
 #
 # keys, values, items devuelven VISTAS; podemos copiarlas a lista/tupla si se requiere
 klist = list(data.keys())
 vlist = list(data.values())
 ilist = list(data.items())
-print("klist:", klist, "vlist:", vlist, "ilist:", ilist)
+print(klist, vlist, ilist)
 
 # ---------------------------------------------------------------
 # F) CONSTRUCCIÓN DESDE ENTRADAS
 # ---------------------------------------------------------------
 # F1) Cantidad fija de pares (for + range)
-# (Descomenta para usar en clase)
-# N = int(input("How many (key,value) pairs? "))
-# D = {}
-# for i in range(N):
-#     k = input("key: ")
-#     v = input("value: ")
-#     D[k] = v     # inserta o actualiza
-# print("D:", D)
+N = int(input("How many (key,value) pairs? "))
+D = {}
+for i in range(N):
+    k = input("key: ")
+    v = input("value: ")
+    D[k] = v     # inserta o actualiza
+print(D)
 #
 # F2) Centinela textual: leer 'k=v' hasta 'fin' (con validación sencilla)
-# D = {}
-# raw = input("k=v (or 'fin'): ")
-# while raw.strip().lower() != "fin":
-#     if "=" in raw:
-#         pos = raw.find("=")
-#         k = raw[:pos].strip()
-#         v = raw[pos+1:].strip()
-#         D[k] = v
-#     else:
-#         print("Formato inválido, use k=v")
-#     raw = input("k=v (or 'fin'): ")
-# print("D:", D)
-#
-# F3) Lectura validada de enteros con try-except (conteo de frecuencias)
-# D = {}
-# raw = input("int (or 'fin'): ")
-# while raw.strip().lower() != "fin":
-#     try:
-#         x = int(raw)
-#         if x in D:
-#             D[x] = D[x] + 1
-#         else:
-#             D[x] = 1
-#     except ValueError:
-#         print("Not an integer")
-#     raw = input("int (or 'fin'): ")
-# print("freq:", D)
-
-# ---------------------------------------------------------------
-# G) CASOS DE USO GUIADOS
-# ---------------------------------------------------------------
-# Caso 1) Directorio (nombre -> teléfono) con consulta
-# (Descomenta para usar en clase)
-# N = int(input("How many entries? "))
-# book = {}
-# for _ in range(N):
-#     name = input("name: ").strip()
-#     phone = input("phone: ").strip()
-#     book[name] = phone
-# q = input("query name: ").strip()
-# if q in book:
-#     print("phone:", book[q])
-# else:
-#     print("not found")
-#
-# Caso 2) Conteo de palabras en una línea (minúsculas)
-# line = input("line: ").strip().lower()
-# toks = line.split()
-# freq = {}
-# for t in toks:
-#     if t in freq:
-#         freq[t] = freq[t] + 1
-#     else:
-#         freq[t] = 1
-# print(freq)
-#
-# Caso 3) Usar tuplas como claves: bigramas de tokens adyacentes
-# text = input("text: ").strip().lower()
-# toks = text.split()
-# big = {}
-# i = 1
-# while i < len(toks):
-#     pair = (toks[i-1], toks[i])
-#     if pair in big:
-#         big[pair] = big[pair] + 1
-#     else:
-#         big[pair] = 1
-#     i = i + 1
-# print("bigrams:", big)
+D = {}
+raw = input("k=v (or 'fin'): ")
+while raw.strip().lower() != "fin":
+    if "=" in raw:
+        pos = raw.find("=")
+        k = raw[:pos].strip()
+        v = raw[pos+1:].strip()
+        D[k] = v
+    else:
+        print("Formato inválido, use k=v")
+    raw = input("k=v (or 'fin'): ")
+print(D)
 
 # ---------------------------------------------------------------
 # H) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS

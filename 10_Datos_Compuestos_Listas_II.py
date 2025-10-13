@@ -1,42 +1,4 @@
-
-# ===============================================================
 # 10.- DATOS COMPUESTOS: LISTAS (II) — PATRONES AVANZADOS, ANIDADAS Y COMPRENSIONES
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-# Reglas pedagógicas de este archivo .py:
-#   - Avanzamos en el manejo de listas: listas de listas (matrices simples),
-#     construcción programática con bucles, búsqueda/transformación avanzadas,
-#     algoritmos básicos de ordenamiento y COMPRENSIONES (nivel básico: 1 for con filtro opcional).
-#   - SOLO usamos lo ya visto: for, range, while, if/elif/else, try-except,
-#     contadores, acumuladores, centinelas, operaciones con números y cadenas, depurador.
-#   - ESTRICTAMENTE PROHIBIDO: tuplas, diccionarios, funciones definidas por el usuario,
-#     librerías externas, archivos, parámetros 'key' en sort (requiere funciones), break/continue.
-#   - En comprensiones NO usamos "if-else" dentro de la expresión (tema posterior).
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Listas anidadas (matrices): creación, recorrido por filas/columnas
-#   C) Construcción programática (for anidados): tablas y patrones
-#   D) Búsqueda, filtrado y transformación (sin funciones)
-#   E) Ordenamientos básicos (burbuja y selección) sin funciones
-#   F) Conversión texto<->lista: split y join
-#   G) Comprensiones de listas (básicas): [expr for ... if ...]
-#   H) Casos de uso guiados
-#   I) Buenas prácticas y depuración en estructuras anidadas
-#   J) Banco de ejercicios (SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Construir y manipular listas de listas (matrices simples).
-# - Aplicar for anidados para recorrer filas y columnas.
-# - Implementar algoritmos sencillos de búsqueda, filtrado y ordenamiento manual.
-# - Convertir entre texto y listas (split/join) de forma controlada.
-# - Introducir comprensiones de listas como atajo sintáctico (una sola cláusula for y filtro opcional).
-
 # ---------------------------------------------------------------
 # B) LISTAS ANIDADAS (MATRICES): CREACIÓN Y RECORRIDO
 # ---------------------------------------------------------------
@@ -46,8 +8,8 @@ M = [
     [4, 5, 6],
     [7, 8, 9]
 ]
-print("M:", M)
-print("M[0][1] =", M[0][1])   # 2
+print(M)
+print(M[0][1])   
 
 # Recorridos:
 # - Por filas
@@ -55,14 +17,14 @@ s = 0
 for row in M:
     for val in row:
         s = s + val
-print("Sum M:", s)
+print(s)
 
 # - Por índices (i, j)
 total = 0
 for i in range(len(M)):
     for j in range(len(M[i])):
         total = total + M[i][j]
-print("Total by indices:", total)
+print(total)
 
 # Construcción programática de matriz r x c con ceros
 r = 3; c = 4
@@ -72,9 +34,7 @@ for i in range(r):
     for j in range(c):
         row.append(0)
     Z.append(row)
-print("Zero matrix:", Z)
-
-# Nota sobre alias: NO hagas Z = [[0]*c]*r (produciría alias de filas).
+print(Z)
 
 # ---------------------------------------------------------------
 # C) CONSTRUCCIÓN PROGRAMÁTICA: TABLAS Y PATRONES
@@ -87,7 +47,7 @@ for i in range(1, r+1):
     for j in range(1, c+1):
         row.append(i*j)
     T.append(row)
-print("Table:", T)
+print(T)
 
 # Patrón de tablero (caracteres)
 n = 5
@@ -100,7 +60,7 @@ for i in range(n):
         else:
             row.append(".")
     board.append(row)
-print("Board:", board)
+print( board)
 
 # ---------------------------------------------------------------
 # D) BÚSQUEDA, FILTRADO Y TRANSFORMACIÓN (SIN FUNCIONES)
@@ -112,7 +72,7 @@ for i in range(len(M)):
     for j in range(len(M[i])):
         if M[i][j] == v and pi == -1:
             pi = i; pj = j
-print("First pos of", v, "->", (pi, pj))
+print(v, (pi, pj))
 
 # Filtrar pares de una lista L en R (mantener orden)
 L = [5, 2, 8, 7, 4, 9]
@@ -120,7 +80,7 @@ R = []
 for x in L:
     if x % 2 == 0:
         R.append(x)
-print("Even filter:", R)
+print(R)
 
 # Transformar: sumar 1 a cada elemento de L en una NUEVA lista
 L2 = []
@@ -133,7 +93,7 @@ print("L2:", L2)
 # ---------------------------------------------------------------
 # Burbuja ascendente (bubble sort) sobre copia para no tocar original
 A = [7, 3, 9, 1, 4]
-B = A[:]  # copia
+B = A[:]  
 n = len(B)
 for i in range(n-1):
     for j in range(n-1-i):
@@ -141,7 +101,7 @@ for i in range(n-1):
             tmp = B[j]
             B[j] = B[j+1]
             B[j+1] = tmp
-print("Bubble asc:", B)
+print(B)
 
 # Selección ascendente (selection sort)
 C = A[:]
@@ -153,7 +113,7 @@ for i in range(n-1):
             min_pos = j
     # swap
     tmp = C[i]; C[i] = C[min_pos]; C[min_pos] = tmp
-print("Selection asc:", C)
+print(C)
 
 # ---------------------------------------------------------------
 # F) CONVERSIÓN TEXTO<->LISTA: SPLIT Y JOIN
@@ -161,15 +121,15 @@ print("Selection asc:", C)
 # split: separa una cadena en lista por separador (por defecto, espacios)
 line = "uno dos   tres"
 parts = line.split()  # maneja espacios múltiples
-print("split default:", parts)
+print(parts)
 
 csv = "a,b,c,,d"
 parts2 = csv.split(",")  # separador explícito
-print("split(','):", parts2)
+print(parts2)
 
 # join: une elementos de una lista de strings con un separador
 joined = "-".join(["A", "B", "C"])
-print("join ->", joined)
+print(joined)
 
 # ---------------------------------------------------------------
 # G) COMPRENSIONES DE LISTAS (BÁSICAS)
@@ -181,67 +141,23 @@ print("join ->", joined)
 nums = [1,2,3,4,5,6]
 # cuadrados de números pares
 squares_even = [x*x for x in nums if x % 2 == 0]
-print("squares_even:", squares_even)
+print(squares_even)
 
 # longitudes de palabras con 3+ letras
 words = ["sol", "luz", "programa", "if", "for"]
 lengths = [len(w) for w in words if len(w) >= 3]
-print("lengths >=3:", lengths)
+print(lengths)
 
 # ---------------------------------------------------------------
-# H) CASOS DE USO GUIADOS
+# H) FUNCIÓN MAP USANDO LAMBDA
 # ---------------------------------------------------------------
-# Caso 1) Leer matriz r x c de enteros y calcular suma por filas y por columnas
-# (Descomenta para usar en clase)
-# r = int(input("rows: "))
-# c = int(input("cols: "))
-# M = []
-# for i in range(r):
-#     row = []
-#     for j in range(c):
-#         row.append(int(input("M["+str(i)+"]["+str(j)+"]: ")))
-#     M.append(row)
-# # sumas por fila
-# row_sums = []
-# for i in range(r):
-#     s = 0
-#     for j in range(c):
-#         s = s + M[i][j]
-#     row_sums.append(s)
-# # sumas por columna
-# col_sums = []
-# for j in range(c):
-#     s = 0
-#     for i in range(r):
-#         s = s + M[i][j]
-#     col_sums.append(s)
-# print("Row sums:", row_sums)
-# print("Col sums:", col_sums)
+nums = [1,2,3,4,5,6]
+cubos = list(map(lambda x: x**3, nums))
+print(cubos)
 
-# Caso 2) Normalizar y tokenizar una línea (lower + split), contar tokens
-# line = input("Line: ").strip().lower()
-# toks = line.split()
-# print("Tokens:", toks, "Count:", len(toks))
-
-# Caso 3) Construir una nueva lista con elementos únicos (preservar orden)
-# L = input("Enter items separated by space: ").split()
-# R = []
-# for x in L:
-#     seen = False
-#     for y in R:
-#         if y == x: seen = True
-#     if not seen:
-#         R.append(x)
-# print("Unique:", R)
-
-# ---------------------------------------------------------------
-# I) BUENAS PRÁCTICAS Y DEPURACIÓN EN ESTRUCTURAS ANIDADAS
-# ---------------------------------------------------------------
-# - Evita alias involuntario al crear matrices: usa bucles para generar filas independientes.
-# - Verifica límites: len(M), len(M[i]) antes de acceder a M[i][j].
-# - En ordenamientos manuales, imprime trazas parciales (primeras/últimas iteraciones) si dudas.
-# - En comprensiones, mantén expresiones simples y legibles; prefiere bucles si la lógica crece.
-
+nums = ["1","2","3","4","5","6"]
+enteros = list(map(lambda x: int(x), nums))
+print(enteros)
 # ---------------------------------------------------------------
 # J) BANCO DE EJERCICIOS — SOLUCIONES COMPLETAS
 # ---------------------------------------------------------------
