@@ -3,26 +3,43 @@
 # B) LISTAS ANIDADAS (MATRICES): CREACIÓN Y RECORRIDO
 # ---------------------------------------------------------------
 # Matriz 3x3 fija:
+
 M = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
 ]
-print(M)
-print(M[0][1])   
+print(M[1])
+print(M[1][1])  # Extraer el número 5, posición 1,1  
 
 # Recorridos:
 # - Por filas
+M = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
 s = 0
-for row in M:
-    for val in row:
-        s = s + val
+for fila in M: #Ciclo más externo
+    for val in fila: #Ciclo interno
+        s += val
 print(s)
 
+# fila
+# Iteracion 1 -> fila = [1, 2, 3] Ciclo interno (val in fila) Val ->  1 Val -> 2 Val-> 3  
+# Iteracion 2 -> fila = [4, 5, 6] Ciclo interno (val in fila) Val ->  4 Val -> 5 Val-> 6 
+# Iteracion 3 -> fila = [7, 8, 9] Ciclo interno (val in fila) Val ->  7 Val -> 8 Val-> 9 
+
+M = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
 # - Por índices (i, j)
 total = 0
-for i in range(len(M)):
-    for j in range(len(M[i])):
+for i in range(len(M)): #range(3)
+    for j in range(len(M[i])): #range(3)
         total = total + M[i][j]
 print(total)
 
@@ -139,22 +156,146 @@ print(joined)
 #
 # Ejemplos:
 nums = [1,2,3,4,5,6]
-# cuadrados de números pares
-squares_even = [x*x for x in nums if x % 2 == 0]
+
+squares = []
+for x in nums:
+    squares.append(x**2)
+print(squares)
+
+# cuadrados de la lista
+squares_even = [x**2 for x in nums]
+# Eleva al cuadrado únicamente los números pares
+squares_even = [x**2 for x in nums if x % 2 == 0]
+# eleva al cuadrado los pares y al cubo los impares
+squares_even = [x**2 if x % 2 == 0 else x**3 for x in nums]
 print(squares_even)
 
 # longitudes de palabras con 3+ letras
 words = ["sol", "luz", "programa", "if", "for"]
-lengths = [len(w) for w in words if len(w) >= 3]
+lengths = [w for w in words if len(w) < 4]
+
+lista = []
+for w in words:
+    if len(w) < 4:
+        lista.append(w)
+
 print(lengths)
 
 # ---------------------------------------------------------------
 # H) FUNCIÓN MAP USANDO LAMBDA
 # ---------------------------------------------------------------
-nums = [1,2,3,4,5,6]
+nums1 = [7,8,9,10,11,12,13]
+nums2 = [1,2,3,4,5,6]
+
 cubos = list(map(lambda x: x**3, nums))
 print(cubos)
+
+lista = []
+for i, j in zip(nums1, nums2):
+    print(i, j)
+    lista.append((i+j))
+print(lista)
+
+sumas = list(map(lambda x, y: x+y, nums1, nums2))
+print(sumas)
 
 nums = ["1","2","3","4","5","6"]
 enteros = list(map(lambda x: int(x), nums))
 print(enteros)
+
+# Ejercicio 14 - Borrar columna i
+# Enunciado: Lee una matriz (lista de listas) y elimina la columna i seleccionada por el usuario
+# INPUT
+#[
+# [1,2,3],
+# [4,5,6],
+# [7,8,9]
+#]
+# Elimina 1
+
+# OUTPUT
+#[
+# [2,3],
+# [5,6],
+# [8,9]
+#]
+
+M = [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+]
+target = int(input())
+target = target - 1
+lista = []
+for i in range(len(M)):
+    lista2 = []
+    for j in range(len(M[i])):
+        if j != target:
+            lista2.append(M[i][j])
+    lista.append(lista2)
+
+for i in lista:
+    print(i)
+
+# Ejercicio 15 - Cambia el target por 0
+# Enunciado: Lee una matriz (lista de listas) y cambia el target del usuario por un 0
+# INPUT
+#[
+# [5,2,3],
+# [4,5,6],
+# [5,8,9]
+#]
+# Target -> 5
+
+# OUTPUT
+#[
+# [0,2,3],
+# [4,0,6],
+# [0,8,9]
+#]
+M = [
+        [5,2,3],
+        [4,5,6],
+        [5,8,9]
+]
+target = int(input())
+for i in range(len(M)):
+    for j in range(len(M[i])):
+        if M[i][j] == target:
+            M[i][j] = 0
+
+for i in M:
+    print(i)
+
+
+# .split() Tienes un texto, hace cortes en el caracter que tú le des y te devuelve una lista
+# . join() Tienes una lista, le das el caracter de union, y te devuelve un texto
+
+texto = "1, 2, 3, 4, 5, 6"
+lista = texto.split(",")
+lista = list(map(lambda x: x.strip(), lista))
+
+texto_final = ", ".join(lista)
+texto_final
+
+lista = eval(input())
+resultado = [lista[i] for i in range(len(lista)) if i % 2 == 0]
+print(str(resultado).replace(", ",","))
+
+lista = "[[1, 2, 3],[4, 5, 6],[7, 8, 9]]"
+lista_externa = []
+for i in range(len(lista)):
+    if (lista[i-1] == "[" and lista[i] == "[") or (lista[i-1] == "," and lista[i] == "["):
+        lista_interna = []
+        for j in range(i,len(lista)):
+            if lista[j].isdigit():
+                lista_interna.append(int(lista[j]))
+            if (lista[j-1] == "]" and lista[j] == ",") or (lista[j-1] == "]" and lista[j] == "]"):
+                break
+        lista_externa.append(lista_interna)
+
+print(lista_externa)
+        
+
+

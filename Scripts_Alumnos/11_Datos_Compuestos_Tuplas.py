@@ -39,33 +39,33 @@ print(a[:])     # copia superficial (nuevo objeto tupla)
 # Operadores:
 x = (1, 2)
 y = (3, 4, 5)
-print(x + y)     # concatenación
-print(y * 2)     # repetición 
+print(y + x)     # concatenación 
+print(y * 2)     # repetición (3, 4, 5, 3, 4, 5) 
 
 # ---------------------------------------------------------------
 # D) RECORRIDOS CON FOR/WHILE; PERTENENCIA 'in'
 # ---------------------------------------------------------------
-t = (3, 7, 2, 9)
+tupla = (3, 7, 2, 9)
 total = 0
-for val in t:
+for val in tupla:
     total = total + val
 print(total)
 
 total2 = 0
-for i in range(len(t)):
-    total2 = total2 + t[i]
+for i in range(len(tupla)):
+    total2 = total2 + tupla[i]
 print(total2)
 
 i = 0
 total3 = 0
 while i < len(t):
-    total3 = total3 + t[i]
+    total3 = total3 + tupla[i]
     i = i + 1
 print(total3)
 
 # Pertenencia:
-print(7 in t)
-print(10 in t)
+print(7 in tupla)
+print(10 in tupla)
 
 # ---------------------------------------------------------------
 # E) MÉTODOS Y OPERACIONES DISPONIBLES
@@ -78,7 +78,7 @@ print(10 in t)
 w = ("a", "b", "a", "c", "a")
 print(len(w))
 print(w.count("a"))
-print(w.index("b"))
+print(w.index("a"))
 #
 L = list(w)         # copia en lista
 L[0] = "A"          # modifico la lista (no la tupla original)
@@ -102,17 +102,34 @@ print(p, type(p))
 
 # Desempaquetado múltiple:
 a, b, c = p
-print(a, b, c)
+print(a)
+print(b)
+print(c)
 
 # Swap (intercambio) de variables usando tuplas:
 x = 1; y = 2
 x, y = y, x
 print(x, y)
 
+x = 1; y = 2
+x = y
+y = x
+print(x, y)
+
 # Desempaquetado con * (estrella) para capturar "el resto":
 t = (1, 2, 3, 4, 5, 6)
 first, *middle, last = t
 print(first, middle, last)
+# Sólo tomar el número 3 de la tupla:
+_, _, three, *rest = t
+print(three)
+# ¿Puedes tener más de una variable con *?
+tupla = (1, 2, 3, 4 ,5 ,6 ,7 ,8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+*inicio, dario, _, _, _, _, _ = tupla
+print(inicio, dario)
+
+first, *middle, mid2, last = t
+print(first, middle, mid2, last)
 # Nota: middle es una LISTA (lo permite Python); puedes convertirla a tupla si lo necesitas:
 middle_t = tuple(middle)
 print(middle_t, type(middle_t))
@@ -122,7 +139,7 @@ print(middle_t, type(middle_t))
 # ---------------------------------------------------------------
 # Tuplas anidadas:
 T = ( (1,2), (3,4,5), (6,) )
-print(T, T[1][2])
+print(T[1][2])
 
 # Tupla con lista interna (la tupla es inmutable, pero la lista sí cambia):
 U = (1, [10, 20], 3)

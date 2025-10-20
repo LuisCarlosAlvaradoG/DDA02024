@@ -319,5 +319,32 @@ while i < len(numeros):
     resultado.append(str(invertido))
     i += 1
 
+# Problema 3 Práctica 08
 
+lista = input()
+lista = lista[1:-1]
+lista_numeros = lista.split(",") if lista else []
+numeros = []
+for i in lista_numeros:
+    numeros.append(int(i.strip())) 
 
+# lista = input()
+# lista = eval(lista)
+
+resultado = []
+i = 0
+while i < len(numeros):
+    n = numeros[i]
+    invertido = 0
+    if n == 0:
+        invertido = 0
+    else:
+        while n > 0:
+            digito = n % 10
+            invertido = invertido * 10 + digito
+            n //= 10
+    resultado.append(str(invertido))
+    i += 1
+
+salida = "[" + ",".join(resultado) + "]"
+print(salida)
