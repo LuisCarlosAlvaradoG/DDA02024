@@ -299,3 +299,71 @@ print(lista_externa)
         
 
 
+n = int(input())
+cuadrados = [i**2 for i in range(1, n+1)]
+print(str(cuadrados).replace(", " , ","))
+
+n = int(input())
+cuadrados = [str(i**2) for i in range(1, n+1)]
+print("[" + ",".join(cuadrados) +"]")
+
+lista = eval(input().strip())
+mayusculas = [i.upper() for i in lista]
+print(str(mayusculas).replace(", ",","))
+
+lista = input()
+lista = lista[1:-1]
+palabras = lista.split(",") if lista else []
+palabras_final = []
+for i in palabras:
+    palabras_final.append(i[1:-1])
+
+mayusculas = [i.upper() for i in palabras_final]
+print(str(mayusculas).replace(", ",","))
+
+lista = input().strip()
+# [1,2,3,4,5]
+lista = lista[1:-1]
+numeros_str = lista.split(",") if lista else []
+numeros = [int(i) for i in numeros_str]
+numeros = list(map(lambda x: int(x), numeros_str))
+
+lista = input().strip()
+# ["apple","banana","orange"]
+lista = lista[1:-1]
+palabras_str = lista.split(",") if lista else []
+palabras = [i[1:-1] for i in palabras_str]
+
+vocales = "aeiou"
+suma_palabras = 0
+i = 0
+while i < len(palabras):
+    if palabras[i][0].lower() in vocales:
+        suma_palabras += 1
+    i += 1
+
+print(suma_palabras)
+
+#Problema 03
+lista = input().strip()
+# [56,78]
+lista = lista[1:-1]
+numeros_str = lista.split(",") if lista else []
+numeros = [int(i) for i in numeros_str]
+
+resultado = []
+i = 0
+while i < len(numeros):
+    n = numeros[i]
+    invertido = 0
+    if n == 0:
+        invertido = 0
+    else:
+        while n > 0:
+            digito = n % 10
+            invertido = invertido * 10 + digito
+            n //= 10
+    resultado.append(invertido)
+    i += 1
+
+print(str(resultado).replace(", ", ","))
