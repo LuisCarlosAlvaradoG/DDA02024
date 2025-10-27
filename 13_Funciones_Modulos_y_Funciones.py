@@ -1,43 +1,4 @@
-
-# ===============================================================
 # 13.- FUNCIONES (I): MÓDULOS Y FUNCIONES. ESPECIFICACIÓN E IMPLEMENTACIÓN.
-# Encabezado y parámetros.
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-#
-# Reglas pedagógicas de este archivo .py:
-#   - Introducimos FUNCIONES y MÓDULOS con un enfoque básico y riguroso.
-#   - SOLO usamos conceptos ya vistos: entrada/salida, números y cadenas, condicionales,
-#     try-except, while, for/range, contadores, acumuladores, centinelas, depurador,
-#     listas, tuplas y diccionarios.
-#   - Permitimos el uso de algunos módulos estándar (p.ej. 'math') solo para ilustrar
-#     el concepto de módulo, manteniéndonos en operaciones simples.
-#   - Evitamos temas aún no vistos: archivos, programación orientada a objetos,
-#     *args/**kwargs avanzados, recursión, librerías externas.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: ¿Qué es una función? especificación vs. implementación, encabezado y cuerpo
-#   C) Módulos: importación y espacios de nombres (con 'math')
-#   D) Parámetros: posicionales y argumentos por palabra clave (básico)
-#   E) Alcance: variables locales vs. globales (y precauciones)
-#   F) Casos de uso guiados
-#   G) Ventajas, desventajas y buenas prácticas
-#   H) Banco de ejercicios (SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Diferenciar ESPECIFICACIÓN (qué hace) de IMPLEMENTACIÓN (cómo lo hace).
-# - Escribir encabezados 'def nombre(parámetros):' con comentarios/docstrings claros.
-# - Llamar funciones con argumentos posicionales y por palabra clave.
-# - Comprender el concepto de módulo y espacio de nombres básico.
-# - Practicar depuración dentro de funciones con impresiones etiquetadas.
-
-# ---------------------------------------------------------------
 # B) TEORÍA: FUNCIÓN (ESPECIFICACIÓN VS IMPLEMENTACIÓN)
 # ---------------------------------------------------------------
 # FUNCIÓN: bloque reutilizable que recibe argumentos, realiza un procesamiento y
@@ -67,11 +28,11 @@
 # - Una función sin return explícito retorna None.
 #
 # Ejemplo simple:
-def add(a, b):
-    \"\"\"Suma dos números y retorna el resultado.\"\"\"
+def suma(a, b):
+    '''Suma dos números y retorna el resultado.'''
     return a + b
 
-x = add(10, 5)        # llamada
+x = suma(10, 5)        # llamada
 print("add(10,5) ->", x)  # 15
 
 # ---------------------------------------------------------------
@@ -84,17 +45,17 @@ print("add(10,5) ->", x)  # 15
 #
 # Demostración con el módulo estándar 'math' (operaciones numéricas básicas):
 import math
-print("math.pi =", math.pi)
-print("math.sqrt(25) =", math.sqrt(25))
-print("math.floor(3.7) =", math.floor(3.7))
+print(math.pi)
+print(math.sqrt(25))
+print(math.floor(3.7))
 
 # También podemos importar un nombre específico:
 from math import sqrt
-print("sqrt(81) =", sqrt(81))
+print(sqrt(81))
 
 # O usar un alias para el módulo:
 import math as m
-print("m.ceil(2.1) =", m.ceil(2.1))
+print(m.ceil(2.1))
 
 # Nota pedagógica: por claridad en cursos iniciales, preferimos 'import math' y luego 'math.algo'.
 
@@ -104,21 +65,19 @@ print("m.ceil(2.1) =", m.ceil(2.1))
 # En Python, al llamar una función, podemos pasar argumentos por posición o nombrarlos.
 
 def rectangle_area(width, height):
-    \"\"\"Retorna el área de un rectángulo width x height (ambos >= 0).\"\"\"
+    '''Retorna el área de un rectángulo width x height (ambos >= 0).'''
     if width < 0 or height < 0:
-        # Especificación: asumimos no-negativos. Aquí validamos y usamos try/except o if.
-        # Por simplicidad, devolvemos 0 si no cumple:
         return 0
     return width * height
 
 # Llamadas por posición:
-print("rect pos:", rectangle_area(3, 4))
+print(rectangle_area(3, 4))
 
 # Llamadas por palabra clave (keyword arguments):
-print("rect kw:", rectangle_area(height=4, width=3))
+print(rectangle_area(height=4, width=3))
 
 # Mezcla (posicionales primero, luego keywords):
-print("rect mixed:", rectangle_area(5, height=2))
+print(rectangle_area(5, height=2))
 
 # ---------------------------------------------------------------
 # E) ALCANCE: LOCALES VS. GLOBALES (Y PRECAUCIONES)
@@ -130,7 +89,7 @@ print("rect mixed:", rectangle_area(5, height=2))
 DEBUG = False  # bandera global de depuración
 
 def increment_all_by_one(L):
-    \"\"\"Suma 1 a cada entero de la LISTA L y retorna una NUEVA lista.\"\"\"
+    '''Suma 1 a cada entero de la LISTA L y retorna una NUEVA lista.'''
     if DEBUG:
         print("[DBG] original L:", L)
     R = []
@@ -150,7 +109,7 @@ print("after call, data still:", data)  # data NO se modificó (retornamos copia
 
 # Caso 1) Validación de entrada con función (retorna entero en [a..b] o None)
 def read_int_in_range(a, b):
-    \"\"\"Lee un entero usando input(); retorna el valor si está en [a..b], o None en caso contrario.\"\"\"
+    '''Lee un entero usando input(); retorna el valor si está en [a..b], o None en caso contrario.'''
     raw = input("Enter int ["+str(a)+".."+str(b)+"]: ")
     try:
         n = int(raw)
@@ -163,15 +122,14 @@ def read_int_in_range(a, b):
         print("Not an integer")
         return None
 
-# (Descomenta para usar en clase)
-# v = read_int_in_range(10, 20)
-# print("read_int_in_range ->", v)
+v = read_int_in_range(10, 20)
+print("read_int_in_range ->", v)
 
 # Caso 2) Resumen de lista: suma, promedio, min, max (retorno múltiple con tupla)
 def list_summary(nums):
-    \"\"\"Recibe una lista de números y retorna (suma, promedio, min, max).
-    Si la lista está vacía, retorna (0, None, None, None).
-    \"\"\"
+    '''Recibe una lista de números y retorna (suma, promedio, min, max).
+    Si la lista está vacía, retorna (0, None, None, None).'''
+    
     if len(nums) == 0:
         return (0, None, None, None)
     s = 0.0
