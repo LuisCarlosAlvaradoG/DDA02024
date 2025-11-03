@@ -1,42 +1,4 @@
-
-# ===============================================================
 # 15.- USO DE BIBLIOTECAS DE FUNCIONES (STANDARD LIBRARY BÁSICA)
-# Curso: Algoritmos y Programación (Python)
-# Duración sugerida: ~3 horas
-# Idioma de la teoría/comentarios: ESPAÑOL
-# Idioma del código: INGLÉS (por convención en programación)
-#
-# Reglas pedagógicas de este archivo .py:
-#   - En esta sesión practicamos el USO de bibliotecas de funciones del LENGUAJE (módulos
-#     de la biblioteca estándar), SIN usar librerías externas (estrictamente prohibido):
-#       * NO usar: numpy, pandas, matplotlib, ni 'alguna otra librería' externa.
-#   - SÍ usamos módulos estándar seleccionados: math, random, statistics, string.
-#   - SOLO conceptos ya vistos: I/O, números y cadenas, if/elif/else, try-except,
-#     while, for/range, contadores, acumuladores, centinelas, depurador (prints),
-#     listas, tuplas, diccionarios y funciones.
-#   - Sin archivos, sin POO, sin temas no vistos.
-#
-# Estructura del documento:
-#   A) Objetivos y alcance
-#   B) Teoría: ¿Qué es un módulo? importación y espacios de nombres
-#   C) Módulo math: constantes y funciones numéricas
-#   D) Módulo random: aleatoriedad y reproducibilidad (seed)
-#   E) Módulo statistics: medidas simples (mean, median, mode)
-#   F) Módulo string: utilidades de texto (constantes y limpieza)
-#   G) Casos de uso guiados
-#   H) Ventajas, desventajas y buenas prácticas
-#   I) Banco de ejercicios (SOLUCIONES completas)
-# ===============================================================
-
-# ---------------------------------------------------------------
-# A) OBJETIVOS Y ALCANCE
-# ---------------------------------------------------------------
-# - Comprender qué son los MÓDULOS y cómo importarlos de forma segura y clara.
-# - Usar funciones de 'math' (raíz, potencias, piso/techo, trigonometría básica, conversión grados-radianes).
-# - Usar 'random' para generar enteros/puntos aleatorios, muestreos simples y barajar listas.
-# - Usar 'statistics' para calcular media, mediana y moda de forma robusta (con try-except).
-# - Usar 'string' para constantes de caracteres y limpieza de texto junto con listas y diccionarios.
-
 # ---------------------------------------------------------------
 # B) TEORÍA: ¿QUÉ ES UN MÓDULO?
 # ---------------------------------------------------------------
@@ -56,7 +18,6 @@
 # - Evita importar con * (from modulo import *) en cursos iniciales porque contamina el espacio de nombres.
 #
 # - Depuración: puedes imprimir valores intermedios y usar una bandera DEBUG global para activar/desactivar trazas.
-DEBUG = False
 
 # ---------------------------------------------------------------
 # C) MÓDULO math: CONSTANTES Y FUNCIONES NUMÉRICAS
@@ -64,36 +25,36 @@ DEBUG = False
 import math
 
 # Constantes:
-print("math.pi ->", math.pi)          # π
-print("math.e  ->", math.e)           # e
+print(math.pi)          # π
+print(math.e)           # e
 
 # Raíz cuadrada (dominio: x >= 0):
 try:
-    print("sqrt(25) ->", math.sqrt(25))
+    print(math.sqrt(25))
     # print("sqrt(-1) ->", math.sqrt(-1))  # ValueError
 except ValueError:
     print("ValueError: dominio inválido")
 
 # Potencias y valores absolutos (pow, fabs):
-print("pow(2, 10) ->", math.pow(2, 10))   # 1024.0 (float)
-print("fabs(-3.5) ->", math.fabs(-3.5))   # 3.5
+print(math.pow(2, 10))   
+print(math.fabs(-3.5))   
 
 # Piso y techo (enteros):
-print("floor(3.7) ->", math.floor(3.7))   # 3
-print("ceil(3.1)  ->", math.ceil(3.1))    # 4
+print(math.floor(3.7))   
+print(math.ceil(3.1))    
 
 # Conversión grados<->radianes y trigonometría básica:
 deg = 30
 rad = math.radians(deg)
-print("radians(30°) ->", rad)
-print("sin(30°) ~", math.sin(rad))
-print("cos(30°) ~", math.cos(rad))
+print(rad)
+print(math.sin(rad))
+print(math.cos(rad))
 
 # Comparación con tolerancia (flotantes): math.isclose
 a = 0.1 + 0.2
 b = 0.3
 print("0.1+0.2 == 0.3 ?", (a == b))
-print("math.isclose(0.1+0.2, 0.3, rel_tol=1e-9) ->", math.isclose(a, b, rel_tol=1e-9))
+print(math.isclose(a, b, rel_tol=1e-9))
 
 # ---------------------------------------------------------------
 # D) MÓDULO random: ALEATORIEDAD Y REPRODUCIBILIDAD
@@ -104,22 +65,22 @@ import random
 random.seed(12345)
 
 # Enteros aleatorios en [a, b] (incluye extremos):
-print("randint(1,6) ->", random.randint(1,6))
+print(random.randint(1,6))
 
 # choice: elige un elemento de una lista no vacía
 faces = ["A", "B", "C", "D"]
-print("choice(faces) ->", random.choice(faces))
+print(random.choice(faces))
 
 # sample: muestra SIN reemplazo
-print("sample(range(10), 5) ->", random.sample(range(10), 5))
+print(random.sample(range(10), 5))
 
 # shuffle: baraja in-place una lista
 L = [1, 2, 3, 4, 5]
 random.shuffle(L)
-print("shuffled L ->", L)
+print(L)
 
 # uniform: flotantes en [a, b]
-print("uniform(0,1) ->", random.uniform(0,1))
+print(random.uniform(0,1))
 
 # ---------------------------------------------------------------
 # E) MÓDULO statistics: MEDIDAS SIMPLES
@@ -127,25 +88,17 @@ print("uniform(0,1) ->", random.uniform(0,1))
 import statistics
 
 data = [10, 20, 20, 30, 40, 40, 40]
-print("mean ->", statistics.mean(data))     # promedio
-print("median ->", statistics.median(data)) # mediana
-# mode: puede lanzar StatisticsError si hay empate o no hay modo único
-try:
-    print("mode ->", statistics.mode(data))
-except statistics.StatisticsError as e:
-    print("StatisticsError en mode:", str(e))
-
-# multimode: siempre retorna lista de modas (posible más de una)
-print("multimode ->", statistics.multimode(data))
+print(statistics.mean(data))     # promedio
+print(statistics.median(data)) # mediana
 
 # ---------------------------------------------------------------
 # F) MÓDULO string: CONSTANTES Y LIMPIEZA DE TEXTO
 # ---------------------------------------------------------------
 import string
 
-print("string.ascii_lowercase ->", string.ascii_lowercase)
-print("string.digits ->", string.digits)
-print("string.punctuation ->", string.punctuation)
+print(string.ascii_lowercase)
+print(string.digits)
+print(string.punctuation)
 
 # Limpieza de una línea: quitar puntuación y pasar a minúsculas
 line = "¡Hola, mundo! Programar es GENIAL: 100% diversión."
@@ -156,7 +109,7 @@ for ch in line:
         clean = clean + ch
 clean = clean.lower()
 toks = clean.split()
-print("clean tokens ->", toks)
+print(toks)
 
 # Contar frecuencias con diccionario:
 freq = {}
@@ -165,47 +118,44 @@ for t in toks:
         freq[t] = freq[t] + 1
     else:
         freq[t] = 1
-print("freq ->", freq)
+print(freq)
 
 # ---------------------------------------------------------------
 # G) CASOS DE USO GUIADOS
 # ---------------------------------------------------------------
 
 # Caso 1) Normalizar y tokenizar texto usando 'string' y construir histograma con dict
-# (Descomenta para usar en clase)
-# import string
-# s = input("Texto: ")
-# cleaned = ""
-# for ch in s:
-#     if ch not in string.punctuation and ch != "¡" and ch != "¿":
-#         cleaned = cleaned + ch
-# toks = cleaned.lower().split()
-# hist = {}
-# for w in toks:
-#     if w in hist: hist[w] = hist[w] + 1
-#     else: hist[w] = 1
-# print(hist)
+import string
+s = input("Texto: ")
+cleaned = ""
+for ch in s:
+    if ch not in string.punctuation and ch != "¡" and ch != "¿":
+        cleaned = cleaned + ch
+toks = cleaned.lower().split()
+hist = {}
+for w in toks:
+    if w in hist: hist[w] = hist[w] + 1
+    else: hist[w] = 1
+print(hist)
 
 # Caso 2) Simulación de dados con 'random' y resumen con 'statistics'
-# (Descomenta para usar en clase)
-# import random, statistics
-# random.seed(2024)  # fija la semilla para reproducción
-# N = int(input("Tiros de dado: "))
-# rolls = []
-# for _ in range(N):
-#     rolls.append(random.randint(1,6))
-# print("mean:", statistics.mean(rolls))
-# print("median:", statistics.median(rolls))
-# print("multimode:", statistics.multimode(rolls))
+import random, statistics
+random.seed(2024)  # fija la semilla para reproducción
+N = int(input("Tiros de dado: "))
+rolls = []
+for _ in range(N):
+    rolls.append(random.randint(1,6))
+print("mean:", statistics.mean(rolls))
+print("median:", statistics.median(rolls))
+print("multimode:", statistics.multimode(rolls))
 
 # Caso 3) Geometría simple con 'math': hipotenusa y ángulos
-# (Descomenta para usar en clase)
-# import math
-# a = float(input("cateto a: "))
-# b = float(input("cateto b: "))
-# hyp = math.sqrt(a*a + b*b)
-# ang = math.degrees(math.atan2(b, a))  # ángulo en grados
-# print("hipotenusa:", hyp, "ángulo:", ang)
+import math
+a = float(input("cateto a: "))
+b = float(input("cateto b: "))
+hyp = math.sqrt(a*a + b*b)
+ang = math.degrees(math.atan2(b, a))  # ángulo en grados
+print("hipotenusa:", hyp, "ángulo:", ang)
 
 # ---------------------------------------------------------------
 # H) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS
