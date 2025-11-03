@@ -35,6 +35,44 @@ def suma(a, b):
 x = suma(10, 5)        # llamada
 print("add(10,5) ->", x)  # 15
 
+# Ejercicio 05 - Crear un función para contar dígitos en cadena
+"Hola buenos días a mis 19 alumnos sobrevivientes"
+
+def suma_digitos(cadena):
+    count = 0
+    numero = "0123456789"
+    for i in cadena:
+        if i in numero:
+            count += 1
+    return count
+
+suma_digitos("Hola buenos días a mis 19 alumnos sobrevivientes")
+
+def candado_examen(c1, c2, c3):
+    if c1 + c2 + c3 < 180:
+        return "No pasa el candado"
+    else:
+        return "Si pasa el candado"
+    
+candado_examen(int(input()), int(input()), int(input()))
+
+def candado_examen(c1, c2, c3):
+    suma = c1 + c2 + c3
+    promedio = suma / 3
+    if suma < 180:
+        return "No pasa el candado", suma, promedio
+    else:
+        return "Si pasa el candado", suma, promedio
+    
+mensaje, suma, promedio = candado_examen(int(input()), int(input()), int(input()))
+
+parcial1 = [50, 60, 70, 75, 60]
+parcial2 = [80, 65, 40, 20, 30]
+parcial3 = [100, 90, 95, 80, 85]
+
+for cal1, cal2, cal3 in zip(parcial1, parcial2, parcial3):
+    print(candado_examen(cal1, cal2, cal3))
+
 # ---------------------------------------------------------------
 # C) MÓDULOS: IMPORTACIÓN Y ESPACIOS DE NOMBRES
 # ---------------------------------------------------------------
@@ -48,10 +86,11 @@ import math
 print(math.pi)
 print(math.sqrt(25))
 print(math.floor(3.7))
+print(math.ceil(3.1))
 
 # También podemos importar un nombre específico:
-from math import sqrt
-print(sqrt(81))
+from math import sqrt as a, ceil as b, floor as c
+print(a(81)) #math.sqrt
 
 # O usar un alias para el módulo:
 import math as m
