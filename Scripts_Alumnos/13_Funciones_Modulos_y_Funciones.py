@@ -48,11 +48,13 @@ def suma_digitos(cadena):
 
 suma_digitos("Hola buenos días a mis 19 alumnos sobrevivientes")
 
-def candado_examen(c1, c2, c3):
+
+def candado_examen(c1 = 60, c2 = 60, c3 = 60):
     if c1 + c2 + c3 < 180:
         return "No pasa el candado"
     else:
         return "Si pasa el candado"
+  
     
 candado_examen(int(input()), int(input()), int(input()))
 
@@ -64,13 +66,14 @@ def candado_examen(c1, c2, c3):
     else:
         return "Si pasa el candado", suma, promedio
     
-mensaje, suma, promedio = candado_examen(int(input()), int(input()), int(input()))
+mensaje, s, promedio = candado_examen(int(input()), int(input()), int(input()))
 
 parcial1 = [50, 60, 70, 75, 60]
 parcial2 = [80, 65, 40, 20, 30]
 parcial3 = [100, 90, 95, 80, 85]
 
 for cal1, cal2, cal3 in zip(parcial1, parcial2, parcial3):
+    # print(cal1, cal2, cal3)
     print(candado_examen(cal1, cal2, cal3))
 
 # ---------------------------------------------------------------
@@ -89,8 +92,8 @@ print(math.floor(3.7))
 print(math.ceil(3.1))
 
 # También podemos importar un nombre específico:
-from math import sqrt as a, ceil as b, floor as c
-print(a(81)) #math.sqrt
+from math import sqrt as s, ceil as c, floor as f
+print(s(81)) #math.sqrt
 
 # O usar un alias para el módulo:
 import math as m
@@ -125,9 +128,9 @@ print(area_rectangulo(5, height=2))
 # Variables definidas fuera pertenecen al ámbito GLOBAL del módulo.
 # Evitar depender de globales salvo necesidad; pasar datos por parámetros es más claro.
 
-DEBUG = False  # bandera global de depuración
+DEBUG = True  # bandera global de depuración
 
-def suma_1_a_todos(L):
+def suma_1_a_todos(L = [0, 0, 0]):
     '''Suma 1 a cada entero de la LISTA L y retorna una NUEVA lista.'''
     if DEBUG:
         print("[DBG] original L:", L)
@@ -141,6 +144,11 @@ def suma_1_a_todos(L):
 data = [1, 2, 3]
 print(suma_1_a_todos(data))
 print("after call, data still:", data)  # data NO se modificó (retornamos copia)
+
+def suma2():
+    a = 10
+    b = 5
+    return a + b
 
 # ---------------------------------------------------------------
 # F) CASOS DE USO GUIADOS

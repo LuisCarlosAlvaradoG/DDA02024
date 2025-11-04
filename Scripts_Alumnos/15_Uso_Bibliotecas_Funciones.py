@@ -36,7 +36,7 @@ except ValueError:
     print("ValueError: dominio inválido")
 
 # Potencias y valores absolutos (pow, fabs):
-print(math.pow(2, 10))   
+print(math.pow(2, 3)) # 2**3  
 print(math.fabs(-3.5))   
 
 # Piso y techo (enteros):
@@ -44,7 +44,7 @@ print(math.floor(3.7))
 print(math.ceil(3.1))    
 
 # Conversión grados<->radianes y trigonometría básica:
-deg = 30
+deg = 90
 rad = math.radians(deg)
 print(rad)
 print(math.sin(rad))
@@ -65,14 +65,15 @@ import random
 random.seed(12345)
 
 # Enteros aleatorios en [a, b] (incluye extremos):
-print(random.randint(1,6))
+print(random.randint(1,255))
+aleatorio = random.randint(1, 255)
 
 # choice: elige un elemento de una lista no vacía
 faces = ["A", "B", "C", "D"]
 print(random.choice(faces))
 
 # sample: muestra SIN reemplazo
-print(random.sample(range(10), 5))
+print(random.sample(range(1, 255), 3))
 
 # shuffle: baraja in-place una lista
 L = [1, 2, 3, 4, 5]
@@ -80,7 +81,7 @@ random.shuffle(L)
 print(L)
 
 # uniform: flotantes en [a, b]
-print(random.uniform(0,1))
+print(random.uniform(80, 400))
 
 # ---------------------------------------------------------------
 # E) MÓDULO statistics: MEDIDAS SIMPLES
@@ -174,3 +175,4 @@ print("hipotenusa:", hyp, "ángulo:", ang)
 # - Documenta supuestos (rango de datos, dominios) y captura excepciones (ValueError, StatisticsError).
 # - Para reproducibilidad con 'random', fija 'random.seed(...)' durante ejemplos y pruebas.
 # - Activa una bandera DEBUG para imprimir valores intermedios si hace falta.
+
