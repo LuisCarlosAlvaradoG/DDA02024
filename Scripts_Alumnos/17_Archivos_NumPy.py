@@ -107,9 +107,149 @@ def create_num_csv(path):
 create_num_csv("np_basic.csv")
 data = np.loadtxt("np_basic.csv", delimiter=",")
 print("loaded shape:", data.shape, "| head:\n", data[:5])
+# =============================================================================
+# I) ALEATORIOS (Generator, semilla, permutaciones, muestreos)
+# =============================================================================
+
+# --- Reproducibilidad básica (semilla fija) ---
+rng = np.random.default_rng(42)
+print(rng.integers(0, 10, size=5))
+
+# --- Enteros aleatorios ---
+# low inclusivo, high exclusivo
+nums = rng.integers(low=10, high=20, size=8, endpoint=False)
+print(nums)
+
+# --- Permutaciones / Mezclas ---
+arr = np.arange(10)
+perm = rng.permutation(arr)     # NO modifica arr
+rng.shuffle(arr)                # Mezcla IN-PLACE
+print("Permutation:", perm, "| Shuffled:", arr)
+
+# --- Muestreo con/ sin reemplazo ---
+poblacion = np.array(list("ABCDEFGHIJ"))
+muestra_sin = rng.choice(poblacion, size=5, replace=False)
+muestra_con = rng.choice(poblacion, size=5, replace=True)
+print("Sin reemplazo:", muestra_sin, "| Con reemplazo:", muestra_con)
+
+# --- Muestreo ponderado (probabilidades p deben sumar 1) ---
+p = np.array([0.20, 0.10, 0.05, 0.05, 0.10, 0.10, 0.10, 0.10, 0.10, 0.10])
+muestra_p = rng.choice(poblacion, size=6, replace=True, p=p)
+print("Muestreo ponderado:", muestra_p)
+
+# --- Barajar filas de una matriz (mantener columnas alineadas) ---
+X = rng.normal(0, 1, size=(5, 3))
+idx = rng.permutation(X.shape[0])
+X_barajado = X[idx]
+print("Índices de barajado:", idx)
+
+# =============================================================================
+# J) NUMPY — DISTRIBUCIONES (parámetros, ejemplos y usos típicos)
+# =============================================================================
+
+# -------------------------------
+# UNIFORME
+# -------------------------------
+a, b = 2.0, 5.0
+x_uniforme = rng.uniform(a, b, size=1000)
+print("Uniforme ~ U[2,5]: media≈", x_uniforme.mean(), " var≈", x_uniforme.var())
+
+# -------------------------------
+# NORMAL (Gaussiana)
+# -------------------------------
+mu, sigma = 10.0, 2.5
+x_normal = rng.normal(loc=mu, scale=sigma, size=2000)
+print("Normal N(10,2.5^2): media≈", x_normal.mean(), " var≈", x_normal.var())
+
+# Estandarizada (media 0, var 1)
+z = rng.standard_normal(2000)
+
+# -------------------------------
+# LOGNORMAL (si Y~N(mu, sigma^2) entonces X=exp(Y)~LogNormal)
+# -------------------------------
+mu_l, sigma_l = 0.0, 0.5
+x_logn = rng.lognormal(mean=mu_l, sigma=sigma_l, size=2000)
+print("LogNormal: media≈", x_logn.mean(), " mediana≈", np.median(x_logn))
+
+# -------------------------------
+# EXPONENCIAL (lambda = 1/scale)
+# -------------------------------
+scale = 3.0              # media = 3.0
+x_exp = rng.exponential(scale=scale, size=3000)
+print("Exponencial(scale=3): media≈", x_exp.mean())
+
+# -------------------------------
+# GAMMA (shape=k, scale=θ) — suma de k exponenciales (si k entero)
+# -------------------------------
+k, theta = 2.0, 2.0
+x_gamma = rng.gamma(shape=k, scale=theta, size=3000)
+print("Gamma(k=2,θ=2): media teórica=kθ=4 -> empírica≈", x_gamma.mean())
+
+# -------------------------------
+# BETA (en [0,1]) — útil para proporciones
+# -------------------------------
+a, b = 2.0, 5.0
+x_beta = rng.beta(a, b, size=5000)
+print("Beta(2,5): media teórica=a/(a+b)=0.2857 -> empírica≈", x_beta.mean())
+
+# -------------------------------
+# CHI-CUADRADO (k grados de libertad)
+# -------------------------------
+k = 5
+x_chi2 = rng.chisquare(df=k, size=4000)
+print("Chi^2(df=5): media teórica=df=5 -> empírica≈", x_chi2.mean())
+
+# -------------------------------
+# t DE STUDENT (df grados de libertad)
+# -------------------------------
+df = 10
+x_t = rng.standard_t(df=df, size=4000)
+print("t-Student(df=10): media≈", x_t.mean())
+
+# -------------------------------
+# BINOMIAL (n ensayos, p éxito) — # éxitos
+# -------------------------------
+n, p = 20, 0.3
+x_bin = rng.binomial(n=n, p=p, size=5000)
+print("Binomial(n=20,p=0.3): media teórica=np=6 -> empírica≈", x_bin.mean())
+
+# -------------------------------
+# POISSON (lambda) — recuento de eventos por intervalo
+# -------------------------------
+lam = 4.0
+x_poi = rng.poisson(lam=lam, size=5000)
+print("Poisson(λ=4): media teórica=4 -> empírica≈", x_poi.mean())
+
+# -------------------------------
+# GEOMÉTRICA (p) — # ensayos hasta 1er éxito (soporte 1,2,3,...)
+# -------------------------------
+p = 0.2
+x_geo = rng.geometric(p=p, size=5000)
+print("Geométrica(p=0.2): media teórica=1/p=5 -> empírica≈", x_geo.mean())
+
+# -------------------------------
+# MULTINOMIAL (n, p) — vector de recuentos en k categorías
+# -------------------------------
+p = np.array([0.5, 0.3, 0.2])
+x_multi = rng.multinomial(n=20, pvals=p, size=3)  # 3 repeticiones
+print("Multinomial (3 corridas, suman 20 c/u):\n", x_multi, "\nSuma filas:", x_multi.sum(axis=1))
+
+# -------------------------------
+# PROB-UTILIDADES: UÁR y elección ponderada
+# -------------------------------
+# Escenario: asignar aleatoriamente “expertos” a tickets con pesos por prioridad
+tickets = np.arange(8)
+expertos = np.array(["Ana", "Luis", "Maya"])
+pesos = np.array([0.6, 0.3, 0.1])  # Ana más probable
+
+asignado = []
+for _ in tickets:
+    asignado.append(rng.choice(expertos, p=pesos))
+asignado = np.array(asignado)
+print("Asignación ponderada:", asignado)
 
 # ---------------------------------------------------------------
-# I) CASOS GUIADOS
+# K) CASOS GUIADOS
 # ---------------------------------------------------------------
 def minmax_scale(v):
     """Devuelve (v - min)/(max - min). Maneja caso max==min."""
