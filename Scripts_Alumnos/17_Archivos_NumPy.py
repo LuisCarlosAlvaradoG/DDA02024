@@ -10,9 +10,15 @@ b = np.array([[1.0, 2.0], [3.0, 4.0]])
 print("a:", a, "| dtype:", a.dtype, "| shape:", a.shape)
 print("b:\n", b, "| dtype:", b.dtype, "| shape:", b.shape)
 
+x = [1, 2, 3]
+y = []
+for numeros in x:
+    y.append(numeros + 1)
+y
+
 zeros = np.zeros((2, 3))
 ones  = np.ones((2, 3))
-ar    = np.arange(0, 10, 2)           # [0,2,4,6,8]
+ar    = np.arange(0, 10, 2)           # [0,2,4,6,8]  (inicio, fin(sin incluir), paso)
 lin   = np.linspace(0.0, 1.0, 5)      # 5 puntos entre 0 y 1
 full7 = np.full((2,2), 7)
 eye3  = np.eye(3, dtype=int)
@@ -32,11 +38,14 @@ print(M[1,2])
 print(M[0:2,1:3])
 
 # Vistas comparten memoria:
-s = v[2:7]; s[:] = -1
+s = v[2:7]
+s[:] = -1
 print(v)  # también cambia v
+s[0] = 100
 
 # Copia explícita:
-v_copy = v.copy(); v_copy[0]=999
+v_copy = v.copy()
+v_copy[0]=999
 print(v_copy, v)
 
 # 3D básico (didáctico):
@@ -50,8 +59,15 @@ x = np.array([1,2,3,4.])
 y = np.array([10,20,30,40.])
 print(x+y, x*y,  x**2)
 
+x_lista = [1, 2, 3, 4]
+cuadrados = []
+for i in x_lista:
+    cuadrados.append(i**2)
+cuadrados
+
 # Broadcasting (3,1) + (3,) => (3,3)
 col = np.array([[1],[2],[3]])
+# col = np.array([1, 2, 3])
 row = np.array([10,20,30])
 print(col + row)
 
@@ -90,7 +106,7 @@ X = np.arange(6).reshape(2,3)
 Y = np.arange(6,12).reshape(2,3)
 print(np.vstack([X,Y]))
 print(np.hstack([X,Y]))
-print(np.concatenate([X,Y], axis=1))
+print(np.concatenate([X,Y], axis = 1))
 
 # ---------------------------------------------------------------
 # H) I/O CON NUMPY: loadtxt, genfromtxt, savetxt
