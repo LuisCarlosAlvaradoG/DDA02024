@@ -88,9 +88,10 @@ print(A.argmin(), A.argmax())
 # F) MASKS, WHERE, UNIQUE, SET OPS
 # ---------------------------------------------------------------
 B = np.array([3,8,1,5,8,2,8])
-mask = (B==8)
+mask = (B%2==0)
 print(mask, B[mask])
 print(np.where(B>3,1,0))
+print(np.where(B>3,B + 1,0))
 print(np.unique(B))
 
 C = np.array([1,2,3,4,5])
@@ -104,9 +105,11 @@ print(np.setdiff1d(C,D))
 # ---------------------------------------------------------------
 X = np.arange(6).reshape(2,3)
 Y = np.arange(6,12).reshape(2,3)
+Z = np.vstack([X,Y])
 print(np.vstack([X,Y]))
+Z = np.hstack([X,Y])
 print(np.hstack([X,Y]))
-print(np.concatenate([X,Y], axis = 1))
+print(np.concatenate([X,Y], axis = 0))
 
 # ---------------------------------------------------------------
 # H) I/O CON NUMPY: loadtxt, genfromtxt, savetxt
@@ -117,11 +120,11 @@ def create_num_csv(path):
     x = np.linspace(0.0, 9.0, 10).reshape(-1,1)
     y = x*2.5 + 3.0
     data = np.hstack([ids, x, y])
-    np.savetxt(path, data, delimiter=",", fmt="%.6f")
+    np.savetxt(path, data, delimiter=",", fmt="%.6f") # Con esto guardas el excel
 
 # Uso sugerido en clase:
 create_num_csv("np_basic.csv")
-data = np.loadtxt("np_basic.csv", delimiter=",")
+data = np.loadtxt("np_basic.csv", delimiter=",") # Con esto cargas el excel
 print("loaded shape:", data.shape, "| head:\n", data[:5])
 # =============================================================================
 # I) ALEATORIOS (Generator, semilla, permutaciones, muestreos)
@@ -135,12 +138,14 @@ print(rng.integers(0, 10, size=5))
 # low inclusivo, high exclusivo
 nums = rng.integers(low=10, high=20, size=8, endpoint=False)
 print(nums)
+nums = rng.integers(low=10, high=19, size=8)
+print(nums)
 
 # --- Permutaciones / Mezclas ---
 arr = np.arange(10)
 perm = rng.permutation(arr)     # NO modifica arr
-rng.shuffle(arr)                # Mezcla IN-PLACE
-print("Permutation:", perm, "| Shuffled:", arr)
+rng.shuffle(arr)                # Mezcla IN-PLACE, No permite guardarlo en una nueva variable
+print("Permutation:", perm, "| Shuffled:", arr) 
 
 # --- Muestreo con/ sin reemplazo ---
 poblacion = np.array(list("ABCDEFGHIJ"))
@@ -149,7 +154,7 @@ muestra_con = rng.choice(poblacion, size=5, replace=True)
 print("Sin reemplazo:", muestra_sin, "| Con reemplazo:", muestra_con)
 
 # --- Muestreo ponderado (probabilidades p deben sumar 1) ---
-p = np.array([0.20, 0.10, 0.05, 0.05, 0.10, 0.10, 0.10, 0.10, 0.10, 0.10])
+p = np.array([0.55, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05])
 muestra_p = rng.choice(poblacion, size=6, replace=True, p=p)
 print("Muestreo ponderado:", muestra_p)
 
@@ -167,14 +172,14 @@ print("Índices de barajado:", idx)
 # UNIFORME
 # -------------------------------
 a, b = 2.0, 5.0
-x_uniforme = rng.uniform(a, b, size=1000)
+x_uniforme = rng.uniform(a, b, size=1_000_000)
 print("Uniforme ~ U[2,5]: media≈", x_uniforme.mean(), " var≈", x_uniforme.var())
 
 # -------------------------------
 # NORMAL (Gaussiana)
 # -------------------------------
 mu, sigma = 10.0, 2.5
-x_normal = rng.normal(loc=mu, scale=sigma, size=2000)
+x_normal = rng.normal(loc=mu, scale=sigma, size=100_000)
 print("Normal N(10,2.5^2): media≈", x_normal.mean(), " var≈", x_normal.var())
 
 # Estandarizada (media 0, var 1)

@@ -22,7 +22,8 @@ def problem1(data):
     #Escribe aquí tu código
     # data: dict con clave "A"
     # Debe retornar la suma de la columna A
-    pass
+    df = pd.DataFrame(data)
+    return df["A"].sum()
 
 # TESTS Problema 1
 _t1_in = [{"A":[1,2,3,4]},{"A":[10,20,30]},{"A":[5]},{"A":[0,0,0]},{"A":[1,1,1,1,1]},{"A":[2,4,6,8]},{"A":[100,200]},{"A":[7,3,5]},{"A":[10,0,10,0]},{"A":[9,9,9,9]}]
@@ -51,7 +52,9 @@ def problem2(data, threshold):
     # data: dict con "Name" y "Age"
     # threshold: entero
     # Debe retornar DataFrame con filas donde Age > threshold
-    pass
+    df = pd.DataFrame(data)
+    df_filtered = df[df["Age"] > threshold].reset_index(drop=True)
+    return df_filtered
 
 # TESTS Problema 2
 _t2_data = [
@@ -113,7 +116,9 @@ def problem3(data):
     #Escribe aquí tu código
     # data: dict con "X" y "Y"
     # Debe retornar DataFrame con columnas X, Y, Total
-    pass
+    df = pd.DataFrame(data)
+    df["Total"] = df["X"] + df["Y"]
+    return df
 
 # TESTS Problema 3
 _t3_data = [
@@ -164,7 +169,10 @@ def problem4(data):
     #Escribe aquí tu código
     # data: dict con "Category" y "Value"
     # Debe retornar DataFrame con (Category, sum(Value))
-    pass
+    df = pd.DataFrame(data)
+    grouped = df.groupby("Category", as_index=False)["Value"].sum()
+    grouped = grouped.sort_values("Category").reset_index(drop=True)
+    return grouped
 
 # TESTS Problema 4
 _t4_data = [
@@ -215,7 +223,9 @@ def problem5(data):
     #Escribe aquí tu código
     # data: dict con "Name" y "Score"
     # Debe retornar una Series con la fila (Name, Score) de máximo Score
-    pass
+    df = pd.DataFrame(data)
+    idx = df["Score"].idxmax()
+    return df.loc[idx]
 
 # TESTS Problema 5
 _t5_data = [
@@ -256,7 +266,9 @@ def problem6(data):
     #Escribe aquí tu código
     # data: dict con "Product" y "Price"
     # Debe retornar DataFrame ordenado por Price
-    pass
+    df = pd.DataFrame(data)
+    df_sorted = df.sort_values("Price", kind="mergesort").reset_index(drop=True)
+    return df_sorted
 
 # TESTS Problema 6
 _t6_data = [
@@ -307,7 +319,9 @@ def problem7(data):
     #Escribe aquí tu código
     # data: dict con "Color"
     # Debe retornar un Series {color:count}
-    pass
+    df = pd.DataFrame(data)
+    counts = df["Color"].value_counts(sort=False)
+    return counts
 
 # TESTS Problema 7
 _t7_in = [
@@ -358,7 +372,9 @@ def problem8(data):
     #Escribe aquí tu código
     # data: dict con "ID" y "Value"
     # Debe retornar DataFrame de filas duplicadas (ID repetido)
-    pass
+    df = pd.DataFrame(data)
+    dup = df[df.duplicated("ID", keep=False)].reset_index(drop=True)
+    return dup
 
 # TESTS Problema 8
 _t8_data = [
@@ -409,7 +425,10 @@ def problem9(data):
     #Escribe aquí tu código
     # data: dict con "Category" y "Value"
     # Debe retornar DataFrame con (Category,sum(Value))
-    pass
+    df = pd.DataFrame(data)
+    grouped = df.groupby("Category", as_index=False)["Value"].sum()
+    grouped = grouped.sort_values("Category").reset_index(drop=True)
+    return grouped
 
 # TESTS Problema 9
 _t9_data = [
@@ -460,7 +479,9 @@ def problem10(data):
     #Escribe aquí tu código
     # data: dict con "Salary"
     # Debe retornar promedio redondeado a 2 decimales
-    pass
+    df = pd.DataFrame(data)
+    mean_val = df["Salary"].mean()
+    return round(float(mean_val), 2)
 
 # TESTS Problema 10
 _t10_data = [

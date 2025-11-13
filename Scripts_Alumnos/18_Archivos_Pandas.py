@@ -24,13 +24,20 @@ df = pd.DataFrame({"id":[1,2,3],"name":["Ana","Luis","Marta"],"age":[21,19,22]})
 print("DataFrame df:\n", df)
 print("dtypes:\n", df.dtypes)
 
+# Acceder a elementos del DataFrame de la columna age
+df["age"]
+df.age
+df.loc[0, "age"]
+df.iloc[1, 2]
+
+df.iloc[1:3, 1:3]
 # ---------------------------------------------------------------
 # C) READ/WRITE CSV (DATASETS PRE-CARGADOS)
 # ---------------------------------------------------------------
 def create_students_csv(path):
     rows = [
         "id,name,age,math,prog,city",
-        "1,Ana,21,88,92,CDMX",
+        "1,Ana,21,88,92,",
         "2,Luis,19,75,81,Monterrey",
         "3,Marta,22,95,89,Guadalajara",
         "4,Juan,20,62,70,CDMX",
@@ -40,8 +47,9 @@ def create_students_csv(path):
         for r in rows: f.write(r+"\n")
 
 create_students_csv("students.csv")
+# Supongamos que el students.csv lo hice a mano
 df = pd.read_csv("students.csv")
-print(df.head())
+print(df.head(2))
 df.to_csv("students_out.csv", index=False)
 
 # ---------------------------------------------------------------
@@ -50,15 +58,21 @@ df.to_csv("students_out.csv", index=False)
 df["avg"] = (df["math"] + df["prog"]) / 2.0
 df["status"] = np.where(df["avg"] >= 80, "OK", "LOW")
 print(df[df["city"]=="CDMX"])
-df["age"] = df["age"].astype(int)
-df["city"] = df["city"].fillna("NA")
+
+print(df[df["age"]>20])
+
+# El AND es & y el OR es | NOT es ~
+print(df[(df["status"] == "OK") & (df["math"] > 80)])
+
+df["avg"] = df["avg"].astype(int)
+df["city"] = df["city"].fillna(df["city"].mode())
 
 # ---------------------------------------------------------------
 # E) value_counts, sort_values, describe
 # ---------------------------------------------------------------
 print(df["city"].value_counts())
 print(df.sort_values(by="avg", ascending=False))
-print(df.describe())
+print(df.drop(columns = ["id"]).describe())
 
 # ---------------------------------------------------------------
 # F) GROUPBY + AGG; PIVOT_TABLE
