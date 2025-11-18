@@ -50,13 +50,17 @@ create_students_csv("students.csv")
 # Supongamos que el students.csv lo hice a mano
 df = pd.read_csv("students.csv")
 print(df.head(2))
-df.to_csv("students_out.csv", index=False)
+df.to_csv("students.csv", index=False)
 
 # ---------------------------------------------------------------
 # D) SELECCIÓN, FILTRADO, ASIGNACIÓN; NA/ASTYPE
 # ---------------------------------------------------------------
 df["avg"] = (df["math"] + df["prog"]) / 2.0
-df["status"] = np.where(df["avg"] >= 80, "OK", "LOW")
+df["status"] = np.where(df["avg"] >= 80, "1", "0")
+# Agregar una nueva fila
+df.loc[len(df)] = [6, "Eva", 20, 85, 90, "CDMX", 87.5, "1"]
+
+# df.to_csv("students_copy.csv", index=False)
 print(df[df["city"]=="CDMX"])
 
 print(df[df["age"]>20])
@@ -71,17 +75,22 @@ df["city"] = df["city"].fillna(df["city"].mode())
 # E) value_counts, sort_values, describe
 # ---------------------------------------------------------------
 print(df["city"].value_counts())
-print(df.sort_values(by="avg", ascending=False))
-print(df.drop(columns = ["id"]).describe())
+print(df.sort_values(by="avg", ascending=True))
+print(df.describe())
+
+df_copy = df.drop(columns = ["status"])
 
 # ---------------------------------------------------------------
 # F) GROUPBY + AGG; PIVOT_TABLE
 # ---------------------------------------------------------------
-print(df.groupby("city")["avg"].mean())
+print(df.groupby("city")["age"].mean())
+print(df.groupby("city").min())
 print(df.groupby("city").value_counts())
 print(df.groupby("city").get_group("Guadalajara"))
-pt = pd.pivot_table(df, values="avg", index="city", aggfunc="mean")
+pt = pd.pivot_table(df, values="age", index="status", aggfunc="mean")
 print(pt)
+
+
 
 # ---------------------------------------------------------------
 # G) MERGE/JOIN Y CONCAT
@@ -100,7 +109,16 @@ print(sales)
 print(customers)
 merged = pd.merge(sales, customers, on="cid", suffixes=("_sale","_cust"))
 print(merged)
-print(pd.concat([sales.head(2), sales.tail(2)], ignore_index=True))
+
+def create_sales_customers_csv2(sales_path):
+    srows = ["sid,cid,amount,city","20,8,120,Puebla","21,9,50,Veracruz","22,10,210,CDMX","23,11,90,Monterrey"]
+    with open(sales_path,"w",encoding="utf-8") as f:
+        for r in srows: f.write(r+"\n")
+create_sales_customers_csv2("sales2.csv")
+sales2 = pd.read_csv("sales2.csv")
+
+
+print(pd.concat([sales, sales2], ignore_index=True))
 
 # ---------------------------------------------------------------
 # H) INTEROPERABILIDAD PANDAS + NUMPY

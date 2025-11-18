@@ -1,0 +1,6 @@
+id,name,age,math,prog,city,avg,status
+1,Ana,21,88,92,,90.0,OK
+2,Luis,19,75,81,Monterrey,78.0,LOW
+3,Marta,22,95,89,Guadalajara,92.0,OK
+4,Juan,20,62,70,CDMX,66.0,LOW
+5,Lia,21,70,85,Guadalajara,77.5,LOW
