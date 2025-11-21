@@ -10,7 +10,7 @@ Pasos para usarlo:
 1) Instala streamlit:  pip install streamlit
 2) Guarda este archivo como: 21_Streamlit.py
 3) Coloca diabetes_dataset.csv en la misma carpeta.
-4) En la terminal, ejecuta:  streamlit run 21_Streamlit.py
+4) En la terminal, ejecuta: .\ayp\Scripts\python.exe -m streamlit run 21_Streamlit.py
 """
 
 # ==========================================================

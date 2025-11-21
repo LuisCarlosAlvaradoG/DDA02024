@@ -45,9 +45,9 @@ plt.rcParams["axes.grid"] = True
 # d) Imprime el número de filas y columnas (shape).
 
 # === TU CÓDIGO AQUÍ ===
-# df = ...
-# print(...)
-# ...
+df = pd.read_csv("diabetes_dataset.csv")
+print(df.head()) #df.tail()
+print(df.shape)
 
 # ==========================================================
 # EJERCICIO 1. Exploración básica con pandas
@@ -57,14 +57,14 @@ plt.rcParams["axes.grid"] = True
 # c) Obtén la distribución de la variable 'gender' (value_counts).
 
 # === TU CÓDIGO AQUÍ ===
-# desc = ...
-# print(desc)
-# dist_diabetes = ...
-# print(dist_diabetes)
-# dist_diabetes_prop = ...
-# print(dist_diabetes_prop)
-# dist_gender = ...
-# print(dist_gender)
+desc = df.describe()
+print(desc)
+dist_diabetes = df["diabetes"].value_counts()
+print(dist_diabetes)
+dist_diabetes_prop = df["diabetes"].value_counts(normalize=True)
+print(dist_diabetes_prop)
+dist_gender = df["gender"].value_counts()
+print(dist_gender)
 
 # ==========================================================
 # EJERCICIO 2. Trabajo con NumPy y máscaras booleanas
@@ -77,13 +77,13 @@ plt.rcParams["axes.grid"] = True
 #    - La media de edad de pacientes sin diabetes.
 
 # === TU CÓDIGO AQUÍ ===
-# age_np = ...
-# mean_age = ...
-# std_age = ...
-# median_age = ...
-# mask_diab = ...
-# mean_age_diab = ...
-# mean_age_no_diab = ...
+age_np = df["age"].to_numpy()
+mean_age = np.mean(age_np)
+std_age = np.std(age_np)
+median_age = np.median(age_np)
+mask_diab = df["diabetes"].to_numpy() == 1
+mean_age_diab = np.mean(age_np[mask_diab])
+mean_age_no_diab = np.mean(age_np[~mask_diab]) #&AND |OR ~NOT
 
 # ==========================================================
 # EJERCICIO 3. Índice de riesgo con NumPy (feature engineering)
@@ -101,14 +101,14 @@ plt.rcParams["axes.grid"] = True
 # c) Agrega este índice al DataFrame como columna 'risk_index'.
 
 # === TU CÓDIGO AQUÍ ===
-# bmi = ...
-# hb = ...
-# glu = ...
-# bmi_norm = ...
-# hb_norm = ...
-# glu_norm = ...
-# risk_index_np = ...
-# df["risk_index"] = ...
+bmi = df["bmi"].to_numpy()
+hb = df["hbA1c_level"].to_numpy()
+glu = df["blood_glucose_level"].to_numpy()
+bmi_norm = (bmi - bmi.mean()) / bmi.std()
+hb_norm = (hb - hb.mean()) / hb.std()
+glu_norm = (glu - glu.mean()) / glu.std()
+risk_index_np = 0.4 * bmi_norm + 0.3 * hb_norm + 0.3 * glu_norm
+df["risk_index"] = risk_index_np
 
 # ==========================================================
 # EJERCICIO 4. Agrupaciones con pandas (groupby)
@@ -118,11 +118,10 @@ plt.rcParams["axes.grid"] = True
 # c) Ordena los resultados anteriores de mayor a menor tasa de diabetes.
 
 # === TU CÓDIGO AQUÍ ===
-# tasa_diabetes_gender = ...
-# print(tasa_diabetes_gender)
-# stats_gender = ...
-# print(stats_gender)
-
+tasa_diabetes_gender = df.groupby("gender")["diabetes"].mean().sort_values(ascending=False)
+print(tasa_diabetes_gender)
+stats_gender = df.groupby("gender")[["age","bmi","risk_index"]].mean().sort_values(by="age",ascending=False)
+print(stats_gender)
 
 # ==========================================================
 # EJERCICIO 5. Tablas de contingencia (crosstab)
@@ -132,10 +131,10 @@ plt.rcParams["axes.grid"] = True
 #    las proporciones de diabéticos dentro de cada categoría de 'hypertension'.
 
 # === TU CÓDIGO AQUÍ ===
-# tab_htn = ...
-# print(tab_htn)
-# tab_htn_prop = ...
-# print(tab_htn_prop)
+tab_htn = pd.crosstab(df["hypertension"], df["diabetes"])
+print(tab_htn)
+tab_htn_prop = pd.crosstab(df["hypertension"], df["diabetes"], normalize="columns")
+print(tab_htn_prop)
 
 
 

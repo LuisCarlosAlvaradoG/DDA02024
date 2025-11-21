@@ -6,6 +6,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib
 
 # ---------------------------------------------------------------
 # B) FUNDAMENTOS PYLOT (plt) — (plt.show() comentado para scripts)
@@ -40,18 +41,18 @@ plt.show()
 # Histograma
 data = np.random.randn(200)
 plt.figure()
-plt.hist(data, bins=20)
+plt.hist(data, bins=15)
 plt.title("Histogram")
 plt.show()
 
 # Boxplot
 plt.figure()
-plt.boxplot([np.random.randn(100), np.random.randn(100)+1.5])
+plt.boxplot([np.random.randn(100), np.random.randn(100)+1.5, np.random.randn(100)-1.5])
 plt.title("Two-box comparison")
 plt.show()
 
 # Subplots
-fig, ax = plt.subplots(1,2, figsize=(8,3))
+fig, ax = plt.subplots(2,1, figsize=(5,12))
 ax[0].plot(x, y)
 ax[0].set_title("Sin")
 ax[1].plot(x, np.cos(x))
@@ -71,6 +72,7 @@ plt.figure()
 plt.plot(np.arange(12), sales, marker="o")
 plt.xticks(np.arange(12), months)
 plt.title("Monthly Sales (NumPy)")
+plt.savefig("sales_plot.png")
 plt.show()
 
 # Con pandas (barras):
@@ -82,6 +84,18 @@ plt.figure()
 plt.plot(sales)
 plt.title("Savefig example")
 plt.savefig("sales_plot.png")
+
+#Generar un gráfico 3d de muestra:
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = np.sqrt(X**2 + Y**2)
+ax.plot_surface(X, Y, Z, cmap='viridis')
+plt.title("3D Surface Plot")
+plt.show()
 
 # ---------------------------------------------------------------
 # D) CASOS GUIADOS CON DATASETS
