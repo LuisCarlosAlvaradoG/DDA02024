@@ -6,7 +6,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib
 
 # ---------------------------------------------------------------
 # B) FUNDAMENTOS PYLOT (plt) — (plt.show() comentado para scripts)
@@ -34,25 +33,27 @@ plt.show()
 labels = ["A","B","C"]
 vals = [10, 15, 7]
 plt.figure()
-plt.bar(labels, vals)
+plt.barh(labels, vals)
+for index, value in enumerate(vals):
+    plt.text(value, index, str(value), ha='left', va='center')
 plt.title("Bar chart")
 plt.show()
 
 # Histograma
-data = np.random.randn(200)
+data = np.random.randn(100_000)
 plt.figure()
-plt.hist(data, bins=15)
+plt.hist(data, bins=200)
 plt.title("Histogram")
 plt.show()
 
 # Boxplot
 plt.figure()
-plt.boxplot([np.random.randn(100), np.random.randn(100)+1.5, np.random.randn(100)-1.5])
+plt.boxplot([np.random.randn(100_000), np.random.randn(100_000)+1.5, np.random.randn(100_000)-1.5])
 plt.title("Two-box comparison")
 plt.show()
 
 # Subplots
-fig, ax = plt.subplots(2,1, figsize=(5,12))
+fig, ax = plt.subplots(1,2, figsize=(12,5))
 ax[0].plot(x, y)
 ax[0].set_title("Sin")
 ax[1].plot(x, np.cos(x))
@@ -76,7 +77,7 @@ plt.savefig("sales_plot.png")
 plt.show()
 
 # Con pandas (barras):
-ax = df_sales.plot(x="month", y="sales", kind="line", legend=False, title="Monthly Sales (pandas)", colormap="viridis")
+ax = df_sales.plot(x="month", y="sales", kind="line", legend=False, title="Monthly Sales (pandas)", colormap="plasma")
 plt.show()
 
 # Guardar figura:

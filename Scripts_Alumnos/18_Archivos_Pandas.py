@@ -61,7 +61,7 @@ df["status"] = np.where(df["avg"] >= 80, "1", "0")
 df.loc[len(df)] = [6, "Eva", 20, 85, 90, "CDMX", 87.5, "1"]
 
 # df.to_csv("students_copy.csv", index=False)
-print(df[df["city"]=="CDMX"])
+print(df[df["city"]=="Guadalajara"])
 
 print(df[df["age"]>20])
 
@@ -87,17 +87,15 @@ print(df.groupby("city")["age"].mean())
 print(df.groupby("city").min())
 print(df.groupby("city").value_counts())
 print(df.groupby("city").get_group("Guadalajara"))
-pt = pd.pivot_table(df, values="age", index="status", aggfunc="mean")
+pt = pd.pivot_table(df, values="age", index="city", aggfunc="mean")
 print(pt)
-
-
 
 # ---------------------------------------------------------------
 # G) MERGE/JOIN Y CONCAT
 # ---------------------------------------------------------------
 def create_sales_customers_csv(sales_path, customers_path):
-    srows = ["sid,cid,amount,city","10,1,120,CDMX","11,2,50,Monterrey","12,4,210,CDMX","13,5,90,Guadalajara"]
-    crows = ["cid,name,city","1,Ana,CDMX","2,Luis,Monterrey","3,Marta,Guadalajara","4,Juan,CDMX","5,Lia,Guadalajara"]
+    srows = ["sid,cid,amount,city","10,1,120,CDMX","11,2,50,Monterrey","23,3,500,Guadalajara","12,4,210,CDMX","13,5,90,Guadalajara"]
+    crows = ["cid,name,city","1,Ana,CDMX","2,Luis,Monterrey","3,Marta","4,Juan,CDMX","5,Lia,Guadalajara"]
     with open(sales_path,"w",encoding="utf-8") as f:
         for r in srows: f.write(r+"\n")
     with open(customers_path,"w",encoding="utf-8") as f:
@@ -119,6 +117,7 @@ sales2 = pd.read_csv("sales2.csv")
 
 
 print(pd.concat([sales, sales2], ignore_index=True))
+concat_df = pd.concat([sales, sales2], ignore_index=True)
 
 # ---------------------------------------------------------------
 # H) INTEROPERABILIDAD PANDAS + NUMPY
