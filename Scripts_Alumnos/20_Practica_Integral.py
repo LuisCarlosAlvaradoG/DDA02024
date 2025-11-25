@@ -136,8 +136,6 @@ print(tab_htn)
 tab_htn_prop = pd.crosstab(df["hypertension"], df["diabetes"], normalize="columns")
 print(tab_htn_prop)
 
-
-
 # ==========================================================
 # EJERCICIO 6. Visualización 1: Histogramas
 # ==========================================================
@@ -147,11 +145,42 @@ print(tab_htn_prop)
 #    (Puedes superponer ambas distribuciones o hacer 2 gráficos separados.)
 
 # === TU CÓDIGO AQUÍ ===
-# plt.figure()
-# ...
-# plt.show()
+plt.figure()
+plt.hist(df["age"], bins = 20)
+plt.title("Histograma de edad")
+plt.xlabel("Edad")
+plt.ylabel("Frecuencia")
+plt.show()
 
+plt.figure()
+# plt.hist(df.loc[df["diabetes"] == 1, "bmi"], bins = 20)
+plt.hist(df[df["diabetes"] == 1].loc[:,"bmi"], bins = 20)
+plt.title("Histograma de bmi")
+plt.xlabel("BMI")
+plt.ylabel("Frecuencia")
+plt.show()
 
+plt.figure()
+plt.hist(df[df["diabetes"] == 0].loc[:,"bmi"], bins = 20, label = "Pacientes sin diabetes")
+plt.hist(df[df["diabetes"] == 1].loc[:,"bmi"], bins = 20, label = "Pacientes con diabetes")
+plt.title("Histograma de BMI")
+plt.xlabel("BMI")
+plt.ylabel("Frecuencia")
+plt.legend()
+plt.show()
+
+# Subplots
+fig, ax = plt.subplots(1,2, figsize=(12,5))
+ax[0].hist(df[df["diabetes"] == 0].loc[:,"bmi"], bins = 20, label = "Pacientes sin diabetes")
+ax[0].set_title("BMI sin diabetes")
+ax[0].set_xlabel("BMI")
+ax[0].set_ylabel("Frecuencia")
+ax[1].hist(df[df["diabetes"] == 1].loc[:,"bmi"], bins = 20, label = "Pacientes con diabetes")
+ax[1].set_title("BMI con diabetes")
+ax[1].set_xlabel("BMI")
+ax[1].set_ylabel("Frecuencia")
+fig.suptitle("Distribución BMI")
+plt.show()
 # ==========================================================
 # EJERCICIO 7. Visualización 2: Boxplots
 # ==========================================================
@@ -161,11 +190,14 @@ print(tab_htn_prop)
 #    entre pacientes con y sin diabetes.
 
 # === TU CÓDIGO AQUÍ ===
-# data_no_diab = ...
-# data_diab = ...
-# plt.figure()
-# ...
-# plt.show()
+data_no_diab = df[df["diabetes"] == 0].loc[:,"blood_glucose_level"]
+data_diab = df[df["diabetes"] == 1].loc[:,"blood_glucose_level"]
+
+plt.figure()
+plt.boxplot([data_no_diab, data_diab], labels = ["No diabetes", "Diabetes"])
+plt.title("Boxplot de nivel de glucosa en la sangre según su estado de diabetes")
+plt.ylabel("blood_glucose_level")
+plt.show()
 
 
 # ==========================================================
@@ -176,12 +208,19 @@ print(tab_htn_prop)
 #    Pista: puedes usar un arreglo de colores con NumPy.
 
 # === TU CÓDIGO AQUÍ ===
-# x = ...
-# y = ...
-# colores = ...
-# plt.figure()
-# ...
-# plt.show()
+x = df["age"].to_numpy()
+y = df["blood_glucose_level"].to_numpy()
+diab = df["diabetes"].to_numpy()
+
+colores = np.where(diab == 1, "gold", "cyan")
+
+plt.figure()
+plt.scatter(x, y, c = colores, alpha=0.5)
+plt.title("Edad vs Nivel de glucosa en la sangre")
+plt.xlabel("Edad")
+plt.ylabel("Nivel de glucosa")
+# plt.legend()
+plt.show()
 
 
 # ==========================================================
@@ -203,12 +242,21 @@ print(tab_htn_prop)
 # Puedes usar todas las herramientas anteriores (NumPy, pandas, matplotlib).
 
 # === TU CÓDIGO AQUÍ ===
-# filtro = ...
-# df_sub = ...
-# tasa_diab_sub = ...
-# tasa_diab_total = ...
-# print(...)
-# plt.figure()
-# ...
-# plt.show()
+filtro = (df["age"] >= 40) | (df["hypertension"] == 1) | (df["heart_disease"] == 1)
+df_sub = df[filtro]
+tasa_diab_sub = df_sub["diabetes"].mean()
+tasa_diab_total = df["diabetes"].mean()
+print(f"Tasa de diabetes - subconjunto: {tasa_diab_sub}")
+print(f"Tasa de diabetes - total: {tasa_diab_total}")
+
+mean_risk_sub = df_sub["risk_index"].mean()
+mean_risk_total = df["risk_index"].mean()
+print(f"Risk index - subconjunto: {mean_risk_sub}")
+print(f"Risk index - total: {mean_risk_total}")
+
+plt.figure()
+plt.bar(["Total", "Subconjunto"], [tasa_diab_total, tasa_diab_sub])
+plt.title("Comparación de tasa de diabetes")
+plt.ylabel("Proporción con diabetes")
+plt.show()
 
