@@ -47,6 +47,7 @@ plt.rcParams["axes.grid"] = True
 # === TU CÓDIGO AQUÍ ===
 df = pd.read_csv("diabetes_dataset.csv")
 print(df.head()) #df.tail()
+print(df.info())
 print(df.shape)
 
 # ==========================================================
@@ -61,11 +62,13 @@ desc = df.describe()
 print(desc)
 dist_diabetes = df["diabetes"].value_counts()
 print(dist_diabetes)
+dist_diabetes_prop = df["diabetes"].value_counts() / len(df) 
+print(dist_diabetes_prop)
 dist_diabetes_prop = df["diabetes"].value_counts(normalize=True)
 print(dist_diabetes_prop)
+
 dist_gender = df["gender"].value_counts()
 print(dist_gender)
-
 # ==========================================================
 # EJERCICIO 2. Trabajo con NumPy y máscaras booleanas
 # ==========================================================
@@ -77,13 +80,7 @@ print(dist_gender)
 #    - La media de edad de pacientes sin diabetes.
 
 # === TU CÓDIGO AQUÍ ===
-age_np = df["age"].to_numpy()
-mean_age = np.mean(age_np)
-std_age = np.std(age_np)
-median_age = np.median(age_np)
-mask_diab = df["diabetes"].to_numpy() == 1
-mean_age_diab = np.mean(age_np[mask_diab])
-mean_age_no_diab = np.mean(age_np[~mask_diab]) #&AND |OR ~NOT
+
 
 # ==========================================================
 # EJERCICIO 3. Índice de riesgo con NumPy (feature engineering)
@@ -260,3 +257,6 @@ plt.title("Comparación de tasa de diabetes")
 plt.ylabel("Proporción con diabetes")
 plt.show()
 
+import numpy as np
+Equipos = ["Ame", "Rosario", "Cam", "Derek", "Matteo", "Sergio", "Matias", "Leo"]
+np.random.choice(Equipos, size = 8, replace=False)
