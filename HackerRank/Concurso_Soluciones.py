@@ -17,7 +17,7 @@ else:
 
 
 #Problema C - MOTOPAPIS
-m, n = map(int, input().split())
+m, n = map(int, input().split()) # Poner en el desempaquetamiento cuantas variables necesiten
 
 mejor_persona = 0
 mejor_tiempo = 201
