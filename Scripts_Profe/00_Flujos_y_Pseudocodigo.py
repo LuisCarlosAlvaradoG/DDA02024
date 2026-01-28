@@ -156,12 +156,14 @@ print("[P02]", triangle_type(3,3,3), triangle_type(3,4,4), triangle_type(3,4,8),
 # SALIDAS: "par" o "impar"
 #
 # PSEUDOCÓDIGO:
+# INICIO
 #   LEER N
 #   SI N % 2 = 0 ENTONCES
 #       ESCRIBIR "par"
 #   SINO
 #       ESCRIBIR "impar"
 #   FIN SI
+# FIN
 
 def even_or_odd(n: int) -> str:
     return "par" if n % 2 == 0 else "impar"
@@ -223,18 +225,21 @@ print("[P05]", convert_temp(0,"C"), convert_temp(32,"F"), convert_temp(100,"X"))
 # ===============================================================
 # PROBLEMA 06 — CLASIFICACIÓN DE NOTA
 # ===============================================================
-# ENUNCIADO: Convertir una calificación numérica [0..100] a letra (A,B,C,D,F).
+# ENUNCIADO: Convertir una calificación numérica [0..100] 
+# a letra (A,B,C,D,F).
 # ENTRADAS: score (entero 0..100)
 # PROCESO: Rango por selectivas múltiples.
 # SALIDAS: Letra
 #
 # PSEUDOCÓDIGO:
+# INICIO
 #   LEER score
 #   SI score>=90 -> "A"
 #   SINO SI score>=80 -> "B"
 #   SINO SI score>=70 -> "C"
 #   SINO SI score>=60 -> "D"
 #   SINO -> "F"
+# FIN
 
 def letter_grade(score: int) -> str:
     if score >= 90: return "A"
@@ -256,7 +261,7 @@ print("[P06]", [letter_grade(s) for s in (95,84,72,65,40)])
 #
 # PSEUDOCÓDIGO:
 #   LEER Y
-#   SI (Y % 4 == 0) Y (Y % 100 != 0 O Y % 400 == 0) -> "bisiesto"
+#   SI (Y % 4 == 0) and (Y % 100 != 0 or Y % 400 == 0) -> "bisiesto"
 #   EN OTRO CASO -> "no bisiesto"
 
 def is_leap_year(y: int) -> bool:
@@ -858,3 +863,6 @@ def fibonacci_n(n: int) -> list[int]:
     return seq
 
 print("[P30]", fibonacci_n(1), fibonacci_n(5), fibonacci_n(10))
+
+
+# Práctica 01
