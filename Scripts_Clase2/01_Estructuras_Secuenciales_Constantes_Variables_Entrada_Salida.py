@@ -20,6 +20,7 @@
 # - Son sensibles a mayúsculas/minúsculas: nombre != Nombre != NOMBRE
 # - NO pueden ser palabras reservadas del lenguaje (keywords).
 
+
 # TIPOS BÁSICOS EN ESTA SESIÓN
 # - int   (enteros): 0, 1, -3, 42
 # - float (reales):  3.14, -0.5, 2.0
@@ -30,10 +31,20 @@
 # - Las cadenas (str) son INMUTABLES: no se puede cambiar un carácter por índice.
 
 # Asignación simple (variable -> valor)
+nombre_curso = "Algoritmos y programación"  #str
+creditos = 8                                #int
+calificacion_promedio = 6.5                 #float
+activo = True                               #bool
 
 # Mostrar valores y sus tipos
+type(nombre_curso)
+type(creditos)
+type(calificacion_promedio)
+type(activo)
 
 # Constante por convención (no se debe modificar)
+PI = 3.14159
+print(PI)
 
 # Identificadores válidos/ inválidos (solo comentarios):
 # válido: user_name, _hidden_value, age2, TOTAL_SUM
@@ -41,7 +52,9 @@
 
 # Palabras reservadas (keywords): nombres que NO pueden usarse como identificadores.
 # Las listamos solo para referencia visual.
-
+import keyword
+keyword.kwlist
+len(keyword.kwlist)
 
 # ---------------------------------------------------------------
 # B) TEORÍA: ENTRADA Y SALIDA (input/print)
@@ -72,8 +85,20 @@
 #   (f-strings requieren Python 3.6+).
 
 # --- Código ilustrativo: print ---
+print("Hola", "mundo")
+print("Hola", "mundo", sep="*")
+print("Hola mundo", sep="*")
+print("Hola", 5, sep="*")
 
+print("Sin salto al final", end="")
+print("Continuación de la misma línea")
 # Formatos:
+alumno = "Luis"
+edad = 25
+
+print("Alumno:", alumno, "| Edad:", edad)              # Separado por comas
+print("Alumno:" + alumno + "| Edad:" + str(edad))      # Concatenación
+print(f"Alumno: {alumno} | Edad: {edad}")              # f-string
 
 # --- Código ilustrativo: input ---
 

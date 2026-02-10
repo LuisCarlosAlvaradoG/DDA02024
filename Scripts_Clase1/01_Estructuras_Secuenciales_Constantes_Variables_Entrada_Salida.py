@@ -29,11 +29,28 @@
 # OBSERVACIÓN SOBRE INMUTABILIDAD (ideas introductorias)
 # - Las cadenas (str) son INMUTABLES: no se puede cambiar un carácter por índice.
 
+
+nombre_curso = "Algoritmos y Programación" # str
+creditos = 8                               # int
+calificacion_promedio = 7.5                # float (decimal)
+alumno_activo = True                       # bool (boolean)
+
+print(nombre_curso)
+print("El nombre del curso es:", nombre_curso)
+
 # Asignación simple (variable -> valor)
 
 # Mostrar valores y sus tipos
+type(nombre_curso)
+type(creditos)
+type(calificacion_promedio)
+type(alumno_activo)
+not alumno_activo
+
 
 # Constante por convención (no se debe modificar)
+PI = 3.14159
+
 
 # Identificadores válidos/ inválidos (solo comentarios):
 # válido: user_name, _hidden_value, age2, TOTAL_SUM
@@ -41,8 +58,9 @@
 
 # Palabras reservadas (keywords): nombres que NO pueden usarse como identificadores.
 # Las listamos solo para referencia visual.
-
-
+import keyword
+print(keyword.kwlist)
+len(keyword.kwlist)
 # ---------------------------------------------------------------
 # B) TEORÍA: ENTRADA Y SALIDA (input/print)
 # ---------------------------------------------------------------
@@ -74,11 +92,26 @@
 # --- Código ilustrativo: print ---
 
 # Formatos:
+nombre = "Luis"
+edad = 25
+print("El alumno se llama", nombre, "y tiene", edad, "años") # Impresión múltiple
+print("El alumno se llama" + nombre + "y tiene" + str(edad) + "años") # Concatenación
+print(f"El alumno se llama {nombre} y tiene {edad} años") # f-string
+
 
 # --- Código ilustrativo: input ---
+name = input("Ingresa tu nombre:")
+print(f"Hola {name}")
 
 # Lectura y conversión básica
+año = int(input("Ingresa un año:"))
+print(f"El año actual es: {año} | Tipo de dato {type(año)}")
 
+estatura = float(input("Ingresa tu estatura en mts: "))
+print(f"La estatura del usuario es {estatura:.2f}")
+
+activo = bool(input("Ingresa si el alumno está activo: "))
+print(f"¿El alumno está activo? {activo} ")
 
 # Advertencia: Si el usuario ingresa algo no convertible (ej. 'uno' en int) se lanzará
 
@@ -103,3 +136,18 @@
 # - Agrupar la lectura de datos (input) al principio, el "proceso" al centro
 #   (se verá más en Sesión 2) y la presentación (print) al final.
 # - Comentar el código teórico con claridad (como en este documento).
+
+# ---------------------------------------------------------------
+# Ejercicio 04 - Parámetros de print
+# Enunciado: Imprime tres palabras en una sola línea separadas por ' - ' usando sep.
+# --- Plantilla de inicio ---
+# (Escribe tu solución debajo, respeta la ejecución secuencial)
+# ---------------------------------------------------------------
+
+# ---------------------------------------------------------------
+# Ejercicio 06 - Conversión básica
+# Enunciado: Lee un año como texto, conviértelo a int y muestra su 
+# tipo antes y después.
+# --- Plantilla de inicio ---
+# (Escribe tu solución debajo, respeta la ejecución secuencial)
+# ---------------------------------------------------------------
