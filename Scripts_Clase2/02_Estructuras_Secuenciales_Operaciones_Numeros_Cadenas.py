@@ -30,15 +30,43 @@
 # - Cuidado con la precisión en float; 0.1 + 0.2 puede ser 0.30000000000000004.
 
 # --- Código ilustrativo: literales y operaciones ---
-
-
+a = 1_000_000 
+b = 250_000
+c = 3.5e2  # 350.0
+d = .75
+e = 5.
 
 # Aritmética básica
+x = 10
+y = 3
+print("x + y = ", x + y)
+print(x - y)
+print(x * y)
+print(x / y)
+print(x // y)   # división entera
+print(x % y)    # residuo
+print(x ** y)   # potencia
 
+x = 5
+y = 3
+z = 4
+x + y // z ** x
 # Identidad: a == (a//b)*b + (a % b)
-
+num = 29
+x = 5
+print(num == x)
+print(num > x)
+print(num != x)
+print(num == (num // x) * x + (num % x))
 # Precisión en float (simple demostración)
+x = 0.1
+y = 0.2
+z = 0.3
+print(z == x + y)
+print(x + y)
 
+import math
+print(math.isclose(z, x+y))
 # ---------------------------------------------------------------
 # B) TEORÍA: PRECEDENCIA Y ASOCIATIVIDAD
 # ---------------------------------------------------------------
@@ -53,6 +81,11 @@
 #   - *, /, //, %, +, - son izquierda a derecha.
 
 # --- Código ilustrativo: precedencia y paréntesis ---
+print(2 ** 3 ** 2)   # 512
+print((2 ** 3) ** 2) # 64
+
+print(2 + 3 * 4)    # 14
+print((2 + 3) * 4)  # 20
 
 # ---------------------------------------------------------------
 # C) TEORÍA: CONVERSIÓN DE TIPOS Y FUNCIONES NUMÉRICAS BÁSICAS
@@ -73,6 +106,25 @@
 # - max(x, y, ...) : máximo
 
 # --- Código ilustrativo: casting y funciones numéricas ---
+n = 20
+type(n)
+type(str(n))
+
+int("15")
+float("2.75")
+x = 123
+x * 3
+str(x) * 3
+
+abs(-7)
+round(2.5)
+round(3.5)
+
+n = 3
+red = round(3.141592, n)
+
+min(-6, 2, 3, 8, -1, 0)
+max(-6, 2, 3, 8, -1, 0)
 
 # ---------------------------------------------------------------
 # D) TEORÍA: CADENAS (STRINGS), OPERADORES Y MÉTODOS
@@ -114,9 +166,24 @@
 
 
 # --- Código ilustrativo: cadenas ---
+s = "Python"
+len(s)
 
+p = "reconocer"
+p[4] # Extraer la letra n
+p[::-1]
+p == p[::-1]
 
+p = "algoritmos"
+p[::-1]
 # Acceso y slicing
+n = "1234"
+suma = int(n[0]) + int(n[1]) + int(n[2]) + int(n[3])
+suma
+
+suma = int(n[0] + n[1] + n[2] + n[3])
+suma
+# sintaxis slicing [inicio : fin : paso]
 
 # Métodos de limpieza y transformación
 
@@ -144,22 +211,3 @@
 # - Usar paréntesis para dejar clara la intención en expresiones complejas.
 # - Mantener nombres descriptivos y consistentes.
 # - Al formatear dinero, mostrar 2 decimales y alinear columnas.
-
-# ---------------------------------------------------------------
-# Ejercicio 20 - Conversión horas a segundos
-# Enunciado: Lee horas (int) y conviértelas a segundos.
-# (Ejercicio de práctica; abajo se incluye la SOLUCIÓN completa.)
-# ---------------------------------------------------------------
-horas = int(input("Ingresa la cantidad de horas:"))
-segundos = horas * 3600
-print("Segundos:", segundos)
-
-# ---------------------------------------------------------------
-# Ejercicio 24 - Extracto de iniciales
-# Enunciado: Lee nombre y apellido y muestra iniciales en mayúsculas (solo slicing).
-# (Ejercicio de práctica; abajo se incluye la SOLUCIÓN completa.)
-# ---------------------------------------------------------------
-nombre = input("Ingresa tu nombre:")
-apellido = input("Ingresa tu apellido:")
-iniciales = nombre[0].upper() + apellido[0].upper()
-print("Tus iniciales son:", iniciales)

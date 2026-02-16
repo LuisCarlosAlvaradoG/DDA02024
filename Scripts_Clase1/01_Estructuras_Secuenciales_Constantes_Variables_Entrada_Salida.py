@@ -100,18 +100,15 @@ print(f"El alumno se llama {nombre} y tiene {edad} años") # f-string
 
 
 # --- Código ilustrativo: input ---
-name = input("Ingresa tu nombre:")
-print(f"Hola {name}")
-
+nombre = input("Dame tu nombre: ")
+print(f"El nombre del usuario es: {nombre}")
 # Lectura y conversión básica
-año = int(input("Ingresa un año:"))
-print(f"El año actual es: {año} | Tipo de dato {type(año)}")
+year = int(input("Dame el año: "))
+print(f"El año en curso es{year} y el tipo de dato es{type(year)}")
 
-estatura = float(input("Ingresa tu estatura en mts: "))
-print(f"La estatura del usuario es {estatura:.2f}")
+altura = float(input("Ingresa tu altura en mts: "))
+print(f"La altura del usuario es: {altura:.3f}")
 
-activo = bool(input("Ingresa si el alumno está activo: "))
-print(f"¿El alumno está activo? {activo} ")
 
 # Advertencia: Si el usuario ingresa algo no convertible (ej. 'uno' en int) se lanzará
 
@@ -139,10 +136,19 @@ print(f"¿El alumno está activo? {activo} ")
 
 # ---------------------------------------------------------------
 # Ejercicio 04 - Parámetros de print
-# Enunciado: Imprime tres palabras en una sola línea separadas por ' - ' usando sep.
+# Enunciado: Imprime tres palabras en una sola línea separadas 
+# por ' - ' usando sep.
 # --- Plantilla de inicio ---
 # (Escribe tu solución debajo, respeta la ejecución secuencial)
 # ---------------------------------------------------------------
+
+p1 = input("Ingresa la palabra 1: ")
+p2 = input("Ingresa la palabra 2: ")
+p3 = input("Ingresa la palabra 3: ")
+
+print(p1, p2, p3, sep = "-")
+
+
 
 # ---------------------------------------------------------------
 # Ejercicio 06 - Conversión básica
@@ -151,3 +157,9 @@ print(f"¿El alumno está activo? {activo} ")
 # --- Plantilla de inicio ---
 # (Escribe tu solución debajo, respeta la ejecución secuencial)
 # ---------------------------------------------------------------
+
+year = input("Ingresa un año: ")
+print(f"Antes: {type(year)}")
+print(f"Después: {type(int(year))}")
+
+
