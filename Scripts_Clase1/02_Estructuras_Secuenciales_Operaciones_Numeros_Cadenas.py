@@ -30,14 +30,45 @@
 # - Cuidado con la precisión en float; 0.1 + 0.2 puede ser 0.30000000000000004.
 
 # --- Código ilustrativo: literales y operaciones ---
-
-
+a = 1_000_000    # 1000000
+b = 250_000
+c = 3.5e2       # 350
+d = 3.5e-2       # 0.035
+f = 5.
 
 # Aritmética básica
+x = 10
+y = 3
+print(x + y)
+print(x - y)
+print(x * y)
+print(x / y)   # división que da un float
+print(x // y)  # división que da un int
+print(x % y)   # residuo
+print(x ** y)  # potencia
 
 # Identidad: a == (a//b)*b + (a % b)
+num = 29
+z = 5
+print(num == z)
+print(num != z) #diferente
+print(num == (num // z) * z + (num % z))
+# == igual
+# != diferente
+# >= mayor o igual que
+# <= menor o igual que
+# > mayor que
+# < menor que
 
 # Precisión en float (simple demostración)
+x = 0.1
+y = 0.2
+z = 0.3
+print(z == x + y)
+print(x + y)
+
+import math
+math.isclose(z, x+y)  # Esta función pregunta si los valores se aproximan
 
 # ---------------------------------------------------------------
 # B) TEORÍA: PRECEDENCIA Y ASOCIATIVIDAD
@@ -53,6 +84,11 @@
 #   - *, /, //, %, +, - son izquierda a derecha.
 
 # --- Código ilustrativo: precedencia y paréntesis ---
+print(2 ** 3 ** 2)       # 512
+print((2 ** 3) ** 2)     # 64
+
+print(2 / (3 * 4))   # 1/6   
+print(2 / 3 * 4)     # 8/3
 
 # ---------------------------------------------------------------
 # C) TEORÍA: CONVERSIÓN DE TIPOS Y FUNCIONES NUMÉRICAS BÁSICAS
@@ -73,6 +109,24 @@
 # - max(x, y, ...) : máximo
 
 # --- Código ilustrativo: casting y funciones numéricas ---
+int("15") # str -> int
+print("15" * 2)       # '1515'
+print(int("15") * 2)  # 30
+
+float("3.5")  # str -> float
+int(3.5)      # float -> int
+int("3.5")    # Da un error porque no entiende el punto decimal
+
+str(123)  # int -> str
+str(123) * 2
+
+abs(-7)   # 7
+round(2.5)  # Cuando está en 0.5 redondea al par más cercano
+round(3.5)
+round(2.1569454, ndigits= 3)
+pow(2, 3)  # 2 ** 3
+min( 4, 9, -2, 7)
+max( 4, 9, -2, 7)
 
 # ---------------------------------------------------------------
 # D) TEORÍA: CADENAS (STRINGS), OPERADORES Y MÉTODOS
@@ -114,13 +168,47 @@
 
 
 # --- Código ilustrativo: cadenas ---
-
+s = "Algoritmos"
+len(s)
 
 # Acceso y slicing
+s[0] # -> 'A'
+s[-1] #  's'
+
+# Sintaxis slicing  [inicio: fin: paso] siendo el fin excluyente
+
+s[0:3]
+s[2:6] # -> 'gori'
+s[2: 6: 2] # -> 'gr'
+s[:3] # 'Alg'
+s[3:] # 'oritmos'
+s[: 3: -1]  # -> 'somtir'
+s[-1 : -7 : -1] # -> 'somtir
+
+
+s[2 : : -1]   # 'glA'
+
+s[::-1]
 
 # Métodos de limpieza y transformación
+s = " Hola "
+len(s)
+s.strip()  # Quita espacios al inicio y final de una palabra (extremos)
+len(s.strip())
+s = s.strip() # Esto sí modifica la variable
+
+s.upper() #Convierte el texto a mayúsculas
+s.lower() #convierte el texto a minúsculas
+
+t = "introducción a python"
+t.title()
+t.replace("i", "ñ")  # viejo , nuevo
 
 # Búsqueda y comprobaciones
+u = "programación"
+u.find("ción") # Arroja el índice en el que empieza la subcadena como argumento
+u.startswith("pros")
+u.endswith("ción")
 
 # split y join (solo demostración de resultado)
 
@@ -146,20 +234,8 @@
 # - Al formatear dinero, mostrar 2 decimales y alinear columnas.
 
 # ---------------------------------------------------------------
-# Ejercicio 20 - Conversión horas a segundos
-# Enunciado: Lee horas (int) y conviértelas a segundos.
-# (Ejercicio de práctica; abajo se incluye la SOLUCIÓN completa.)
+# Ejercicio 20 - Palabras palíndromos
+# Enunciado: Pide al usuario una palabra y determina si es un palíndromo
 # ---------------------------------------------------------------
-horas = int(input("Ingresa la cantidad de horas:"))
-segundos = horas * 3600
-print("Segundos:", segundos)
-
-# ---------------------------------------------------------------
-# Ejercicio 24 - Extracto de iniciales
-# Enunciado: Lee nombre y apellido y muestra iniciales en mayúsculas (solo slicing).
-# (Ejercicio de práctica; abajo se incluye la SOLUCIÓN completa.)
-# ---------------------------------------------------------------
-nombre = input("Ingresa tu nombre:")
-apellido = input("Ingresa tu apellido:")
-iniciales = nombre[0].upper() + apellido[0].upper()
-print("Tus iniciales son:", iniciales)
+palabra = input("Ingresa una palabra: ")
+print(f"La palabra es un palíndromo: {palabra == palabra[::-1]}")

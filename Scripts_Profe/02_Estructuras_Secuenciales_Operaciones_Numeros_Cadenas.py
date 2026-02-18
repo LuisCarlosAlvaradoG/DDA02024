@@ -418,7 +418,8 @@ print(word * n)
 
 # ---------------------------------------------------------------
 # Ejercicio 12 - Subcadena fija
-# Enunciado: Lee una cadena y muestra los primeros 5 caracteres y los últimos 3.
+# Enunciado: Lee una cadena y muestra la longitud de la cadena,
+# los primeros 5 caracteres y los últimos 3.
 # (Ejercicio de práctica; abajo se incluye la SOLUCIÓN completa.)
 # ---------------------------------------------------------------
 

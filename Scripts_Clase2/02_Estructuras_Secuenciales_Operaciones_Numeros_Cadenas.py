@@ -184,15 +184,32 @@ suma
 suma = int(n[0] + n[1] + n[2] + n[3])
 suma
 # sintaxis slicing [inicio : fin : paso]
-
+s = "Algoritmos"
+s[: 3]          # 'Alg'
+s[: 3 : -1]     # 'somtir'
+s[-1 : -7: -1]  # 'somtir'
 # Métodos de limpieza y transformación
+a = "Hola mundo"
+a = a.upper() # Mayúsculas
+a = a.lower() # Minúsculas
+a = a.title() # Convierte la primer letra de cada palabra a mayúscula
 
+n = "ulises zepada vidales"
+n.title()
+
+n.replace("a", "|")
+n.replace("ulises", "raúl")
 # Búsqueda y comprobaciones
-
+x = "programación"
+x.find("grama")  # Devuelve el índice dónde aparece por primera vez la subcadena
+x.startswith("pro")  # Devuelve un bool
+x.endswith("ción")
 # split y join (solo demostración de resultado)
 
 # Formato
-
+n = 24
+m = 45
+print(f"{n:02d}:{m:02d}")
 
 # ---------------------------------------------------------------
 # E) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS
