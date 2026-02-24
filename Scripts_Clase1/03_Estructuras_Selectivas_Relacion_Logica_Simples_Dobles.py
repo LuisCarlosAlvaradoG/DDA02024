@@ -1,4 +1,3 @@
-
 # ===============================================================
 # 3.- ESTRUCTURAS SELECTIVAS: RELACIÓN, LÓGICA, SIMPLES Y DOBLES
 
@@ -21,8 +20,27 @@
 #
 
 # --- Código ilustrativo: truthiness explícita ---
+x = 5
+str(x)
+y = "5"
+int(y)
 
+bool(2)  # True
+bool(0)  # False
 
+bool("A") # True
+bool("") # False
+
+if 0:
+    print("Hola")   # Si la condición es True, hago la operación que está dentro del if
+else:
+    print("Adiós") # Si la primer condición no se cumple
+    # Else no necesita de una condición
+
+if "":
+    print("Hola")   
+else:
+    print("Adiós")
 
 # ---------------------------------------------------------------
 # B) TEORÍA: OPERADORES DE RELACIÓN
@@ -46,7 +64,20 @@
 # - == compara valores; 'is' compara identidad de objeto .
 
 # --- Código ilustrativo: relación ---
+a = 10
+b = 5
+c = 7
 
+print(a > b) # ¿a es mayor que b?
+print(a == b)
+print(a != b)
+print(a < b)
+print(a >= b)
+print(a <= b)
+
+print(a < b < c) # False
+print(a > b < c) # True
+print(a > c > b) # True
 
 # ---------------------------------------------------------------
 # C) TEORÍA: OPERADORES LÓGICOS Y PRECEDENCIA
@@ -66,9 +97,19 @@
 # - En (A or B): si A es True, no evalúa B.
 
 # --- Código ilustrativo: lógica ---
-       
+p = (10 > 3)              # True  
+q = ("py" in "python")    # True
+r = (0 == 1)              # False
+
+print(p and q)  # True and True -> True
+print(p or r)   # True or False -> True
+print(q and r)  # True and False -> False
 
 # Precedencia
+print(not p or q)  # La primer operación que hace es not p
+# not True or True -> False or True -> True
+print(not (p or q)) # -> False
+# not (True or True) -> not (True) -> False
 
 # ---------------------------------------------------------------
 # D) TEORÍA: IF (SIMPLE) e IF-ELSE (DOBLE)
@@ -86,11 +127,25 @@
 
 # --- Código ilustrativo: if simples y dobles ---
 # Simple
+x = 20
+if x >= 18: # x >=18 -> True
+    print("Acceso concedido")
 
 # Doble
+x = 15
+if x >= 18: # x >= 18 -> False
+    print("Acceso concedido")
+else: # No lleva condición, es "cualquier otro caso"
+    print("Acceso denegado")
 
 # Combinando lógica
-
+gasto = 999
+edad = 19
+if (edad >= 18) and (gasto >= 1000): # Descuento del 10% si eres mayor de edad y gastas más de mil pesos
+    print("Acceso concedido")
+    print(f"Tu total es de {gasto * .9}")
+else: # Si eres menor de edad o no gastas más de mil pesos no puedes entrar
+    print("Acceso denegado")
 
 # ---------------------------------------------------------------
 # E) BUENAS PRÁCTICAS, VENTAJAS Y DESVENTAJAS
@@ -108,3 +163,54 @@
 # - Expresar condiciones de forma clara y directa; usar paréntesis explicativos.
 # - Normalizar entradas de texto: .strip(), .lower() antes de comparar.
 # - Para floats, considerar tolerancia: abs(a-b) <= 1e-9 (según magnitud).
+
+# ---------------------------------------------------------------
+# Ejercicio 04 - Máximo entre dos
+# Enunciado: Lee dos enteros y muestra el mayor; si no es mayor el primero, 
+# muestra el segundo (empates incluidos).
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+a = int(input())
+b = int(input())
+if a > b:
+    print(a)
+else:
+    print(b)
+
+# ---------------------------------------------------------------
+# Ejercicio 05 - Texto largo o corto
+# Enunciado: Lee un texto y muestra 'Long' si su longitud > 10; si no, 'Short'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+s = input() # El default del input es un str
+if len(s) > 10:
+    print("Long")
+else: 
+    print("Short")
+
+# ---------------------------------------------------------------
+# Ejercicio 11 - Vocal o no
+# Enunciado: Lee un solo carácter y muestra 'Vocal' si es vocal; si no, 'Otro'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+# 'a' -> 'Vocal'
+# 'c' -> 'Otro'
+# '5' -> 'Otro'
+letra = input()
+letra = letra.lower()
+
+if letra == ('a') or letra == ('e') or letra == ('i') or letra == ('o') or letra == ('u'):
+    print('Vocal')
+else:
+    print('Otro')
+
+# Utilizando 'in'
+letra = input()
+vocales = "aeiouáéíóúAEIOUÁÉÍÓÚ"
+if letra in vocales:
+    print("Vocal")
+else:
+    print("Otro")
+
+x = 10
+print(f"{x:08b}")
