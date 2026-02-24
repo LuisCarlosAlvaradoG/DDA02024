@@ -23,8 +23,34 @@
 
 # --- Código ilustrativo: mapeo de calificación numérica a letra ---
 # Entrada: grade (0-100). Salida: A, B, C, D, F
+calif = 87
+if calif >= 90: # False
+    print("A")
+elif calif >= 80: # True
+    print("B")
+elif calif >= 70:
+    print("C")
+elif calif >= 60:
+    print("D")
+else:
+    print("F")
 
+# De la línea 27 a la 36, forman 1 sola estructura selectiva
 
+calif = 87
+if calif >= 90: # False
+    print("A")
+
+if calif >= 80: # True
+    print("B")
+
+if calif >= 70: # True
+    print("C")
+
+if calif >= 60: # True
+    print("D")
+else:
+    print("F")
 
 # ---------------------------------------------------------------
 # B) TEORÍA: IF ANIDADOS (DECISIONES DENTRO DE DECISIONES)
@@ -46,7 +72,16 @@
 # cuando las condiciones son mutuamente excluyentes y “paralelas”.
 
 # --- Código ilustrativo: validación de usuario con pasos ---
+user = "admin"
+contra = "XYZ"
 
+if user == "admin":
+    if contra == "XYZ":
+        print("Bienvenido")
+    else:
+        print("Contraseña incorrecta")
+else:
+    print("Usuario desconocido")
 
 # ---------------------------------------------------------------
 # C) TEORÍA: TRY-EXCEPT (MANEJO BÁSICO DE ERRORES)
@@ -74,10 +109,19 @@
 
 # --- Código ilustrativo: conversión y división seguras ---
 # 1) Conversión a int con captura de ValueError
-
+texto = "123x"
+try:
+    n = int(texto)
+    print(n)
+except ValueError:
+    print("Error, no puedes convertir un caracter no numérico a integer")
 
 # 2) División con captura de ZeroDivisionError
-
+texto = "123x"
+try:
+   pass
+except ZeroDivisionError:
+    pass
 
 # 3) Uso de else/finally
 
