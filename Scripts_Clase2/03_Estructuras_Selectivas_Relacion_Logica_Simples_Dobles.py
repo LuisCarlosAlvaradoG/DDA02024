@@ -21,8 +21,29 @@
 #
 
 # --- Código ilustrativo: truthiness explícita ---
+x = 5
+str(x)
+y = "5"
+int(y)
 
+bool(1) # True
+bool(0) # False
+bool(5) # True
 
+bool("a") # True
+bool(" ") # True
+bool("") # False
+
+# if condición: -> Nota: si el resultado de la condición es True, aplico la operación dentro del if
+# si existe un else, el el resultado de la condición es False, aplico la operación dentro del else.
+if 0:
+    print("Hola")
+else:   # Cualquier otro caso
+    print("Adiós")
+# else no lleva ninguna condición
+
+if 0: 
+    print("Hola")
 
 # ---------------------------------------------------------------
 # B) TEORÍA: OPERADORES DE RELACIÓN
@@ -46,7 +67,18 @@
 # - == compara valores; 'is' compara identidad de objeto .
 
 # --- Código ilustrativo: relación ---
+a = 10
+b = 5
+print(a == b)  # False
+print(a > b)   # True
+print(a >= b)   # True
+print(a < b)   # False
+print(a <= b)   # False
+print(a != b)   # True
 
+c = 7
+print(a > b > c)  # False
+print(a > b < c)  # True
 
 # ---------------------------------------------------------------
 # C) TEORÍA: OPERADORES LÓGICOS Y PRECEDENCIA
@@ -66,9 +98,17 @@
 # - En (A or B): si A es True, no evalúa B.
 
 # --- Código ilustrativo: lógica ---
-       
+p = (10 > 3)            # True
+q = ("py" in "python")  # True
+r = (0 == 1)            # False
+
+print(p and q) # True and True -> True
+print(p or r)  # True or False -> True
+print(q and r) # True and False -> False
 
 # Precedencia
+print(not p or q) # not True or True -> False or True -> True
+print(not (p or q)) # not (True or True) -> not (True) -> False
 
 # ---------------------------------------------------------------
 # D) TEORÍA: IF (SIMPLE) e IF-ELSE (DOBLE)
@@ -86,10 +126,25 @@
 
 # --- Código ilustrativo: if simples y dobles ---
 # Simple
+x = 17
+if x >= 18: # x >= 18 -> True
+    print("Acceso concedido")
 
 # Doble
+x = 15
+if x >= 18:
+    print("Acceso concedido")
+else:
+    print("Acceso denegado")
 
 # Combinando lógica
+edad = 18
+nacionalidad = "Española"
+
+if (edad >= 18) or (nacionalidad.lower() == "mexicana"):
+    print("Acceso concedido")
+else:
+    print("Acceso denegado")
 
 
 # ---------------------------------------------------------------
@@ -108,3 +163,48 @@
 # - Expresar condiciones de forma clara y directa; usar paréntesis explicativos.
 # - Normalizar entradas de texto: .strip(), .lower() antes de comparar.
 # - Para floats, considerar tolerancia: abs(a-b) <= 1e-9 (según magnitud).
+
+# ---------------------------------------------------------------
+# Ejercicio 04 - Máximo entre dos
+# Enunciado: Lee dos enteros y muestra el mayor; si no es mayor el primero, 
+# muestra el segundo (empates incluidos).
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+a = int(input()) # 1
+b = int(input()) # 10
+
+if a > b:
+    print(a)
+else:
+    print(b)
+
+# ---------------------------------------------------------------
+# Ejercicio 05 - Texto largo o corto
+# Enunciado: Lee un texto y muestra 'Long' si su longitud > 10; si no, 'Short'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+m = input()
+
+if len(m) > 10:
+    print("Long")
+else:
+    print("Short")
+
+# ---------------------------------------------------------------
+# Ejercicio 11 - Vocal o no
+# Enunciado: Lee un solo carácter y muestra 'Vocal' si es vocal; si no, 'Otro'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+# 'a' -> 'Vocal'
+# 'c' -> 'Otro'
+# '5' -> 'Otro'
+c =  input()
+vocales = "aeiouáéíóú"
+
+if c.strip().lower() in vocales:
+    print("Vocal")
+else:
+    print("Otro")
+
+s = " Hola "
+s.strip()
