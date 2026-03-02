@@ -18,6 +18,36 @@
 # while True:
     # Esto de aquí, nunca se va a detener
 
+# i = 0
+# while True:
+#     print(i)
+#     i += 1  # i = i +1
+
+i = 1
+while i <= 10:
+    print(i)
+    i += 1  
+
+i = 1
+while i <= 10:
+    print(i)
+    # No debo olvidarme de actualizar mi variable i
+
+i = 1
+while True:
+    print(i)
+    i += 1  
+
+    if i > 10:
+        break
+
+# No hacer
+# ¿Por qué esto nunca se ejecuta en la compu de Santi?
+i = 1
+while i > 10:
+    print(i)
+    i += 1 
+
 # - Para TERMINAR el bucle, en algún punto debe volver False la condición.
 # - Para ello, normalmente ACTUALIZAMOS variables dentro del cuerpo.
 #
@@ -44,15 +74,47 @@
 # ---------------------------------------------------------------
 
 # Patrón C1) Contador simple: imprimir 1..N (N conocido)
-
+N = 5
+i = 1
+while i <= N:
+    print(i)
+    i += 1 # i = i +1
 
 
 # Patrón C2) Acumulador: suma de 1..N (N conocido)
-
-
+N = 5
+i = 1
+suma = 0
+while i <= N:
+    suma = suma + i
+    i = i + 1
+print(suma)
 
 # Patrón C3) Centinela textual: leer hasta 'fin' (sin listas)
+# Pedir números enteros al usuario y sumarlos hasta que ingrese la palabra "fin"
+suma = 0
+val = input()
+while val.lower() != "fin":
+    try:
+        x = int(val)
+        suma = suma + x
+    except ValueError:
+        print("Inválido")
+    val = input()
+print(suma)
 
+# Pedir números enteros al usuario, hasta que ingrese el 0.
+# Saca la suma y promedio de los números ingresados.
+i = 0
+suma = 0
+
+while True:
+    val = int(input())
+    suma += val
+    if val == 0:
+        break
+    i += 1
+print(f"Suma {suma} | Promedio {suma/i}")
 
 # ---------------------------------------------------------------
 # C) VALIDACIÓN DE ENTRADAS CON WHILE Y TRY-EXCEPT (sin break/continue)
@@ -93,3 +155,16 @@
 # - Ubica la INICIALIZACIÓN antes del while y la ACTUALIZACIÓN dentro del cuerpo.
 # - Prefiere banderas (valid = False) para control de repetición en validación.
 # - Usa mensajes de error claros en try-except para ayudar al usuario.
+
+# ---------------------------------------------------------------
+# Ejercicio 06 - Invertir cadena
+# Enunciado: Lee un texto y construye su reverso usando while (sin slicing [::-1]).
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+s = input()
+i = len(s) - 1
+rev = ""
+while i >= 0:
+    rev = rev + s[i]
+    i -= 1
+print(rev)
