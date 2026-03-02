@@ -117,15 +117,24 @@ except ValueError:
     print("Error, no puedes convertir un caracter no numérico a integer")
 
 # 2) División con captura de ZeroDivisionError
-texto = "123x"
+a, b = 10, 2 # Desempaquetamiento
+
 try:
-   pass
+   division = a/b
+   print(division)
 except ZeroDivisionError:
-    pass
+    print("No se puede dividir entre cero")
 
 # 3) Uso de else/finally
-
-
+texto = "123"
+try:
+    n = int(texto)
+except ValueError:
+    print("Error, no puedes convertir un caracter no numérico a integer")
+else:
+    print(n)
+finally:
+    print("Conversión terminada")
 
 # ---------------------------------------------------------------
 # D) BUENAS PRÁCTICAS, VENTAJAS Y DESVENTAJAS
@@ -144,3 +153,81 @@ except ZeroDivisionError:
 # - Ordenar elif del caso más específico al más general.
 # - Usar nombres claros y normalizar entradas de texto (.strip(), .lower()).
 # - En try-except, capturar solo el error esperado (p.ej., ValueError) y dar mensajes útiles.
+
+# ---------------------------------------------------------------
+# Ejercicio 13 - Tramos de impuestos
+# Enunciado: Lee ingreso mensual y muestra 'Low' (<10000), 'Mid' (10000-29999),
+#  'High' (30000+).
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+a = float(input())
+
+if a < 10_000:
+    print('Low')
+elif a < 30_000:
+    print('Mid')
+else:
+    print('High')
+
+# ---------------------------------------------------------------
+# Ejercicio 25 - Triángulo por lados (simple)
+# Enunciado: Lee a,b,c; muestra 'Equilatero' si a==b==c; si no, 
+# 'Isósceles' si dos iguales; si no 'Escaleno'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+a, b, c = float(input()), float(input()) , float(input())
+
+if a == b == c:
+    print("Equilátero")
+elif a == b or a == c or b == c:
+    print("Isósceles")
+else:
+    print("Escaleno")
+
+# ---------------------------------------------------------------
+# Ejercicio 28 - Tipo de carácter
+# Enunciado: Lee un carácter: si es dígito -> 'Digit'; si letra -> 'Alpha'; si otro -> 'Other'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+texto = input()
+
+if texto.isdigit():
+    print("Digit")
+elif texto.isalpha():
+    print("Alpha")
+else:
+    print("Other")
+
+c = input()
+if "0" <= c <= "9":
+    print("Digit")
+elif "a" <= c <= "z" or "A" <= c <= "Z":
+    print("Alpha")
+else:
+    print("Other")
+
+
+# ---------------------------------------------------------------
+# Ejercicio 32 - Comparación de apellidos
+# Enunciado: Lee dos apellidos; si comparten inicial -> 'Same'; si no 'Different'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+a1 = input().lower()
+a2 = input().lower()
+
+if a1[0] == a2[0]:
+    print("Same")
+else:
+    print("Different")
+
+# ---------------------------------------------------------------
+# Ejercicio 36 - Validación de formato 'ABC-123'
+# Enunciado: Lee código; si 3 letras + guion + 3 dígitos -> 'Valid'; si no 'Invalid'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+a = input()
+
+if (len(a) == 7 and a[:3].isalpha() and a[3] == "-" and a[4:].isdigit()):
+    print("Valid")
+else:
+    print("Invalid")

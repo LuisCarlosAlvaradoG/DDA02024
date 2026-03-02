@@ -12,6 +12,26 @@
 # - "Pre-test": la condición se evalúa ANTES de cada iteración.
 # - Si la condición es False desde el inicio, el cuerpo no se ejecuta nunca.
 
+# i = 0
+# acum = 1
+# while True:
+#     print(i, acum)
+#     i += 1
+#     acum *= i
+
+i = 0
+while i < 10: # condicion en el while
+    i += 1
+    print(i)
+
+i = 0
+while True:
+    i += 1
+    print(i)
+
+    if i >= 10: # Centinela + break
+        break
+
 # while False:
     # Esto de aquí, nunca se va a ejecutar
 
@@ -44,7 +64,11 @@
 # ---------------------------------------------------------------
 
 # Patrón C1) Contador simple: imprimir 1..N (N conocido)
-
+N = 5 # centinela
+i = 1
+while i <= N:
+    print(i)
+    i += 1
 
 
 # Patrón C2) Acumulador: suma de 1..N (N conocido)

@@ -8,6 +8,7 @@
 # - Ejemplo: count = count + 1 cuando detectamos un número positivo.
 # count = count + 1
 # count = +1   Es incorrecto
+# count += 1
 #
 # ACUMULADOR (accumulator)
 # - Variable numérica que agrega (suma) valores a lo largo del tiempo.
