@@ -1,12 +1,16 @@
-# Pedir números enteros al usuario, hasta que ingrese el 0.
-# Saca la suma y promedio de los números ingresados.
-i = 0
-suma = 0
+# ---------------------------------------------------------------
+# Ejercicio 07 - Palíndromo
+# Enunciado: Lee palabra y verifica si es palíndroma comparando extremos con while.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+s = input()
+i = len(s) - 1
+rev = ""
+while i >= 0:
+    rev += s[i]
+    i -= 1
 
-while True:
-    val = int(input())
-    suma += val
-    if val == 0:
-        break
-    i += 1
-print(f"Suma {suma} | Promedio {suma/i}")
+if s == rev:
+    print("Palíndromo")
+else:
+    print("No palíndromo")

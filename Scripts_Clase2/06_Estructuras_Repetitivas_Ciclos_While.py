@@ -32,6 +32,23 @@ while True:
     if i >= 10: # Centinela + break
         break
 
+i = 1
+while True: # Este de aquí
+    print(i) # Este print está dentro de el while de arriba
+    i += 1   # Que no se me olvide actualizar la variable que va a llegar al centinela
+    if i >= 10: # Centinela -> 10
+        break
+
+i = 1
+while i >= 10: 
+    print(i) 
+    i += 1   
+
+# Definir mi contador o acumulador fuera del ciclo
+# Tener una condición de ruptura
+# Que la condición arranque como True
+# Actualizar el contador/acumulador
+
 # while False:
     # Esto de aquí, nunca se va a ejecutar
 
@@ -72,11 +89,27 @@ while i <= N:
 
 
 # Patrón C2) Acumulador: suma de 1..N (N conocido)
-
-
+N = 5
+suma = 0
+i = 1
+while i <= N:
+    suma = suma + i
+    i = i + 1
+print(suma)
 
 # Patrón C3) Centinela textual: leer hasta 'fin' (sin listas)
-
+# Pedir números enteros al usuario y sumarlos hasta que ingrese la palabra "fin"
+suma = 0
+val = input()
+while val.lower() != "fin":
+    try:
+        x = int(val)
+        suma = suma + x
+    except ValueError:
+        print("Inválido, ingresa de nuevo")
+    val = input()
+print(suma)
+    
 
 # ---------------------------------------------------------------
 # C) VALIDACIÓN DE ENTRADAS CON WHILE Y TRY-EXCEPT (sin break/continue)
@@ -117,3 +150,54 @@ while i <= N:
 # - Ubica la INICIALIZACIÓN antes del while y la ACTUALIZACIÓN dentro del cuerpo.
 # - Prefiere banderas (valid = False) para control de repetición en validación.
 # - Usa mensajes de error claros en try-except para ayudar al usuario.
+
+# ---------------------------------------------------------------
+# Ejercicio 06 - Invertir cadena
+# Enunciado: Lee un texto y construye su reverso usando while (sin slicing [::-1]).
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+texto = input()
+i = len(texto) - 1
+rev = ""
+while i >= 0:
+    rev += texto[i]
+    i -= 1
+print(rev)
+
+# ---------------------------------------------------------------
+# Ejercicio 07 - Palíndromo
+# Enunciado: Lee palabra y verifica si es palíndroma comparando extremos con while.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+texto = input()
+i = len(texto) - 1
+rev = ""
+while i >= 0:
+    rev += texto[i]
+    i -= 1
+
+if texto == rev:
+    print("Palíndromo")
+else:
+    print("No palíndromo")
+
+# ---------------------------------------------------------------
+# Ejercicio 11 - Mínimo y máximo
+# Enunciado: Lee números hasta 0 y 
+# muestra el mínimo y máximo (si hubo datos).
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+n = int(input())
+if n != 0:
+    minimo = n
+    maximo = n
+
+    while n != 0:
+        if n < minimo:
+            minimo = n
+        if n > maximo:
+            maximo = n
+
+        n = int(input())
+
+    print(minimo, maximo)
