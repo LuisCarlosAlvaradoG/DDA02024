@@ -20,6 +20,43 @@
 # - Si el iterable está vacío, el cuerpo no se ejecuta.
 
 # --- Código ilustrativo: for básico con range ---
+for i in range(5): # Cuando pongo únicamente un dato, ese dato es el fin(Excluyente)
+    print(i)
+
+for i in range(3, 8): # Cuando pongo 2 datos (inicio, fin(excluyente))
+    print(i)
+
+# Aquí no tenemos que definir la variable a iterar
+for i in range(2, 11, 2): #(inicio, fin(excluyente), paso)
+    print(i)
+
+for i in range(5, 0, -1):
+    print(i)
+
+for i in range(0, 5, -1): # No nos imprime nada porque el inicio es menor que el fin
+    print(i)
+
+s = "Programación"
+for i in s:
+    print(i)
+
+# Invertir una palabra utilizando ciclo for
+s = input()
+r = ""
+for i in range(len(s)-1, -1, -1):
+    r += s[i]
+print(r)
+    
+# ---------------------------------------------------------------
+# Ejercicio 04 - Suma de 1..N
+# Enunciado: Lee N y calcula la suma 1+2+...+N con for.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+N = int(input())
+suma = 0
+for i in range(1, N+1):
+    suma += i
+print(suma)
 
 
 # ---------------------------------------------------------------
