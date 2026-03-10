@@ -20,6 +20,37 @@
 # - Si el iterable está vacío, el cuerpo no se ejecuta.
 
 # --- Código ilustrativo: for básico con range ---
+for x in range(5):  # sintaxis ->  for variable in iterable:
+    print(x)
+
+for i in range(3, 8):
+    print(i)
+
+for i in range(2, 10, 2):
+    print(i)
+
+for k in range(5, 0, -1):
+    print(k)
+
+for k in range(0, 5, -1): # Esto no tiene sentido
+    print(k)
+
+palabra = "Programación"
+for letra in palabra: 
+    print(letra)
+
+# Pedir una palabra al usuario e invertirla utilizando ciclo for
+s = input()
+revertida = ""
+for p in range(len(s)-1, -1, -1):
+    revertida += s[p]
+print(revertida)
+
+string = input()
+vacio = ""
+for i in string:
+    vacio = i + vacio
+print(vacio)
 
 
 # ---------------------------------------------------------------
@@ -41,7 +72,17 @@
 # - Olvidar que el paso negativo exige start>stop.
 
 # --- Código ilustrativo: variantes de range ---
+for i in range(0):
+    print(i)
 
+for i in range(2, 2):
+    print(i)
+
+for v in range(10, 0, 1): # El inicio debe ser menor al fin con paso positivo
+    print(v)
+
+for v in range(0, 10, -1): # El inicio debe ser mayor al fin con paso negativo
+    print(v)
 
 # ---------------------------------------------------------------
 # C) FOR SOBRE CADENAS: POR CARÁCTER Y POR ÍNDICE
@@ -60,7 +101,8 @@
 # Recordatorio: cadenas son inmutables; para "modificar" se construye una nueva.
 
 # --- Código ilustrativo: cadenas ---
-
+# Contar cuantas vocales tiene la palabra "Algoritmos"
+s = "Algoritmos" # 4
 
 # Índices
 

@@ -78,7 +78,17 @@ print(suma)
 # - Olvidar que el paso negativo exige start>stop.
 
 # --- Código ilustrativo: variantes de range ---
+for i in range(0): # En este ciclo for no vamos a visualizar ningún print
+    print(i)
 
+for i in range(2, 2): # El inicio debe ser menor al fin.
+    print(i)
+
+for i in range(1, 10, -1): # Con paso negativo, el inicio DEBE ser mayor al fin.
+    print(i)
+
+for i in range(2, 5, 2):
+    print(i)
 
 # ---------------------------------------------------------------
 # C) FOR SOBRE CADENAS: POR CARÁCTER Y POR ÍNDICE
@@ -97,9 +107,27 @@ print(suma)
 # Recordatorio: cadenas son inmutables; para "modificar" se construye una nueva.
 
 # --- Código ilustrativo: cadenas ---
-
+s = "Algoritmos"
+for i in s:
+    print(i)
+# Contar cuantas vocales tiene "s" utilizando ciclo for -> 4
+palabra = "Algoritmos"
+cont = 0
+vocales = "aeiouAEIOU"
+for letra in palabra:
+    if letra in vocales:
+        cont += 1
+print(cont)
 
 # Índices
+palabra = "Algoritmos"
+cont = 0
+vocales = "aeiouAEIOU"
+
+for i in range(len(palabra)):
+    if palabra[i] in vocales:
+        cont += 1
+print(cont)
 
 # ---------------------------------------------------------------
 # D) FOR ANIDADOS: PATRONES Y TABLAS
@@ -118,11 +146,48 @@ print(suma)
 
 # --- Código ilustrativo: patrones y tabla ---
 # Rectángulo 3x5
+filas = 3
+columnas = 5
 
+for i in range(filas):
+    linea = ""
+    for j in range(columnas):
+        linea += "*"
+    print(linea)
 
 # Triángulo incremental (1..5)
+#
+##
+###
+####
+#####
+filas = 1
+columnas = 5
+for i in range(filas):
+    linea = ""
+    for j in range(columnas):
+        linea += "#"
+        print(linea)
 
-# Tabla de multiplicar 1..3
+for i in range(1, 6):
+    print("#" * i)
+
+# Pedir al usuario la base y altura de un rectángulo, y devolver el perímetro del rectángulo.
+# base = 5
+# altura = 3
+# *****
+# *   *
+# *****
+base = int(input()) # columnas 5
+altura = int(input()) # filas  3
+for i in range(altura):
+    rectangulo = ""
+    for j in range(base):
+        if i == 0 or i == (altura - 1) or j == 0 or j == (base - 1):
+            rectangulo += "*"
+        else:
+            rectangulo += " "
+    print(rectangulo)
 
 # ---------------------------------------------------------------
 # D) CONTADORES Y ACUMULADORES CON FOR
@@ -142,11 +207,20 @@ print(suma)
 
 # --- Código ilustrativo: suma de pares y conteo de letras ---
 # Suma de pares del 1 al 10
-
+cont = 0
+for n in range(1, 11):
+    if n % 2 == 0:
+        cont += 1
+print(cont)
 
 # Contar cuántas 'a' o 'A' hay en un texto
-
-
+texto = "Aula de algoritmos"
+cont = 0
+vocales = "aA"
+for i in texto:
+    if i in vocales:
+        cont += 1
+print(cont)
 
 # ---------------------------------------------------------------
 # E) BUENAS PRÁCTICAS, VENTAJAS Y DESVENTAJAS
@@ -164,3 +238,16 @@ print(suma)
 # - Nombrar claramente las variables de control (i, j) y las de estado (acc, count).
 # - Comprobar casos límite: N=0, cadenas vacías, rangos vacíos.
 # - Evitar dependencias externas en cada iteración (ej. no convertir repetidamente lo mismo).
+
+# ---------------------------------------------------------------
+# Ejercicio 31 - Pirámide centrada
+# Enunciado: Lee h e imprime una pirámide centrada de altura h con '*'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+
+# h = 5
+#     *
+#    ***
+#   *****
+#  *******
+# *********
