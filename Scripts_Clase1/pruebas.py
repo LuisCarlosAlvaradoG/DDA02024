@@ -1,5 +1,3 @@
-s = input()
-r = ""
-for i in range(len(s)-1, -1, -1):
-    r += s[i]
-print(r)
+import numpy as np
+nombres = ["Alina", "Adrián", "Sofi", "Adri", "Dani", "Beto", "Santi", "Sam", "Mati", "Chema", "Uriel", "Crishanna", "Rodrigo", "Irvin", "Brenda", "Javi", "Leo"]
+print(f"Resuelve: {np.random.choice(nombres, size = 1)[0]}")

@@ -103,6 +103,12 @@ for v in range(0, 10, -1): # El inicio debe ser mayor al fin con paso negativo
 # --- Código ilustrativo: cadenas ---
 # Contar cuantas vocales tiene la palabra "Algoritmos"
 s = "Algoritmos" # 4
+cont = 0
+vocales = "aeiouAEIOU"
+for i in s:
+    if i in vocales:
+        cont += 1
+print(cont)
 
 # Índices
 
@@ -123,11 +129,45 @@ s = "Algoritmos" # 4
 
 # --- Código ilustrativo: patrones y tabla ---
 # Rectángulo 3x5
-
+# filas = 3
+# columnas = 5
+# *****
+# *****
+# *****
+filas = int(input())
+columnas = int(input())
+for i in range(filas):
+    linea = ""
+    for j in range(columnas):
+        linea += "*"
+    print(linea)
 
 # Triángulo incremental (1..5)
+N = 5
+for i in range(1, N+1):
+    print("#"*i)
+#
+##
+###
+####
+#####
 
-# Tabla de multiplicar 1..3
+# Pedir al usuario la base y altura de un rectángulo, y devolver el perímetro del rectángulo.
+# base = 5
+# altura = 3
+# *****
+# *   *
+# *****
+base = int(input()) # columnas
+altura = int(input()) # filas
+for i in range(altura):
+    rectangulo = ""
+    for j in range(base):
+        if i == 0 or i == (altura - 1) or j == 0 or j == (base - 1):
+            rectangulo += "*"
+        else:
+            rectangulo += " "
+    print(rectangulo)
 
 # ---------------------------------------------------------------
 # D) CONTADORES Y ACUMULADORES CON FOR
