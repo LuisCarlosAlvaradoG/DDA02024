@@ -209,3 +209,47 @@ for i in range(altura):
 # - Nombrar claramente las variables de control (i, j) y las de estado (acc, count).
 # - Comprobar casos límite: N=0, cadenas vacías, rangos vacíos.
 # - Evitar dependencias externas en cada iteración (ej. no convertir repetidamente lo mismo).
+
+# ---------------------------------------------------------------
+# Ejercicio 31 - Pirámide centrada
+# Enunciado: Lee h e imprime una pirámide centrada de altura h con '*'.
+# (Ejercicio de práctica; SOLUCIÓN completa abajo.)
+# ---------------------------------------------------------------
+
+# --- SOLUCIÓN ---
+# Gavito
+h = int(input())
+
+for i in range(h):
+    linea = ""
+    for j in range(h-i-1):
+        linea += " "
+    for k in range(2*i+1):
+        linea += "*"
+    print(linea)
+
+# Montse
+h = int(input())
+
+central = h - 1
+total = 2 * (h - 1) + 1
+
+for i in range(h):
+    minimo = central - i
+    maximo = central + i
+    linea = ""
+    for j in range(total):
+        if minimo <= j <= maximo:
+            linea += "*"
+        else:
+            linea += " "
+    print(linea)
+
+# Yo
+h = int(input())
+
+for i in range(0, h):
+    espacios = " " * (h - i - 1)       # Repetición
+    asteriscos = "*" * (2 * i + 1)
+    print(espacios + asteriscos) # Concatenación
+
