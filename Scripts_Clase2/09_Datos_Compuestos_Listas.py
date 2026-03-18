@@ -126,11 +126,22 @@ l.sort(reverse= True)
 # E) CONSTRUCCIÓN DE LISTAS DESDE ENTRADAS
 # ---------------------------------------------------------------
 # F1) Cantidad fija (for + range)
+N = int(input())
+L = [] # Lista vacía
 
+for i in range(N):
+    val = int(input())
+    L.append(val)
+print(L)
 
 # F2) Centinela textual (while) hasta 'fin'
-
-
+L = []
+while True:
+    val = input()
+    if val == "fin":
+        break
+    L.append(int(val))
+print(L)
 
 # ---------------------------------------------------------------
 # F) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS
@@ -150,3 +161,29 @@ l.sort(reverse= True)
 # - Maneja excepciones de remove/index con try-except o verifica pertenencia con 'in'.
 # - Para copiar usa lista[:] o list(lista) (copia superficial).
 # - Usa banderas DEBUG y prints en iteraciones clave si algo no cuadra.
+
+# Input
+#["apple","banana","orange"]
+# Output
+# 2
+# Preprocesamiento entrada
+entrada = input().strip()  # .strip() Quita los espacios a las orillas del str
+contenido = entrada[1:-1]
+sublista = contenido.split(",")  # split()   str -> list
+palabras = []
+for i in sublista:  # .split() es un método de str, que me devuelve una lista
+    palabras.append(i[1:-1])
+palabras
+
+# Eval entrada
+entrada = eval(input())
+
+# Procesamiento de salida
+l = ["1", "2", "3", "4"]
+print(l)
+# .join  list -> str
+salida = "[" + ",".join(l) + "]"
+print(salida)
+
+entrada = input().strip()
+a, b = tuple(map(lambda x: int(x), entrada.split(" ")))
