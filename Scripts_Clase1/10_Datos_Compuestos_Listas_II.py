@@ -3,13 +3,33 @@
 # A) LISTAS ANIDADAS (MATRICES): CREACIÓN Y RECORRIDO
 # ---------------------------------------------------------------
 # Matriz 3x3 fija:
-
+M = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(M[1][0])
+print(len(M))
+print(len(M[0]))
 # Recorridos:
 # - Por filas
+suma = 0
+for i in M:
+    for j in i:
+        suma += j
+print(suma)
 
-
+suma = 0
+for fila in M:
+    for num in fila:
+        suma += num
+print(suma)
 # - Por índices (i, j)
-
+suma = 0
+for i in range(len(M)):
+    for j in range(len(M[i])):
+        suma += M[i][j]
+print(suma)
 # Construcción programática de matriz r x c con ceros
 
 
@@ -19,7 +39,19 @@
 # Tabla de multiplicar 1..r por 1..c (guardada en matriz T)
 
 # Patrón de tablero (caracteres)
+n = 5
+tablero = []
+for i in range(n):
+    fila = []
+    for j in range(n):
+        if (i+j) % 2 == 0:
+            fila.append("#")
+        else:
+            fila.append(".")
+    tablero.append(fila)
 
+for i in tablero:
+    print(i)
 # ---------------------------------------------------------------
 # C) BÚSQUEDA, FILTRADO Y TRANSFORMACIÓN (SIN FUNCIONES)
 # ---------------------------------------------------------------
@@ -58,3 +90,4 @@
 # ---------------------------------------------------------------
 # G) FUNCIÓN MAP USANDO LAMBDA
 # ---------------------------------------------------------------
+

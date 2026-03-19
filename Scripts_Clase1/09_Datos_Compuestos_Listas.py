@@ -159,3 +159,32 @@ l.sort(reverse = True)
 # - Maneja excepciones de remove/index con try-except o verifica pertenencia con 'in'.
 # - Para copiar usa lista[:] o list(lista) (copia superficial).
 # - Usa banderas DEBUG y prints en iteraciones clave si algo no cuadra.
+
+# Preprocesamiento de inputs para listas
+# Input
+# [1,2,3,4,5]
+# Ouput
+# 6
+
+entrada = input().strip()
+contenido = entrada[1:-1]
+sublista = contenido.split(",")      # str -> list
+lista = []
+for x in sublista:
+    lista.append(int(x))
+suma = 0
+for i in lista:
+    if i % 2 == 0:
+        suma += i
+print(suma)
+
+# entrada = eval(input()) # Es equivalente al preprocesamiento anterior
+
+# Procesamiento de outputs
+lista = ['-1', '1', '2']
+# list -> str
+salida = "[" + ",".join(lista) + "]"
+print(salida)
+
+# -1,1,2
+# [-1,1,2]
