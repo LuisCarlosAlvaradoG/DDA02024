@@ -75,8 +75,16 @@ for i in tablero:
 # E) CONVERSIÓN TEXTO<->LISTA: SPLIT Y JOIN
 # ---------------------------------------------------------------
 # split: separa una cadena en lista por separador (por defecto, espacios)
+# str -> lista
+cadena = "1,2,3,4,5"
+lista = cadena.split(",")
+print(lista)
 
 # join: une elementos de una lista de strings con un separador
+# list -> str
+lista = ['1', '2', '3', '4', '5']
+cadena = ",".join(lista)
+print(cadena)
 
 # ---------------------------------------------------------------
 # F) COMPRENSIONES DE LISTAS (BÁSICAS)
@@ -85,9 +93,70 @@ for i in tablero:
 # Sin 'if-else' dentro de la expresión y sin anidar comprensiones.
 #
 # Ejemplos:
+lista = [1, 2, 3, 4, 5]
+cuadrados = []
+for i in lista:
+    cuadrados.append(i**2)
+print(cuadrados)
 
+cuadrados_comp = [i**2 for i in lista]  # Operacion -> Ciclo for
+print(cuadrados_comp)
 
+numeros_str = ["1", "2", "3", "4", "5"]
+numeros_int = [int(i) for i in numeros_str]
+print(numeros_int)
+
+lista = [1, 2, 3, 4, 5]
+# Operacion -> Ciclo for -> Estructura if
+cuadrados_pares = [i**2 for i in lista if i % 2 == 0]
+print(cuadrados_pares)
+
+lista = [1, 2, 3, 4, 5]
+#Elevar al cuadrado los pares y al cubo los impares
+# Operacion -> Estructura if-else -> Ciclo for
+cuadrados_mixto = [i**2 if i % 2 == 0 else i**3 for i in lista]
+print(cuadrados_mixto)
+
+cuadrados_mixto = []
+for i in lista:
+    if i % 2==0:
+        cuadrados_mixto.append(i**2)
+    else:
+        cuadrados_mixto.append(i**3)
 # ---------------------------------------------------------------
 # G) FUNCIÓN MAP USANDO LAMBDA
 # ---------------------------------------------------------------
 
+lista = [1, 2, 3, 4, 5]
+# lambda -> Que variable voy a recibir y qué hacerle a la variable
+# iterable -> las elementos que se convertirán en x
+# map -> mapear todos los elementos de la iterable
+# list -> convierte el objeto map en una lista
+cuadrados = list(map(lambda x: x ** 2, lista))
+print(cuadrados)
+
+numeros_str = ["1", "2", "3", "4", "5"]
+numeros_int = list(map(lambda i: int(i), numeros_str))
+print(numeros_int)
+
+entrada = int(input())
+cuadrados = str([i**2 for i in range(1, entrada+1)])
+print(cuadrados.replace(" ",""))
+
+lista = ["1", "2", "3"]
+",".join(lista)
+
+n = int(input())
+lista = [str(i) for i in range(1, n+1) if n%i == 0]
+
+new_list = []
+for i in range(1, n+1):
+    if n%i == 0:
+        new_list.append(str(i))
+    
+entrada = [[1,2],[3,4],[5]]
+new_list = []
+for sublista in entrada:
+    for j in sublista:
+        new_list.append(j)
+print(new_list)

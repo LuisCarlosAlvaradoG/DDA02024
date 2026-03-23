@@ -131,3 +131,48 @@ for i in range(n):
 
 for i in B:
     print(str(i).replace("[","").replace("]","").replace(",",""))
+
+numeros = [1, 2, 3, 4, 5]
+resultado = [x * 2 for x in numeros if x % 2 == 0]
+print(resultado)
+
+valores = ['2', '5', '8', '3']
+resultado = list(map(int, valores))
+resultado = [x ** 2 for x in resultado if x > 4]
+print(resultado)
+
+contador = 0
+total = 0
+while contador < 5:
+    total += contador
+    contador += 1
+print(total)
+
+x = 10
+if x > 5 and x < 20:
+    x -= 3
+elif x >= 20:
+    x = 0
+else:
+    x += 5
+print(x)
+
+texto = "Python"
+for letra in texto[::2]:
+    break
+print(texto)
+
+nums = [1, 2, 3, 4, 5]
+pares = [x**2 for x in nums if x % 2 == 0]
+impares = [x**2 for x in nums if x % 2 == 1]
+print(pares == impares)
+
+i = 0
+while i < 5:
+    i += 4
+print(i)
+
+lista = [1, 2, 3, 4, 5]
+x = lista.pop()
+lista.remove(2)
+print(len(lista))
