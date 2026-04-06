@@ -28,7 +28,30 @@
 # - Una función sin return explícito retorna None.
 #
 # Ejemplo simple:
+numero = 5
+print(numero **2)
 
+def cuadrado(n): #argumento
+    resultado = n ** 2
+    return resultado
+    
+x = cuadrado(5)
+
+# Con una función, eleva una lista de números al cuadrado
+def lista_cuadrado(lista):
+    resultado = []
+    for x in lista:
+        resultado.append(x ** 2)
+    return resultado
+
+l = [5, 3, 8, 2]
+lista_cuadrado(l)
+list(map(lambda x: x**2, l))
+list(map(cuadrado, l))
+# cuadrado(5)
+# cuadrado(3)
+# cuadrado(8)
+# cuadrado(2)
 
 # ---------------------------------------------------------------
 # B) MÓDULOS: IMPORTACIÓN Y ESPACIOS DE NOMBRES
@@ -39,10 +62,20 @@
 #   import nombre_modulo as alias
 #
 # Demostración con el módulo estándar 'math' (operaciones numéricas básicas):
-
+import math
+print(math.pi)
+print(5 ** (1/2))
+print(math.sqrt(5))
+print(math.floor(3.7))
+print(math.ceil(3.2))
+print(round(3.56, 1)) # Esta no pertenece a math
 # También podemos importar un nombre específico:
+from math import sqrt
+print(sqrt(5))
 
 # O usar un alias para el módulo:
+import math as m
+print(m.sqrt(5))
 
 # Nota pedagógica: por claridad en cursos iniciales, preferimos 'import math' y luego 'math.algo'.
 

@@ -187,3 +187,5 @@ print(salida)
 
 entrada = input().strip()
 a, b = tuple(map(lambda x: int(x), entrada.split(" ")))
+
+a, b = int(input()), int(input())

@@ -253,3 +253,20 @@ for i in range(0, h):
     asteriscos = "*" * (2 * i + 1)
     print(espacios + asteriscos) # Concatenación
 
+# Obtener la suma de la diagonal inversa de una matriz
+# Input
+# [[1, 2, 3],
+#  [4, 5, 6],
+#  [7, 8, 9]]
+
+matriz = eval(input())
+suma = 0
+for i in range(len(matriz)):
+    for j in range(len(matriz[i])):
+        if i + j == len(matriz) - 1:
+            suma += matriz[i][j]
+print(suma)
+
+lista = [1, 2, 3, 4, 5]
+
+a, b = int(input()), int(input())
