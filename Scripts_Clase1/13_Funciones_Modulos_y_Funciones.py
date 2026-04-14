@@ -84,12 +84,17 @@ print(m.sqrt(5))
 # ---------------------------------------------------------------
 # En Python, al llamar una función, podemos pasar argumentos por posición o nombrarlos.
 
+def area_rectangulo(base, altura):
+    area = base * altura
+    return area
 
 # Llamadas por posición:
+print(area_rectangulo(3, 4))
 
 # Llamadas por palabra clave (keyword arguments):
-
+print(area_rectangulo(altura = 5, base = 2))
 # Mezcla (posicionales primero, luego keywords):
+print(area_rectangulo(3, 2))
 
 # ---------------------------------------------------------------
 # D) ALCANCE: LOCALES VS. GLOBALES (Y PRECAUCIONES)
@@ -98,7 +103,21 @@ print(m.sqrt(5))
 # Variables definidas fuera pertenecen al ámbito GLOBAL del módulo.
 # Evitar depender de globales salvo necesidad; pasar datos por parámetros es más claro.
 
+Debug = True # Global
 
+def decremento_por_uno(L):
+    Debug = False # Local
+    if Debug:
+        print(L)
+    R = []
+    for x in L:
+        R.append(x - 1)
+    if Debug:
+        print(R)
+    return R
+
+data = [3, 5, 8]
+print(decremento_por_uno(data))
 
 
 # ---------------------------------------------------------------
