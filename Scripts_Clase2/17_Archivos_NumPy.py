@@ -122,33 +122,81 @@ A.argmax()
 # ---------------------------------------------------------------
 # E) MASKS, WHERE, UNIQUE, SET OPS
 # ---------------------------------------------------------------
+B = np.array([5, 3, 5, 8, 1, 2, 8, 8])
+mask = (B == 8) # Genera un array de True/False
+print(mask)
+#¿Cuántos 8 hay en el array?
+print(np.sum(mask))
+print(B[mask])
 
+print(np.where(B >= 3, 1, 0))
+
+nombres = np.array(["Regina", "Erik", "Gus", "Renata", "Bruno", "Itzel"])
+print(np.where(nombres != "Regina", True, False))
+
+# Teoría de conjuntos
+C = np.array([1, 2, 3, 4, 5])
+D = np.array([4, 5, 6, 7])
+print(np.intersect1d(C, D))
+print(np.union1d(C, D))
+print(np.setdiff1d(D, C))
 # ---------------------------------------------------------------
 # F) RESHAPE, CONCAT, APILADO
 # ---------------------------------------------------------------
+X = np.arange(6).reshape(2, 3)
+Y = np.arange(6, 14).reshape(2, 4)
 
+print(np.vstack([X, Y]))
+
+print(np.hstack([X, Y]))
+
+print(np.concatenate([X, Y], axis = 0))
 # ---------------------------------------------------------------
 # G) I/O CON NUMPY: loadtxt, genfromtxt, savetxt
 # ---------------------------------------------------------------
-
+def create_num_csv(path):
+    ids = np.arange(1, 11).reshape(-1, 1) # .reshape(10, 1)
+    x = np.linspace(0, 9, 10).reshape(-1, 1)
+    y = 2.5*x + 3
+    data = np.hstack([ids, x, y])
+    np.savetxt(path, data, delimiter=",", fmt= "%.4f")
 
 # Uso sugerido en clase:
+create_num_csv("np_basic.csv")
 
+data = np.loadtxt("np_basic.csv", delimiter=",")
+print(data)
+
+#Descargar un csv que también tiene str
+data = np.genfromtxt("sales.csv", delimiter=",", dtype=None, encoding="utf-8", skip_header=1)
+print(data)
 # =============================================================================
 # H) ALEATORIOS (Generator, semilla, permutaciones, muestreos)
 # =============================================================================
 
 # --- Reproducibilidad básica (semilla fija) ---
+rng = np.random.default_rng(0)
 
 # --- Enteros aleatorios ---
 # low inclusivo, high exclusivo
-
+rng.integers(0, 11, size = 5)
+rng.integers(0, 10, size = 5, endpoint = True)
 # --- Permutaciones / Mezclas ---
 
 # --- Muestreo con/ sin reemplazo ---
+rng = np.random.default_rng(0)
+poblacion = np.array(["Regina", "Gus", "Aixa", "Bruno", "Renata", "Gael", "Arely"])
+muestra = rng.choice(poblacion, size = 3)
+print(muestra)
+muestra_b = rng.choice(poblacion, size = 3, replace= False)
+print(muestra_b)
 
 # --- Muestreo ponderado (probabilidades p deben sumar 1) ---
-
+rng = np.random.default_rng(0)
+poblacion = np.array(["Regina", "Gus", "Aixa", "Bruno", "Renata", "Gael", "Arely"])
+probas = np.array([0.7, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 ])
+muestra_c = rng.choice(poblacion, size = 1, replace= False, p = probas)
+print(muestra_c)
 # --- Barajar filas de una matriz (mantener columnas alineadas) ---
 
 # =============================================================================
@@ -162,6 +210,15 @@ A.argmax()
 # -------------------------------
 # NORMAL (Gaussiana)
 # -------------------------------
+mu, sigma = 20, 2
+x_normal = rng.normal(loc = mu, scale= sigma, size = 13_000)
+x_normal
+
+x_normal.mean(), x_normal.std(), x_normal.var()
+
+import matplotlib.pyplot as plt
+plt.hist(x_normal, bins = 100, color= "red")
+plt.show()
 
 # Estandarizada (media 0, var 1)
 
