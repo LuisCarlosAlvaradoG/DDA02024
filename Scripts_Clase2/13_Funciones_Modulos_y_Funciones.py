@@ -111,12 +111,17 @@ print(m.pi)
 # ---------------------------------------------------------------
 # En Python, al llamar una función, podemos pasar argumentos por posición o nombrarlos.
 
+def area_rectangulo(base, altura):
+    return base *  altura
 
 # Llamadas por posición:
+area_rectangulo(3, 5)
 
 # Llamadas por palabra clave (keyword arguments):
+area_rectangulo(base = 5, altura = 3)
 
 # Mezcla (posicionales primero, luego keywords):
+area_rectangulo(2, altura = 5)
 
 # ---------------------------------------------------------------
 # D) ALCANCE: LOCALES VS. GLOBALES (Y PRECAUCIONES)
@@ -125,8 +130,22 @@ print(m.pi)
 # Variables definidas fuera pertenecen al ámbito GLOBAL del módulo.
 # Evitar depender de globales salvo necesidad; pasar datos por parámetros es más claro.
 
+Flag = True # Variable Global
 
+def decremento(L):
+    # Flag = False # Variable Local
+    if Flag:
+        print(L)
+    R = []
+    for x in L:
+        R.append(x-1)
+    if Flag:
+        print(R)
+    return R
 
+lista = [3, 5, 7]
+decremento(lista)
+print(Flag)
 
 # ---------------------------------------------------------------
 # E) VENTAJAS, DESVENTAJAS Y BUENAS PRÁCTICAS

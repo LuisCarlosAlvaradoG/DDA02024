@@ -5,7 +5,8 @@
 # 3) Un conjunto de test cases y un conteo de aciertos ("Problema X: correctos/10")
 
 '''
-Modifica únicamente el código dentro de cada función donde leas "Escribe aquí tu código", no modifiques ni elimines el resto
+Modifica únicamente el código dentro de cada función donde leas 
+"Escribe aquí tu código", no modifiques ni elimines el resto
 '''
 
 import numpy as np
