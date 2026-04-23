@@ -204,7 +204,9 @@ print(f"Problema 9: {correct}/10")
 # Problema 10: Índices de Elementos Mayores a k
 # --------------------------------
 def problem10(arr, k):
-    pass
+    a = np.array(arr)
+    indices = np.where(a > k)[0]
+    return indices.tolist()
 
 # TESTS Problema 10
 _t10_arr = [[1,4,6,3],[10,20,30],[5,5,5,5],[0,1,2,3,4],[7,8,9],[3,3,3],[100,50,75,80],[1,2,3,4,5],[9,8,7,6],[2,4,2,4,2]]
