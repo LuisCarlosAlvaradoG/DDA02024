@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 # ==========================================================
 st.set_page_config(
     page_title="Mini Dashboard Diabetes",
-    page_icon="🩺",
+    # page_icon="🩺",
     layout="wide",  # "centered" o "wide"
 )
 
@@ -68,10 +68,10 @@ st.write(
     Esta interfaz es un **ejemplo básico con Streamlit** para visualizar el dataset de diabetes.
     
     Puedes:
-    - Explorar la tabla de datos.
-    - Filtrar por género, edad y estado de diabetes.
-    - Ver algunos indicadores rápidos.
-    - Ver gráficas simples (histograma, dispersión).
+    1. Explorar la tabla de datos.
+    2. Filtrar por género, edad y estado de diabetes.
+    3. Ver algunos indicadores rápidos.
+    4. Ver gráficas simples (histograma, dispersión).
     
     La idea es que puedas adaptar este código para tus propios proyectos. 🙂
     """
@@ -115,6 +115,7 @@ age_range = st.sidebar.slider(
     min_value=min_age,
     max_value=max_age,
     value=(min_age, max_age),
+    step= 1.0
 )
 
 # 5.4. Filtro: sólo pacientes con diabetes (checkbox)
