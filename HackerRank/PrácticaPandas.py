@@ -47,11 +47,14 @@ print(f"Problema 1: {correct}/10")
 # Output Format: DataFrame con columnas ["Name", "Age"] filtrado.
 # --------------------------------
 def problem2(data, threshold):
-    #Escribe aquí tu código
-    # data: dict con "Name" y "Age"
-    # threshold: entero
-    # Debe retornar DataFrame con filas donde Age > threshold
-    pass
+   df = pd.DataFrame(data)
+   df_filtered = df[df["Age"] > threshold].reset_index(drop=True)
+   return df_filtered
+
+# df["Age"]
+# df.Age
+# df.loc[:, "Age"]
+# df.iloc[:, 1]
 
 # TESTS Problema 2
 _t2_data = [
@@ -161,10 +164,8 @@ print(f"Problema 3: {correct}/10")
 # Output Format: DataFrame con columnas ["Category","Value"] (suma por categoría).
 # --------------------------------
 def problem4(data):
-    #Escribe aquí tu código
-    # data: dict con "Category" y "Value"
-    # Debe retornar DataFrame con (Category, sum(Value))
-    pass
+    df = pd.DataFrame(data)
+    return df.groupby("Category", as_index= True)["Value"].sum()
 
 # TESTS Problema 4
 _t4_data = [
@@ -253,10 +254,9 @@ print(f"Problema 5: {correct}/10")
 # Output Format: DataFrame con columnas ["Product","Price"] ordenado.
 # --------------------------------
 def problem6(data):
-    #Escribe aquí tu código
-    # data: dict con "Product" y "Price"
-    # Debe retornar DataFrame ordenado por Price
-    pass
+    df = pd.DataFrame(data)
+    return df.sort_values(by = "Price", ascending = True).reset_index(drop=True)
+    
 
 # TESTS Problema 6
 _t6_data = [

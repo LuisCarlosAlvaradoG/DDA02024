@@ -101,7 +101,9 @@ print(f"Problema 4: {correct}/10")
 # Problema 5: Redimensionar un Array
 # --------------------------------
 def problem5(arr, r, c):
-    pass
+    a = np.array(arr)
+    reshaped = a.reshape(r, c)
+    return reshaped.tolist()
 
 # TESTS Problema 5
 _t5_arr = [[1,2,3,4],[5,6,7,8,9,10],[1,2,3],[1,2,3,4,5,6,7,8],[9,8,7,6,5,4],[10,20,30,40,50,60],[1,1,1,1],[2,4,6,8,10,12],[7,8,9,10],[5,5,5,5,5,5]]
@@ -122,7 +124,10 @@ print(f"Problema 5: {correct}/10")
 # Problema 6: Element-wise Maximum de Dos Arrays
 # --------------------------------
 def problem6(arr1, arr2):
-    pass
+    a1 = np.array(arr1)
+    a2 = np.array(arr2)
+    final = np.maximum(a1, a2)
+    return final.tolist()
 
 # TESTS Problema 6
 _t6_arr1 = [[1,3,5],[10,20],[0,0,0],[7,8,9],[1,2,3,4],[5],[6,6,6],[100,50],[1,2,3],[0,9,8]]

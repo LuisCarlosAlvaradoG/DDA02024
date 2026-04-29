@@ -10,7 +10,7 @@ Pasos para usarlo:
 1) Instala streamlit:  pip install streamlit
 2) Guarda este archivo como: 21_Streamlit.py
 3) Coloca diabetes_dataset.csv en la misma carpeta.
-4) En la terminal, ejecuta:  python -m streamlit run 21_Streamlit.py
+4) En la terminal, ejecuta: python -m streamlit run 21_Streamlit.py
 """
 
 # ==========================================================
@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 # ==========================================================
 st.set_page_config(
     page_title="Mini Dashboard Diabetes",
-    # page_icon="🩺",
+    page_icon="🩺",
     layout="wide",  # "centered" o "wide"
 )
 
@@ -65,13 +65,13 @@ df = load_data()
 st.title("🩺 Mini Dashboard – Diabetes Dataset")
 st.write(
     """
-    Esta interfaz es un **ejemplo básico con Streamlit** para visualizar el dataset de diabetes.
+    Esta interfaz es un *ejemplo básico con Streamlit* para visualizar el dataset de diabetes.
     
     Puedes:
-    1. Explorar la tabla de datos.
-    2. Filtrar por género, edad y estado de diabetes.
-    3. Ver algunos indicadores rápidos.
-    4. Ver gráficas simples (histograma, dispersión).
+    - Explorar la tabla de datos.
+    - Filtrar por género, edad y estado de diabetes.
+    - Ver algunos indicadores rápidos.
+    - Ver gráficas simples (histograma, dispersión).
     
     La idea es que puedas adaptar este código para tus propios proyectos. 🙂
     """
@@ -93,12 +93,17 @@ n_rows = st.sidebar.slider(
     min_value=5,
     max_value=100,
     value=20,
-    step=5,
+    step=1,
 )
 
 # 5.2. Filtro por género
 # Obtenemos los valores únicos de la columna 'gender' para armar el multiselect.
 gender_options = df["gender"].unique().tolist()
+
+# df["gender"]
+# df.gender
+# df.loc[:,"gender"]
+# df.iloc[:,1]
 
 gender_filter = st.sidebar.multiselect(
     "Filtrar por género",
