@@ -14,7 +14,7 @@ ceros = np.zeros((2, 3))
 print(ceros)
 unos = np.ones((2, 3))
 print(unos)
-ar = np.arange(10, 0, -2)
+ar = np.arange(1, 5, 1)  # inicio, fin , paso
 print(ar)
 lin = np.linspace(0, 10, 5)
 print(lin)

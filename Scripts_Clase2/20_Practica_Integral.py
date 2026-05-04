@@ -44,9 +44,14 @@ plt.rcParams["axes.grid"] = True
 # c) Muestra información general del DataFrame (df.info()).
 # d) Imprime el número de filas y columnas (shape).
 
-# === TU CÓDIGO AQUÍ ===
+df = pd.read_csv("diabetes_dataset.csv")
+df.head(5)
 
+df.tail(5)
 
+df.info()
+
+df.shape
 # ==========================================================
 # EJERCICIO 1. Exploración básica con pandas
 # ==========================================================
@@ -54,9 +59,12 @@ plt.rcParams["axes.grid"] = True
 # b) Obtén la distribución de la variable 'diabetes' (value_counts y proporciones).
 # c) Obtén la distribución de la variable 'gender' (value_counts).
 
-# === TU CÓDIGO AQUÍ ===
+df.describe()
 
+df["diabetes"].value_counts()
+df["diabetes"].value_counts(normalize= True)
 
+df["gender"].value_counts()
 
 # ==========================================================
 # EJERCICIO 2. Trabajo con NumPy y máscaras booleanas
@@ -68,8 +76,15 @@ plt.rcParams["axes.grid"] = True
 #    - La media de edad de pacientes con diabetes.
 #    - La media de edad de pacientes sin diabetes.
 
-# === TU CÓDIGO AQUÍ ===
+age_np = df["age"].to_numpy()
+mean_age = np.mean(age_np)
+std_age = np.std(age_np)
+median_age = np.median(age_np)  # age_np.median()
 
+mask_diab = df["diabetes"].to_numpy() == 1
+
+mean_diab = np.mean(age_np[mask_diab])
+mean_no_diab = np.mean(age_np[~mask_diab])
 
 # ==========================================================
 # EJERCICIO 3. Índice de riesgo con NumPy (feature engineering)
@@ -86,7 +101,16 @@ plt.rcParams["axes.grid"] = True
 #    risk_index = 0.4 * bmi_norm + 0.3 * hbA1c_norm + 0.3 * glucose_norm
 # c) Agrega este índice al DataFrame como columna 'risk_index'.
 
-# === TU CÓDIGO AQUÍ ===
+bmi = df["bmi"].to_numpy()
+hb = df["hbA1c_level"].to_numpy()
+glu = df["blood_glucose_level"].to_numpy()
+
+bmi_norm = (bmi - bmi.mean()) / bmi.std()
+glu_norm = (glu - glu.mean()) / glu.std()
+hb_norm = (hb - hb.mean()) / hb.std()
+
+risk_index = 0.4 * bmi_norm + 0.3 * hb_norm + 0.3 * glu_norm
+df["risk_index"] = risk_index
 
 # ==========================================================
 # EJERCICIO 4. Agrupaciones con pandas (groupby)
@@ -95,7 +119,9 @@ plt.rcParams["axes.grid"] = True
 # b) Calcula, por género, la media de 'age', 'bmi' y 'risk_index'.
 # c) Ordena los resultados anteriores de mayor a menor tasa de diabetes.
 
-# === TU CÓDIGO AQUÍ ===
+tasa_diabetes_gender = df.groupby("gender")["diabetes"].mean().sort_values(ascending=False)
+
+stats_gender = df.groupby("gender")[["age", "bmi", "risk_index"]].mean().sort_values(by = "bmi", ascending=False)
 
 # ==========================================================
 # EJERCICIO 5. Tablas de contingencia (crosstab)
@@ -104,8 +130,8 @@ plt.rcParams["axes.grid"] = True
 # b) Construye otra tabla de contingencia normalizada por filas para obtener
 #    las proporciones de diabéticos dentro de cada categoría de 'hypertension'.
 
-# === TU CÓDIGO AQUÍ ===
-
+tab_htn = pd.crosstab(df["hypertension"], df["diabetes"])
+tab_htn_norm = pd.crosstab(df["hypertension"], df["diabetes"], normalize= True)
 
 # ==========================================================
 # EJERCICIO 6. Visualización 1: Histogramas
@@ -115,7 +141,36 @@ plt.rcParams["axes.grid"] = True
 # c) Grafica un histograma de 'bmi' para pacientes sin diabetes.
 #    (Puedes superponer ambas distribuciones o hacer 2 gráficos separados.)
 
-# === TU CÓDIGO AQUÍ ===
+plt.figure()
+plt.hist(df["age"], bins = 30)
+plt.title("Histograma de edad")
+plt.xlabel("Edad")
+plt.ylabel("Frecuencia")
+plt.show()
+
+plt.figure()
+plt.hist(df[mask_diab]["bmi"], bins = 30)
+plt.title("Histograma de bmi pacientes con diabetes")
+plt.xlabel("bmi")
+plt.ylabel("Frecuencia")
+plt.show()
+
+plt.figure()
+plt.hist(df[~mask_diab]["bmi"], bins = 30)
+plt.title("Histograma de bmi pacientes sin diabetes")
+plt.xlabel("bmi")
+plt.ylabel("Frecuencia")
+plt.show()
+
+# Superponer gráficos
+plt.figure()
+plt.hist(df[~mask_diab]["bmi"], bins = 30, label = "Pacientes sin diabetes", color = "green")
+plt.hist(df[mask_diab]["bmi"], bins = 30, label = "Pacientes con diabetes", color = "red")
+plt.title("Histograma de bmi")
+plt.xlabel("BMI")
+plt.ylabel("Frecuencia")
+plt.legend()
+plt.show()
 
 
 # ==========================================================

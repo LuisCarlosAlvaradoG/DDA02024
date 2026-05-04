@@ -355,10 +355,9 @@ print(f"Problema 7: {correct}/10")
 # Output Format: DataFrame con columnas ["ID","Value"] de filas duplicadas.
 # --------------------------------
 def problem8(data):
-    #Escribe aquí tu código
-    # data: dict con "ID" y "Value"
-    # Debe retornar DataFrame de filas duplicadas (ID repetido)
-    pass
+    df = pd.DataFrame(data)
+    dup = df[df.duplicated("ID", keep=False)].reset_index(drop=True)
+    return dup
 
 # TESTS Problema 8
 _t8_data = [
